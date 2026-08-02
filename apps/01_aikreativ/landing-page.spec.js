@@ -99,54 +99,62 @@ test.describe('Pengujian Landing Page AIKreativ.app', () => {
   });
 
   test('9. Memvalidasi Klik Semua Card Model Mengarah ke Tab & Model yang Benar', async ({ page }) => {
-  // 1. Naikkan timeout khusus untuk tes berulang ini (120 detik)
-  test.setTimeout(120000);
+    test.setTimeout(120000);
 
-  const modelsData = [
-    // Video-Only
-    { name: 'VEO 3.1 FAST', expectedTab: 'IMAGE TO VIDEO' },
-    { name: 'SEEDANCE 1.5', expectedTab: 'IMAGE TO VIDEO' },
-    { name: 'SEEDANCE 2', expectedTab: 'IMAGE TO VIDEO' },
-    { name: 'PIXVERSE V6', expectedTab: 'IMAGE TO VIDEO' },
-    { name: 'KLING 2.6 MOTION', expectedTab: 'IMAGE TO VIDEO' },
-    
-    // Dual-Mode (Diprioritaskan ke IMAGE TO IMAGE)
-    { name: 'GROK IMAGINE', expectedTab: 'IMAGE TO IMAGE' },
-    { name: 'WAN AI', expectedTab: 'IMAGE TO IMAGE' },
-    
-    // Image-Only
-    { name: 'QWEN', expectedTab: 'IMAGE TO IMAGE' },
-    { name: 'NANO BANANA 2', expectedTab: 'IMAGE TO IMAGE' },
-    { name: 'SEEDREAM 5', expectedTab: 'IMAGE TO IMAGE' },
-    { name: 'GPT IMAGE 2', expectedTab: 'IMAGE TO IMAGE' },
-  ];
+    const modelsData = [
+        // Video-Only
+        { name: 'VEO 3.1 FAST', expectedTab: 'IMAGE TO VIDEO' },
+        { name: 'SEEDANCE 1.5', expectedTab: 'IMAGE TO VIDEO' },
+        { name: 'SEEDANCE 2', expectedTab: 'IMAGE TO VIDEO' },
+        { name: 'PIXVERSE V6', expectedTab: 'IMAGE TO VIDEO' },
+        { name: 'KLING 2.6 MOTION', expectedTab: 'IMAGE TO VIDEO' },
+        
+        // Dual-Mode (Diprioritaskan ke IMAGE TO IMAGE)
+        { name: 'GROK IMAGINE', expectedTab: 'IMAGE TO IMAGE' },
+        { name: 'WAN AI', expectedTab: 'IMAGE TO IMAGE' },
+        
+        // Image-Only
+        { name: 'QWEN', expectedTab: 'IMAGE TO IMAGE' },
+        { name: 'NANO BANANA 2', expectedTab: 'IMAGE TO IMAGE' },
+        { name: 'SEEDREAM 5', expectedTab: 'IMAGE TO IMAGE' },
+        { name: 'GPT IMAGE 2', expectedTab: 'IMAGE TO IMAGE' },
+    ];
 
-  for (const model of modelsData) {
-    // 2. Gunakan 'domcontentloaded' agar navigasi cepat & tidak tertahan jaringan
-    await page.goto('https://staging.aikreativ.app/', { waitUntil: 'domcontentloaded' });
+    for (const model of modelsData) {
+        // 1. Kembali ke Landing Page
+        await page.goto('https://staging.aikreativ.app/', { waitUntil: 'domcontentloaded' });
 
-    // 3. Targetkan kartu model (Playwright otomatis menunggu elemen siap)
-    const modelCard = page.getByRole('heading', { name: new RegExp(model.name, 'i'), level: 3 });
-    await modelCard.click();
+        // 2. Klik Kartu Model
+        const modelCard = page.getByRole('heading', { name: new RegExp(model.name, 'i'), level: 3 });
+        await modelCard.click();
 
-    // 4. Tunggu URL masuk ke halaman Studio
-    await page.waitForURL('**/studio**', { timeout: 10000 });
+        // 3. Tunggu hingga URL masuk ke Studio
+        await page.waitForURL('**/studio**', { timeout: 10000 });
 
-    // 5. CEK 1: Validasi Tab Aktif (Soft Assertion)
-    const targetTabButton = page.getByRole('button', { name: new RegExp(model.expectedTab, 'i') });
-    await expect.soft(
-      targetTabButton, 
-      `[BUG TAB] Model "${model.name}": Tab "${model.expectedTab}" TIDAK AKTIF saat masuk Studio!`
-    ).toHaveClass(/bg-emerald|bg-green|active|selected/i); 
+        // 4. LOGIKA BARU: Cari tombol TAB mana yang sedang AKTIF (berwarna hijau bg-[#10b981])
+        // Regex mencakup: bg-[#10b981], bg-emerald, bg-green, atau class active
+        const activeTabButton = page.getByRole('button', { name: /IMAGE TO/i })
+        .filter({ has: page.locator('xpath=self::*[contains(@class, "10b981") or contains(@class, "emerald") or contains(@class, "green") or contains(@class, "active")]') });
 
-    // 6. CEK 2: Validasi Model Selector Button (Soft Assertion)
-    const firstName = model.name.split(' ')[0]; 
-    const modelButton = page.getByRole('button', { name: new RegExp(firstName, 'i') });
-    await expect.soft(
-      modelButton, 
-      `[BUG MODEL] Model "${model.name}": Nama model tidak terpilih di Studio!`
-    ).toBeVisible();
-  }
-});
+        // Ambil teks dari tab yang benar-benar aktif di UI saat ini
+        const activeTabText = await activeTabButton.innerText().catch(() => 'TIDAK ADA TAB AKTIF');
+
+        // 5. CEK 1: Bandingkan Tab Aktif UI vs Expected Tab Model (Soft Assertion)
+        const isTabCorrect = activeTabText.toUpperCase().includes(model.expectedTab);
+        
+        expect.soft(
+        isTabCorrect,
+        `[BUG TAB] Model "${model.name}": Seharusnya mengarah ke tab "${model.expectedTab}", tapi tab yang AKTIF di Studio adalah "${activeTabText.trim()}"!`
+        ).toBeTruthy();
+
+        // 6. CEK 2: Validasi Model Selector Button di Studio (Soft Assertion)
+        const firstName = model.name.split(' ')[0]; 
+        const modelButton = page.getByRole('button', { name: new RegExp(firstName, 'i') });
+        await expect.soft(
+        modelButton, 
+        `[BUG MODEL] Model "${model.name}": Nama model tidak terpilih/tampil di Studio!`
+        ).toBeVisible();
+    }
+  });
 
 });
