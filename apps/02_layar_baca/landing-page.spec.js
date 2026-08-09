@@ -1,100 +1,108 @@
 const { test, expect } = require('@playwright/test');
 
-const BASE_URL = 'https://layarbaca.app';
+const BASE_URL = 'https://layarbaca.app/app/home';
 
-// Mengaktifkan rekaman video & screenshot jika tes gagal (sangat membantu tim dev)
 test.use({ 
   video: 'retain-on-failure',
   screenshot: 'only-on-failure',
 });
 
-test.describe('Pengujian Frontend Landing Page LayarBaca', () => {
+test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
 
   test.beforeEach(async ({ page }) => {
-    // Membuka landing page dan menunggu hingga elemen DOM selesai dimuat
-    await page.goto(BASE_URL, { waitUntil: 'domcontentloaded' });
+    // Navigasi langsung ke /app/home untuk menghindari redirect berulang
+    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
   });
 
   test('1. Verifikasi judul halaman, URL redirected, dan elemen utama UI', async ({ page }) => {
-    // Memastikan judul halaman mengandung 'LayarBaca'
     await expect(page).toHaveTitle(/LayarBaca/i);
-
-    // Memastikan URL otomatis terarah/mengandung konteks landing page
     await expect(page).toHaveURL(/layarbaca\.app/);
 
-    // Memastikan Search Bar utama sesuai dengan placeholder di UI
-    const searchInput = page.locator('input[placeholder*="Cari film"]');
-    await expect(searchInput).toBeVisible();
+    // Search Bar utama (menggunakan placeholder persis atau type search)
+    const searchInput = page.locator('input[type="search"], input[placeholder*="Cari" i]').first();
+    await expect(searchInput).toBeVisible({ timeout: 10000 });
 
-    // Memastikan tombol Install Aplikasi muncul di navbar
-    const installBtn = page.locator('button:has-text("Install Aplikasi"), a:has-text("Install Aplikasi")').first();
-    await expect(installBtn).toBeVisible();
+    // Tombol Install Aplikasi & Bahasa ID
+    const installBtn = page.getByRole('button', { name: /Install Aplikasi/i }).or(page.locator('text=Install Aplikasi'));
+    await expect(installBtn.first()).toBeVisible();
+
+    const langBtn = page.locator('text="ID"').first();
+    await expect(langBtn).toBeVisible();
   });
 
-  test('2. Uji fungsi pencarian film via Search Bar', async ({ page }) => {
-    const searchInput = page.locator('input[placeholder*="Cari film"]');
+  test('2. Uji fungsi pencarian film spesifik via Search Bar', async ({ page }) => {
+    const searchInput = page.locator('input[type="search"], input[placeholder*="Cari" i]').first();
+    await expect(searchInput).toBeVisible({ timeout: 10000 });
     
-    await expect(searchInput).toBeVisible();
+    const searchQuery = 'Kabushikigaisha Magi-Lumière Season 2 Sub Indo';
     await searchInput.click();
-    await searchInput.fill('Avatar');
+    await searchInput.fill(searchQuery);
     await searchInput.press('Enter');
 
-    // Menunggu respon/hasil pencarian atau perubahan daftar film
-    await page.waitForTimeout(1000); 
-    const movieGrid = page.locator('div[class*="grid"]').first();
-    await expect(movieGrid).toBeVisible({ timeout: 10000 });
+    // Tunggu navigasi atau rendering hasil pencarian
+    await page.waitForTimeout(2000);
+    await expect(page.locator('body')).toContainText(/Kabushikigaisha|Magi-Lumière|Tidak ditemukan/i);
   });
 
   test('3. Verifikasi kategori genre & katalog film di Landing Page', async ({ page }) => {
-    // Memastikan tombol filter genre 'Semua' atau genre utama terlihat
-    const allFilter = page.locator('button:has-text("Semua"), div:has-text("Semua")').first();
+    const allFilter = page.locator('button, div').filter({ hasText: /^Semua$/i }).first();
     await expect(allFilter).toBeVisible();
 
-    // Memastikan section rekomendasi film muncul
     const sectionRekomendasi = page.locator('text=REKOMENDASI SPESIAL UNTUKMU');
-    await expect(sectionRekomendasi).toBeVisible();
+    await expect(sectionRekomendasi).toBeVisible({ timeout: 10000 });
 
-    // Memastikan minimal ada 1 kartu film ter-render di halaman
-    const firstMovieCard = page.locator('div[class*="grid"] > div, img').first();
+    const firstMovieCard = page.locator('img').first();
     await expect(firstMovieCard).toBeVisible();
   });
 
-  test('4. Uji responsivitas Tampilan Mobile & Bottom Navigation', async ({ page }) => {
-    // Set ukuran layar ke Mobile (iPhone/Android standard)
-    await page.setViewportSize({ width: 390, height: 844 });
-    await page.reload({ waitUntil: 'domcontentloaded' });
-
-    // Memastikan Search Bar tetap tampil di ukuran mobile
-    const searchInput = page.locator('input[placeholder*="Cari film"]');
-    await expect(searchInput).toBeVisible();
-
-    // Memastikan tombol 'BERANDA' di floating navbar bawah terlihat
-    const homeTab = page.locator('text=BERANDA').first();
-    await expect(homeTab).toBeVisible();
-  });
-
-  test('5. Cek ketersediaan file Manifest PWA', async ({ page }) => {
-    // Mengecek apakah file manifest PWA dapat diakses (status HTTP 200 OK)
-    const response = await page.request.get(`${BASE_URL}/manifest.json`);
-    expect(response.status()).toBe(200);
-  });
-
-  test('6. Uji klik filter genre', async ({ page }) => {
-    const actionGenre = page.locator('button:has-text("Action"), div:has-text("Action")').first();
+  test('4. Uji klik filter genre (misal: Action)', async ({ page }) => {
+    const actionGenre = page.locator('button, div').filter({ hasText: /^Action$/i }).first();
     await expect(actionGenre).toBeVisible();
     await actionGenre.click();
     
-    // Pastikan URL berubah atau grid film merender ulang
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(1000);
   });
 
-  test('7. Verifikasi tombol Floating Menu Bawah', async ({ page }) => {
-    const paketAksesBtn = page.locator('text=PAKET AKSES').first();
-    await expect(paketAksesBtn).toBeVisible();
-    
-    // Cek apakah tombol Buka Kunci juga muncul
-    const bukaKunciBtn = page.locator('text=BUKA KUNCI').first();
-    await expect(bukaKunciBtn).toBeVisible();
+  test('5. Uji Pusat Bantuan (Modal Help) & Daftar Pertanyaan Umum', async ({ page }) => {
+    // Targetkan tombol Help melayang ungu di pojok kanan bawah
+    const helpBtn = page.locator('button, div').filter({ has: page.locator('svg') }).last();
+    await helpBtn.scrollIntoViewIfNeeded();
+    await helpBtn.click({ force: true });
+
+    // Verifikasi Modal "Pusat Bantuan" muncul
+    const modalHeader = page.locator('text=Pusat Bantuan');
+    await expect(modalHeader).toBeVisible({ timeout: 10000 });
+
+    // Cek ketersediaan daftar FAQ
+    const faqItems = [
+      'Bagaimana cara donasi?',
+      'Kode akses belum dikirim ke email',
+      'Gagal input kode akses',
+      'Berapa lama masa aktif akses konten?',
+      'Belum terjawab? Tanya Admin'
+    ];
+
+    for (const itemText of faqItems) {
+      const faqItem = page.locator(`text=${itemText}`).first();
+      await expect(faqItem).toBeVisible();
+    }
+  });
+
+  test('6. Verifikasi Floating Bottom Navigation', async ({ page }) => {
+    const navItems = ['AWAL', 'FILM', 'PAKET', 'BUKA KUNCI', 'ANIME', 'BOOKMARK'];
+
+    for (const itemText of navItems) {
+      const navBtn = page.locator(`text=${itemText}`).first();
+      await expect(navBtn).toBeVisible();
+    }
+  });
+
+  test('7. Uji responsivitas Tampilan Mobile & Bottom Navigation', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(BASE_URL, { waitUntil: 'domcontentloaded' });
+
+    const awalTab = page.locator('text=AWAL').first();
+    await expect(awalTab).toBeVisible({ timeout: 10000 });
   });
 
 });

@@ -1,42 +1,20 @@
-// player-flow.spec.js
-const { test, expect } = require('@playwright/test');
+// apps/player-flow-guest.spec.js
+import { test, expect } from '@playwright/test';
 
-test.use({ 
-  video: 'retain-on-failure',
-  screenshot: 'only-on-failure',
-});
+test.describe('Guest Flow - Filter Genre & Verifikasi Paywall', () => {
 
-test.describe('Pengujian Filter Genre dan Interaksi Film - LayarBaca', () => {
-
-  // Daftar genre yang akan diuji
-  const genres = [
-    'Semua',
-    'Action',
-    'Adventure',
-    'Animation',
-    'Comedy',
-    'Drama',
-    'Horror',
-    'Romance',
-    'Sci-Fi',
-    'Thriller'
-  ];
+  const genres = ['Semua', 'Action', 'Adventure', 'Animation', 'Comedy', 'Drama', 'Horror', 'Romance', 'Sci-Fi', 'Thriller'];
 
   test.beforeEach(async ({ page }) => {
-    // Buka halaman utama gallery sebelum setiap tes
-    await page.goto('https://layarbaca.app/app/gallery?category=Action');
-    await page.waitForLoadState('domcontentloaded');
+    await page.goto('https://layarbaca.app/app/gallery?category=Action', { waitUntil: 'domcontentloaded' });
   });
 
-  test('1. Harus dapat melakukan klik pada button genre dan memverifikasi URL', async ({ page }) => {
+  test('1. Klik filter genre dan verifikasi pergantian URL', async ({ page }) => {
     for (const genre of genres) {
       const genreButton = page.getByRole('button', { name: genre, exact: true });
-
       await expect(genreButton).toBeVisible();
       await genreButton.click();
-
-      // Tunggu hingga request data API/DOM selesai dirender
-      await page.waitForLoadState('networkidle');
+      await page.waitForTimeout(300);
 
       if (genre === 'Semua') {
         await expect(page).toHaveURL(/https:\/\/layarbaca\.app\/app\/gallery/);
@@ -46,55 +24,53 @@ test.describe('Pengujian Filter Genre dan Interaksi Film - LayarBaca', () => {
     }
   });
 
-  test('2. Harus dapat mengeklik 3 hingga 5 film dan memverifikasi player video', async ({ page }) => {
+  test('2. Klik film dan pastikan terhalang Paywall Kode Akses', async ({ page }) => {
     const movieCards = page.locator('a[href*="/view/lk21"]');
-    
-    // Tunggu kartu film pertama terlihat di layar
-    await movieCards.first().waitFor({ state: 'visible' });
+    await movieCards.first().waitFor({ state: 'visible', timeout: 10000 });
 
-    const count = await movieCards.count();
-    const limitToClick = Math.min(count, 5); 
+    const currentMovie = movieCards.first();
+    const targetHref = await currentMovie.getAttribute('href');
 
-    console.log(`Ditemukan ${count} film. Menguji ${limitToClick} film pertama...`);
+    await currentMovie.click();
 
-    for (let i = 0; i < limitToClick; i++) {
-      const currentMovie = page.locator('a[href*="/view/lk21"]').nth(i);
-      const targetHref = await currentMovie.getAttribute('href');
-
-      await currentMovie.click();
-
-      // 1. Verifikasi URL berubah ke halaman view
-      await expect(page).toHaveURL(targetHref);
-      await expect(page).toHaveURL(/https:\/\/layarbaca\.app\/view\/lk21\?url=/);
-
-      // 2. Verifikasi elemen player (iframe/video) benar-benar dimuat di halaman
-      const videoPlayer = page.locator('iframe, video').first();
-      await expect(videoPlayer).toBeVisible({ timeout: 10000 });
-
-      // Kembali ke halaman gallery untuk menguji film berikutnya
-      await page.goBack();
-      await page.waitForLoadState('domcontentloaded');
-    }
+    await expect(page).toHaveURL(targetHref);
+    // Verifikasi paywall muncul untuk guest
+    await expect(page.locator('text=MASUKKAN KODE AKSES')).toBeVisible({ timeout: 10000 });
+    await expect(page.getByRole('button', { name: 'BUKA KONTEN' })).toBeVisible();
   });
 
-  test('3. Skenario Integrasi: Filter berdasarkan genre lalu buka film', async ({ page }) => {
-    // Pilih salah satu genre secara spesifik (contoh: Horror)
-    const selectedGenre = 'Horror';
-    const genreButton = page.getByRole('button', { name: selectedGenre, exact: true });
+  test('3. Mengisi Email & Kode Akses untuk membuka pemutar video', async ({ page }) => {
+    const email = process.env.TEST_USER_EMAIL;
+    const accessCode = process.env.TEST_USER_PASSWORD;
 
-    await genreButton.click();
-    await page.waitForLoadState('networkidle');
-    await expect(page).toHaveURL(`https://layarbaca.app/app/gallery?category=${selectedGenre}`);
+    // 1. Masuk ke halaman gallery
+    await page.goto('https://layarbaca.app/app/gallery?category=Action', { waitUntil: 'domcontentloaded' });
 
-    // Pilih film pertama yang muncul dari hasil filter genre tersebut
-    const firstMovie = page.locator('a[href*="/view/lk21"]').first();
-    await expect(firstMovie).toBeVisible();
+    // 2. Klik film pertama yang tersedia
+    const movieCards = page.locator('a[href*="/view/lk21"]');
+    await movieCards.first().waitFor({ state: 'visible', timeout: 10000 });
+    await movieCards.first().click();
 
-    await firstMovie.click();
+    // 3. Pastikan Form "MASUKKAN KODE AKSES" muncul
+    const paywallHeader = page.locator('text=MASUKKAN KODE AKSES');
+    await expect(paywallHeader).toBeVisible({ timeout: 10000 });
 
-    // Verifikasi navigasi dan elemen player pada film hasil filter
-    await expect(page).toHaveURL(/https:\/\/layarbaca\.app\/view\/lk21\?url=/);
-    await expect(page.locator('iframe, video').first()).toBeVisible();
+    // 4. Isi Form Email dan Kode Akses dari .env
+    const emailInput = page.locator('input[placeholder*="Email" i], input[type="email"]');
+    const codeInput = page.locator('input[placeholder*="KODE AKSES" i]');
+
+    await emailInput.fill(email);
+    await codeInput.fill(accessCode);
+
+    // 5. Klik Tombol BUKA KONTEN
+    const submitBtn = page.getByRole('button', { name: 'BUKA KONTEN' });
+    await submitBtn.click();
+
+    // 6. Verifikasi Form Paywall Hilang & Player Video (Iframe/Video) Berhasil Rendere
+    await expect(paywallHeader).not.toBeVisible({ timeout: 10000 });
+    
+    const videoPlayer = page.locator('iframe, video, .player-container').first();
+    await expect(videoPlayer).toBeVisible({ timeout: 15000 });
   });
 
 });
