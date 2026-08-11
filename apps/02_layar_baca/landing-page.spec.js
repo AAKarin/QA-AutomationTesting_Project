@@ -11,7 +11,7 @@ test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
 
   test.beforeEach(async ({ page }) => {
     // Navigasi langsung ke /app/home untuk menghindari redirect berulang
-    await page.goto(BASE_URL, { waitUntil: 'networkidle' });
+    await page.goto(BASE_URL, { waitUntil: 'domcontentloaded' });
   });
 
   test('1. Verifikasi judul halaman, URL redirected, dan elemen utama UI', async ({ page }) => {
@@ -26,7 +26,7 @@ test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
     const installBtn = page.getByRole('button', { name: /Install Aplikasi/i }).or(page.locator('text=Install Aplikasi'));
     await expect(installBtn.first()).toBeVisible();
 
-    const langBtn = page.locator('text="ID"').first();
+    const langBtn = page.locator('button').filter({ hasText: '🇮🇩' }).first();
     await expect(langBtn).toBeVisible();
   });
 
