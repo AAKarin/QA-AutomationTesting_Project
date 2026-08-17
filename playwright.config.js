@@ -15,7 +15,7 @@ export default defineConfig({
 
   use: {
     baseURL: process.env.LAYARBACA_PRAPRODUCTION_URL || 'https://layarbaca.app',
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     video: 'retain-on-failure',
     screenshot: 'only-on-failure',
   },
@@ -24,6 +24,11 @@ export default defineConfig({
     {
       name: 'layar-baca-chrome',
       use: { ...devices['Desktop Chrome'] },
+      testMatch: /apps\/02_layar_baca\/.*\.spec\.js/,
+    },
+    {
+      name: 'layar-baca-google-chrome',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' }, // Menggunakan Google Chrome asli
       testMatch: /apps\/02_layar_baca\/.*\.spec\.js/,
     },
     {
