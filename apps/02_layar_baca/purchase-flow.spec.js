@@ -1,12 +1,10 @@
 import { test, expect } from '@playwright/test';
 import path from 'path';
 
-// serial() memastikan test running berurutan 1-4 dan saling menyambung
 test.describe.serial('E2E Flow Pembelian Paket & Upload Bukti', () => {
   let context;
   let page;
 
-  // Inisialisasi 1 browser session untuk dipakai bersama oleh 4 test case
   test.beforeAll(async ({ browser }) => {
     context = await browser.newContext();
     page = await context.newPage();

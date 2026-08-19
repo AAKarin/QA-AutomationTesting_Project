@@ -5,14 +5,12 @@ const BASE_URL = 'https://layarbaca.app/app/home';
 test.use({ 
   video: 'retain-on-failure',
   screenshot: 'only-on-failure',
-  // Hindari pemblokiran bot (Cloudflare/CDN) dengan User-Agent browser asli
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
 });
 
 test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
 
   test.beforeEach(async ({ page }) => {
-    // Gunakan 'domcontentloaded' agar Playwright tidak tertahan loading background/iklan
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
   });
 
@@ -26,7 +24,6 @@ test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
     const installBtn = page.locator('button, a, div').filter({ hasText: /Install Aplikasi/i }).first();
     await expect(installBtn).toBeVisible({ timeout: 10000 });
 
-    // Perbaikan Selector: Menggunakan atribut title dari Inspect Element
     const langBtn = page.locator('button[title="Switch to English"]');
     await expect(langBtn).toBeVisible({ timeout: 10000 });
   });
@@ -39,8 +36,6 @@ test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
     await searchInput.click();
     await searchInput.fill(searchQuery);
     await searchInput.press('Enter');
-
-    // Perbaikan: Hapus waitForTimeout dan gunakan auto-wait expect bawaan Playwright
     await expect(page.locator('body')).toContainText(/Kabushikigaisha|Magi-Lumière|Tidak ditemukan/i, { timeout: 15000 });
   });
 
@@ -48,7 +43,6 @@ test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
     const allFilter = page.locator('button, div').filter({ hasText: /^Semua$/i }).first();
     await expect(allFilter).toBeVisible({ timeout: 15000 });
 
-    // Scroll ke bagian rekomendasi menggunakan regex agar lebih dinamis
     const sectionRekomendasi = page.locator('text=/REKOMENDASI/i').first();
     await sectionRekomendasi.scrollIntoViewIfNeeded();
     await expect(sectionRekomendasi).toBeVisible({ timeout: 15000 });
@@ -58,21 +52,18 @@ test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
   });
 
   test('4. Uji klik filter genre (misal: Action)', async ({ page }) => {
-    // Perbaikan: Selector lebih longgar untuk mencari teks "Action" (tidak peduli huruf besar/kecil)
     const actionGenre = page.locator('button, div').filter({ hasText: /Action/i }).first();
     await expect(actionGenre).toBeVisible({ timeout: 15000 });
     await actionGenre.click();
   });
 
   test('5. Uji Pusat Bantuan (Modal Help) & Daftar Pertanyaan Umum', async ({ page }) => {
-    // Perbaikan Selector: Menggunakan class spesifik (w-14 h-14) milik tombol melayang
     const helpBtn = page.locator('button.w-14.h-14, button[class*="bg-indigo"]').first();
     await helpBtn.click({ force: true });
 
     const modalHeader = page.getByText(/Pusat Bantuan/i).first();
     await expect(modalHeader).toBeVisible({ timeout: 15000 });
 
-    // Perbaikan FAQ: Menyesuaikan teks dengan yang ada di DOM aslinya
     const faqItems = [
       'Bagaimana cara beli paket?',
       'Kode akses belum dikirim ke email',
@@ -88,16 +79,12 @@ test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
   });
 
   test('6. Verifikasi Floating Bottom Navigation', async ({ page }) => {
-    // 1. Ubah ukuran layar ke Mobile
     await page.setViewportSize({ width: 390, height: 844 });
-    
-    // 2. Wajib muat ulang halaman agar web yang "berat" merender ulang UI mobile-nya
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
     const navItems = ['AWAL', 'FILM', 'PAKET', 'BUKA KUNCI', 'ANIME', 'BOOKMARK'];
 
     for (const itemText of navItems) {
-      // 3. Pencarian yang sedikit lebih longgar untuk mengatasi hidden whitespace, dengan timeout 15 detik
       const navBtn = page.locator('button, a, div').filter({ hasText: new RegExp(itemText, 'i') }).first();
       await expect(navBtn).toBeVisible({ timeout: 15000 });
     }
@@ -110,5 +97,4 @@ test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
     const awalTab = page.locator('button, a, div').filter({ hasText: /^AWAL$/i }).first();
     await expect(awalTab).toBeVisible({ timeout: 15000 });
   });
-
 });
