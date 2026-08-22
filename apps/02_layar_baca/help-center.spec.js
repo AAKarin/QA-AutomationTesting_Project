@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import dotenv from 'dotenv';
+import { setupAdBlocker } from '../../utils/ad_blocker.js';
 
 dotenv.config();
 
@@ -7,6 +8,7 @@ test.describe('Pusat Bantuan - Floating Button Flow', () => {
 
   test('1. Kirim Pesan ke Admin lewat Floating Button', async ({ page }) => {
     test.setTimeout(60000);
+    await setupAdBlocker(page);
     const targetUrl = process.env.LAYARBACA_PRAPRODUCTION_URL || 'https://layarbaca.app/app/home';
     await page.goto(targetUrl, { waitUntil: 'domcontentloaded' });
 
@@ -41,6 +43,7 @@ test.describe('Pusat Bantuan - Floating Button Flow', () => {
 
   test('2. Flow Panduan "Bagaimana cara beli paket?" hingga Pop-up Pilih Paket Akses', async ({ page }) => {
     test.setTimeout(60000);
+    await setupAdBlocker(page);
     const targetUrl = process.env.LAYARBACA_PRAPRODUCTION_URL || 'https://layarbaca.app/app/home';
     await page.goto(targetUrl, { waitUntil: 'domcontentloaded' });
 

@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import path from 'path';
+import { setupAdBlocker } from '../../utils/ad_blocker.js';
 
 test.describe.serial('E2E Flow Pembelian Paket & Upload Bukti', () => {
   let context;
@@ -8,6 +9,7 @@ test.describe.serial('E2E Flow Pembelian Paket & Upload Bukti', () => {
   test.beforeAll(async ({ browser }) => {
     context = await browser.newContext();
     page = await context.newPage();
+    await setupAdBlocker(page);
     await page.setViewportSize({ width: 390, height: 844 });
   });
 

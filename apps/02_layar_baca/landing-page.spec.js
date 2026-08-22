@@ -1,16 +1,22 @@
 const { test, expect } = require('@playwright/test');
+const { setupAdBlocker } = require('../../utils/ad_blocker.js');
 
 const BASE_URL = 'https://layarbaca.app/app/home';
 
 test.use({ 
   video: 'retain-on-failure',
   screenshot: 'only-on-failure',
+  trace: 'retain-on-failure',
+  actionTimeout: 15000,
+  navigationTimeout: 30000,
   userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
 });
 
 test.describe('Pengujian Frontend Landing Page & Fitur Utama LayarBaca', () => {
 
   test.beforeEach(async ({ page }) => {
+    test.setTimeout(90000);
+    await setupAdBlocker(page);
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
   });
 

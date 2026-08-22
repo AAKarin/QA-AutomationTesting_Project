@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
+import { setupAdBlocker } from '../../utils/ad_blocker.js';
 
 test.describe('Guest Flow - Filter Genre & Verifikasi Paywall', () => {
 
   const genres = ['Semua', 'Action', 'Adventure', 'Animation', 'Comedy', 'Drama', 'Horror', 'Romance', 'Sci-Fi', 'Thriller'];
 
   test.beforeEach(async ({ page }) => {
+    await setupAdBlocker(page);
     await page.goto('https://layarbaca.app/app/gallery?category=Action', { waitUntil: 'domcontentloaded', timeout: 30000 });
   });
 
