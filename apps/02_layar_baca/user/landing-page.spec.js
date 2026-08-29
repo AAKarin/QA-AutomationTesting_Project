@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const { setupAdBlocker } = require('../../utils/ad_blocker.js');
+const { setupAdBlocker } = require('../../../utils/ad_blocker.js');
 
 const BASE_URL = 'https://layarbaca.app/app/home';
 

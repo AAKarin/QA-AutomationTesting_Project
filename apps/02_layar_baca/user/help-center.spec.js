@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import dotenv from 'dotenv';
-import { setupAdBlocker } from '../../utils/ad_blocker.js';
+import { setupAdBlocker } from '../../../utils/ad_blocker.js';
 
 dotenv.config();
 
@@ -81,20 +81,22 @@ test.describe('Pusat Bantuan - Floating Button Flow', () => {
 
     await page.getByRole('button', { name: 'Berikutnya' }).click();
     
-    // Klik 'Mulai Donasi' / Langkah Akhir
-    const finalBtn = page.getByRole('button', { name: /Mulai Donasi|Berikutnya/i }).first();
+    // PERBAIKAN: Menggunakan nama tombol terbaru "BELI PAKET SEKARANG" dengan Regex fleksibel
+    const finalBtn = page.getByRole('button', { name: /BELI PAKET SEKARANG|Mulai Donasi|Berikutnya/i }).first();
+    await expect(finalBtn).toBeVisible({ timeout: 10000 });
     await finalBtn.click();
 
     // 6. Validasi Pop-up Pilih Paket Akses beserta Opsi Harganya
-    await expect(page.getByText('Akses 1 hari1 HARIPaket')).toBeVisible();
-    await expect(page.getByText('Terhemat7 HARIPaket')).toBeVisible();
-    await expect(page.getByText('★ Terpopuler30 HARIPaket')).toBeVisible();
+    await expect(page.getByText(/Paket Harian|1 HARI/i).first()).toBeVisible();
+    await expect(page.getByText(/Paket Mingguan|7 HARI/i).first()).toBeVisible();
+    await expect(page.getByText(/Paket Bulanan|30 HARI/i).first()).toBeVisible();
     
     await expect(page.getByText('Rp 3.000')).toBeVisible();
     await expect(page.getByText('Rp 15.000')).toBeVisible();
     await expect(page.getByText('Rp 35.000')).toBeVisible();
 
-    // Close Modal Panduan / Pop-up
-    await page.locator('.w-8.h-8.rounded-full.bg-white\\/10').click();
+    // Close Modal Panduan / Pop-up (Tombol X di kanan atas modal)
+    const closeBtn = page.locator('button').filter({ has: page.locator('svg') }).first();
+    await closeBtn.click({ force: true });
   });
 });
