@@ -21,6 +21,40 @@ export default defineConfig({
   },
 
   projects: [
+    // AIKreativ Project
+    {
+      name: 'aikreativ-chrome',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: process.env.AIKREATIV_PRAPRODUCTION_URL || 'https://pra-production.aikreativ.app',
+      },
+      testMatch: /apps\/01_aikreativ\/.*\.spec\.js/,
+    },
+    {
+      name: 'aikreativ-firefox',
+      use: { 
+        ...devices['Desktop Firefox'],
+        baseURL: process.env.AIKREATIV_PRAPRODUCTION_URL || 'https://pra-production.aikreativ.app',
+      },
+      testMatch: /apps\/01_aikreativ\/.*\.spec\.js/,
+    },
+    {
+      name: 'aikreativ-safari',
+      use: { 
+        ...devices['Desktop Safari'],
+        baseURL: process.env.AIKREATIV_PRAPRODUCTION_URL || 'https://pra-production.aikreativ.app',
+      },
+      testMatch: /apps\/01_aikreativ\/.*\.spec\.js/,
+    },
+    {
+      name: 'layar-baca-google-chrome',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: process.env.AIKREATIV_PRAPRODUCTION_URL || 'https://pra-production.aikreativ.app',
+      },
+      testMatch: /apps\/01_aikreativ\/.*\.spec\.js/,
+    },
+    // Layar Baca Project
     {
       name: 'layar-baca-chrome',
       use: { ...devices['Desktop Chrome'] },
@@ -41,5 +75,71 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
       testMatch: /apps\/02_layar_baca\/.*\.spec\.js/,
     },
+    // Panen Kunci Project
+    {
+      name: 'panen-kunci-chrome',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: process.env.BASE_URL_PANEN_KUNCI || 'https://prototipe-panen-kunci.vercel.app/',
+      },
+      testMatch: /apps\/03_panen_kunci\/.*\.spec\.js/,
+    },
+    {
+      name: 'panen-kunci-google-chrome',
+      use: { 
+        ...devices['Desktop Chrome'], channel: 'chrome',
+        baseURL: process.env.BASE_URL_PANEN_KUNCI || 'https://prototipe-panen-kunci.vercel.app/',
+      },
+      testMatch: /apps\/03_panen_kunci\/.*\.spec\.js/,
+    },
+    {
+      name: 'panen-kunci-firefox',
+      use: { 
+        ...devices['Desktop Firefox'],
+        baseURL: process.env.BASE_URL_PANEN_KUNCI || 'https://prototipe-panen-kunci.vercel.app/',
+      },
+      testMatch: /apps\/03_panen_kunci\/.*\.spec\.js/,
+    },
+    {
+      name: 'panen-kunci-safari',
+      use: { 
+        ...devices['Desktop Safari'],
+        baseURL: process.env.BASE_URL_PANEN_KUNCI || 'https://prototipe-panen-kunci.vercel.app/',
+      },
+      testMatch: /apps\/03_panen_kunci\/.*\.spec\.js/,
+    },
+    // Ruang Kreativ Project
+    {
+      name: 'ruang-kreativ-chrome',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: process.env.RUANGKREATIV_URL || 'http://localhost:3000',
+      },
+      testMatch: /apps\/05_ruang_kreativ\/.*\.spec\.js/,
+    },
+    {
+      name: 'ruang-kreativ-google-chrome',
+      use: { 
+        ...devices['Desktop Chrome'], channel: 'chrome',
+        baseURL: process.env.RUANGKREATIV_URL || 'http://localhost:3000',
+      },
+      testMatch: /apps\/05_ruang_kreativ\/.*\.spec\.js/,
+    },
+    {
+      name: 'ruang-kreativ-firefox',
+      use: { 
+        ...devices['Desktop Firefox'],
+        baseURL: process.env.RUANGKREATIV_URL || 'http://localhost:3000',
+      },
+      testMatch: /apps\/05_ruang_kreativ\/.*\.spec\.js/,
+    },
+    {
+      name: 'ruang-kreativ-safari',
+      use: { 
+        ...devices['Desktop Safari'],
+        baseURL: process.env.RUANGKREATIV_URL || 'http://localhost:3000',
+      },
+      testMatch: /apps\/05_ruang_kreativ\/.*\.spec\.js/,
+    }
   ],
 });

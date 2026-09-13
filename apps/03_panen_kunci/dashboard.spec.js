@@ -4,7 +4,7 @@ require('dotenv').config();
 
 test.describe('Modul: Home Dashboard - Panen Kunci', () => {
 
-  const BASE_URL = process.env.BASE_URL_PANEN_KUNCI || 'http://localhost:3000';
+  const BASE_URL = process.env.BASE_URL_PANEN_KUNCI || 'https://prototipe-panen-kunci.vercel.app/';
 
   test.beforeEach(async ({ page }) => {
     // Navigasi ke halaman dashboard
