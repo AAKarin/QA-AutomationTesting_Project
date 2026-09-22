@@ -1,0 +1,98 @@
+No,Skenario,Prioritas,Prasyarat,Tahapan,Error,Hasil yang di harapkan,Hasil Aktual,Status,Keterangan,Tim Dev
+1,Verifikasi fungsi tombol-tombol pada menu Help,Urgent,Berada di halaman Help/Bantuan,"1. Buka menu Help
+2. Klik semua tombol yang tersedia di halaman tersebut",Semua tombol tidak memberikan respon atau tidak bisa diklik (unclickable).,Semua tombol berfungsi normal dan mengarahkan user ke aksi/halaman yang sesuai.,,Done,Semua tombol sudah berfungsi dengan normal,Done
+2,Verifikasi sumber pemutaran video pada halaman Anime,Urgent,Berada di halaman pemutaran Anime,Berada di halaman pemutaran Anime,"Sistem mengambil source video (embed) dari LK21, bukan dari Animasu.",Sistem memutar video yang bersumber dengan benar dari Animasu.,,Done,"Di halaman anime awalnya film diambil dari lk21/garasi film, tapi sekarang sudah di fix dan berhasil mengambil di animasu",Done
+3,Verifikasi penghapusan fitur/tombol WhatsApp,Urgent,Aplikasi dalam keadaan terbuka,"1. Navigasi ke halaman utama atau kontak
+2. Cari ikon/fitur WhatsApp",Masih terdapat fitur/tombol WhatsApp di antarmuka (sebelum dihapus).,Fitur dan tombol WhatsApp sepenuhnya dihapus dari sistem.,,Done,Fitur whatsapp sudah di hapus,Done
+4,Verifikasi konsistensi informasi benefit paket pada Checkout,Kosmetik,User sudah memilih paket dan masuk ke halaman pembayaran,"1. Pilih sebuah paket
+2. Lanjut ke alur pembayaran (checkout)
+3. Cek deskripsi benefit paket","Benefit paket menghilang (kosong) di halaman pembayaran, berbeda dengan saat pertama kali memilih.",Daftar benefit paket tetap tampil konsisten di halaman pembayaran untuk meyakinkan user.,,Done,Benefit paket sudah ditambahkan sesuai dengan paket yang ada,Done
+5,Verifikasi pembersihan (clear state) dropdown hasil pencarian film,Urgent,User melakukan pencarian film,"1. Ketik judul film di kolom pencarian
+2. Biarkan dropdown hasil pencarian muncul
+3. Lakukan refresh halaman (F5)",Dropdown hasil pencarian masih menggantung/muncul setelah halaman di-refresh.,State pencarian ter-reset dan dropdown hilang (bersih) saat halaman dimuat ulang.,,Done,"Ketika di refresh, judul yang dimuat oleh user ke pencarian berhasil hilang",Done
+6,Verifikasi fungsi klik pada daftar film di halaman Bookmark,Urgent,User memiliki minimal 1 film di daftar Bookmark,"1. Buka halaman Bookmark
+2. Klik salah satu cover/judul film yang ada di sana","Film tidak bisa diklik, user tidak diarahkan ke halaman detail film.",Film bisa diklik dan langsung mengarahkan user ke halaman detail/pemutaran film tersebut.,,Done,Film sudah berhasil di klik dan user langsung di arahkan ke film tersebut,Done
+7,Verifikasi klasifikasi dan kelengkapan metadata film,Urgent,Mengecek daftar konten di sistem,"1. Buka menu Series Anime
+2. Perhatikan daftar film yang muncul","Terdapat film tanpa poster, tanpa tag, dan salah kategori (film biasa masuk ke kategori Series Anime).","Semua film memiliki poster, tag, dan masuk ke klasifikasi kategori yang tepat (Film & Series terpisah dari Anime).",,Done,"Film sudah memiliki poster, tag, dan masuk ke kategori yang benar",Done
+8,Verifikasi riwayat 'Lanjut Nonton' (Continue Watching) khusus Anime,Urgent,User menonton episode anime,"1. Tonton episode 1 dari Anime A
+2. Buka beranda, cek bagian 'Lanjut Nonton'
+3. Tonton lagi episode yang sama dari Anime A
+4. Cek kembali beranda",Satu judul anime yang sama (episode yang sama) muncul double/ganda di daftar 'Lanjut Nonton'.,"Hanya ada 1 entri judul anime di daftar 'Lanjut Nonton' (kecuali episodenya berbeda, baru boleh terpisah/di-update).",,Done,"Card sudah jadi 1, maka tidak ada lagi yang double",Done
+9,Verifikasi fitur translasi ke Bahasa Indonesia (Global),Urgent,Sistem diatur ke Bahasa Indonesia,"1. Eksplorasi berbagai halaman website
+2. Perhatikan teks-teks antarmuka",Terdapat beberapa kata/kalimat yang masih bocor menggunakan bahasa asing (tidak ter-translate).,Seluruh teks antarmuka 100% menggunakan Bahasa Indonesia yang konsisten.,,Done,Teks sudah konsisten dengan baik,Done
+10,Verifikasi copywriting pada tombol/menu Help,Kosmetik,Buka menu Help/Tata Cara,"1. Buka tata cara pembelian paket di bagian Help
+2. Baca teks panduannya",Masih menggunakan kata 'Donasi' untuk merujuk pada pembelian paket.,Kata 'Donasi' diganti seluruhnya menjadi 'Beli Paket' agar tidak membingungkan.,,Done,Teks sudah di ganti menjadi Beli Paket,Done
+11,Verifikasi tampilan ikon ganda pada antarmuka Mobile,Kosmetik,Buka aplikasi via Mobile,"1. Akses web/aplikasi dari perangkat mobile
+2. Perhatikan ikon-ikon navigasi",Terdapat ikon yang double (ganda) sehingga membingungkan user mobile.,"Ikon tampil tunggal, rapi, dan sesuai fungsi tanpa duplikasi visual.",,Done,Ikon sudah tunggal dan rapi,Done
+12,Verifikasi penghapusan Nomor HP di Panel Admin,Urgent,Login sebagai Admin,"1. Buka Panel Admin
+2. Masuk ke halaman profil atau pengaturan admin",Nomor HP admin masih tercantum/terlihat di sistem.,Field atau data Nomor HP admin berhasil dihapus dari tampilan panel.,,Done,Nomor HP sudah di hapus dari panel admin,Done
+13,Verifikasi ketersediaan tombol Hapus Kreator di Panel Admin,Urgent,"Login sebagai Admin, buka manajemen Kreator","1. Buka daftar Kreator
+2. Pilih salah satu kreator yang tidak aktif",Tidak ada opsi atau tombol untuk menghapus (delete) kreator tersebut.,Tersedia tombol 'Hapus Kreator' untuk memanajemen kreator yang sudah tidak aktif.,,Done,Fitur hapus sudah tersedia dan berfungsi dengan baik,Done
+14,Verifikasi UI konfirmasi penghapusan di panel Galleries (Admin),Kosmetik,"Login sebagai Admin, buka menu Galleries","1. Buka menu Galleries di Panel Admin
+2. Klik hapus pada salah satu galeri",Sistem menggunakan UI default browser (alert bawaan sistem) yang terlihat kaku/tidak profesional.,Sistem memunculkan custom modal konfirmasi penghapusan dengan UI/UX yang lebih rapi dan selaras dengan tema web.,,Done,Popup hapus sudah tidak terlihat kaku,Done
+15,Verifikasi translasi kata 'Anti Iklan' pada Alur Pembayaran,Kosmetik,Berada di halaman pembayaran/checkout,"1. Buka halaman pembayaran
+2. Ubah bahasa sistem (jika ada) atau perhatikan teks benefit",Kata 'Anti iklan' (atau teks aslinya) tidak berhasil ter-translate dengan benar.,Kata 'Anti Iklan' berhasil diterjemahkan sesuai dengan bahasa yang dipilih user.,,Done,Sudah sesuai dengan bahasa yang dipilih oleh user,Done
+16,Verifikasi filter format file upload Bukti Pembayaran,Urgent,User mengunggah bukti pembayaran,"1. Buka form upload bukti pembayaran
+2. Pilih file dengan format .pdf, .csv, atau .docx
+3. Lakukan upload","Sistem menerima dan meloloskan file format dokumen (.csv, .pdf) sebagai bukti pembayaran.","Sistem memblokir file selain gambar (.jpg, .png, .jpeg) dan memunculkan error validasi format file.",,Done,"Sistem sudah memblokir file selain (.jpg, .png, .jpeg) dan memunculkan notif error validasi format file",Done
+17,Verifikasi direct link (Deep Linking) akses Layarbaca dari Email,Urgent,Buka email notifikasi Layarbaca,"1. Buka email dari Layarbaca
+2. Klik link akses yang tersedia di email tersebut",Layar menjadi blank putih (White Screen of Death / WSOD) setelah link diklik.,Link berhasil memuat halaman web dan mengarahkan user ke halaman tujuan dengan sempurna.,,Done,Di laptop Denis sudah bisa dan berhasil di arahkan ke halaman yang benar.,Done
+18,Verifikasi tombol aksi di dalam Email,Urgent,Buka email notifikasi Layarbaca,"1. Buka email
+2. Klik tombol CTA (Call to Action) utama di dalam email","Sama seperti link, mengklik tombol ini juga menghasilkan layar blank putih.","Tombol berfungsi normal, membuka browser, dan merender halaman dengan benar.",,Done,Di laptop Densi sudah bisa dan berhasil di arahkan ke halaman yang benar.,Done
+19,Verifikasi akses link Layarbaca dari email balasan (Reply),Urgent,Menerima email balasan dari sistem Layarbaca,"1. Buka kotak masuk email
+2. Buka email balasan dari sistem
+3. Klik link akses yang terdapat di dalam email tersebut","Layar menjadi blank putih (White Screen) saat link diklik, tidak mengarah ke halaman asli.","Link berfungsi normal, memuat halaman website Layarbaca dan mengarahkan ke halaman tujuan dengan benar.",-,Done,Di laptop Densi sudah bisa dan berhasil di arahkan ke halaman yang benar.,Done
+20,Verifikasi penghapusan opsi pengiriman via WhatsApp di halaman Donatur,Urgent,"Login sebagai Admin, masuk ke halaman Manajemen Donatur","1. Buka halaman Donatur di Panel Admin
+2. Perhatikan badge status dan pilihan aksi kirim balasan",Masih terdapat badge dan pilihan/tombol untuk mengirim balasan menggunakan WhatsApp.,Badge dan pilihan kirim balasan via WhatsApp telah dihapus sepenuhnya dari antarmuka.,-,Done,Fitur whatsapp sudah di hapus,Done
+21,Verifikasi penghapusan opsi 'WhatsApp only' pada filter saluran Donatur,Urgent,"Login sebagai Admin, masuk ke halaman Manajemen Donatur","1. Buka dropdown filter 'Semua Saluran' di halaman Donatur
+2. Cek daftar opsi yang tersedia",Masih terdapat pilihan 'WhatsApp only' di dalam dropdown filter.,Pilihan 'WhatsApp only' sudah dihapus dari dropdown filter menyusul dihentikannya fitur WhatsApp.,-,Done,Fitur whatsapp sudah di hapus,Done
+22,Verifikasi UI modal konfirmasi hapus pada menu Videos (Admin Panel),Kosmetik,"Login sebagai Admin, masuk ke menu Manajemen Videos","1. Pilih salah satu video di daftar
+2. Klik tombol 'Hapus'",Sistem menggunakan UI default browser (alert bawaan) untuk konfirmasi penghapusan.,Sistem memunculkan custom modal popup konfirmasi dengan desain UI yang bagus dan selaras dengan tema panel admin.,-,Done,Popup hapus sudah tidak menggunakan ,Done
+23,Verifikasi fitur pratinjau (preview) video yang telah diupload di Admin Panel,Urgent,"Login sebagai Admin, sudah ada video yang berhasil diunggah","1. Buka menu Videos
+2. Klik tombol/ikon pratinjau (preview) pada video yang sudah diupload",Video tidak dapat diputar atau tidak muncul di layar preview (blank/error).,Admin dapat melihat pratinjau (memutar) video dengan lancar untuk memastikan kualitas/isi sebelum dipublikasi.,-,Done,VIdeo pra tinjau sudah bisa di play,Done
+24,Verifikasi pemutaran (playback) video dari Kreator di sisi User,Urgent,Berada di halaman pemutaran video dari seorang Kreator,"1. Buka video yang diupload oleh kreator
+2. Klik tombol Play",Video mengalami error dan sama sekali tidak bisa diputar oleh pengguna.,Video dari kreator dapat diputar (play) dengan lancar tanpa error buffering atau source missing.,-,Done,Video dari kreator dapat di play tanpa eror,Done
+25,Verifikasi sinkronisasi (Cascading Delete) video kreator dengan riwayat 'Lanjut Nonton',Urgent,"Video kreator ada di daftar 'Lanjut Nonton' milik User, lalu video itu dihapus oleh Admin","1. Admin menghapus video Kreator X dari Panel Admin
+2. Login sebagai User yang sebelumnya menonton video Kreator X
+3. Buka beranda, cek bagian 'Lanjut Nonton'",Video yang sudah dihapus oleh Admin masih nangkring di daftar 'Lanjut Nonton' milik User.,Video tersebut otomatis terhapus (hilang) dari daftar 'Lanjut Nonton' user ketika Admin menghapusnya dari sistem utama.,-,Done,Video yang sudah di hapus oleh admin sudah otomatis terhapus di panel user,Done
+26,Verifikasi sinkronisasi Badge Episode pada riwayat tontonan (State Management),Kosmetik,User sedang menonton serial dengan banyak episode,"1. User menonton Episode 9
+2. Buka beranda (Lanjut Nonton mencatat Ep 9)
+3. User memutar mundur/menonton ulang Episode 4
+4. Kembali ke beranda","Badge masih tersangkut di tulisan 'tv episode 9', tidak memperbarui ke aktivitas tontonan terakhir (Episode 4).","Badge otomatis memperbarui ke 'tv episode 4', selalu merekam aktivitas/episode paling akhir yang diakses oleh user.",-,Done,Badge sudah otomatis memperbarui ke tontonan yang terakhir di tonton oleh user.,Done
+27,Verifikasi pergantian input text 'Gdrive URL' menjadi fitur Upload File di menu Galleries,Kosmetik,"Login Admin, buka menu Tambah/Edit Galleries","1. Buka halaman form Galleries di Panel Admin
+2. Periksa isian untuk folder/file",Sistem masih menggunakan text input 'Gdrive folder URL' yang merepotkan (memaksa user copy-paste link eksternal).,Input field diganti menjadi komponen 'Upload File' (Browse/Drag & Drop) agar file langsung tersimpan di server lokal.,-,Done,input field kini sudah diganti dengan upload file dan ini memudahkan user untuk memilih gambar apa yang mau disimpan,Done
+28,Verifikasi pergantian input text 'Thumbnail' menjadi fitur Upload File,Kosmetik,"Login Admin, buka form input konten (Video/Gallery)","1. Buka form tambah/edit konten
+2. Periksa isian untuk Thumbnail",Thumbnail masih menggunakan text input (memasukkan URL gambar).,Field Thumbnail menggunakan fitur 'Upload File' agar admin bisa langsung memilih gambar dari komputer/HP.,-,Done,sudah menggunakan fitur upload file,Done
+29,Verifikasi penghapusan field redundan 'URL Avatar' di panel Kreator,Kosmetik,"Login Admin, buka menu Kreator","1. Buka form tambah/edit profil Kreator
+2. Cek opsi unggah avatar",Terdapat dua opsi yang tumpang tindih: Upload File Avatar DAN text field URL Avatar.,"Field 'URL Avatar' dihapus untuk menghindari kebingungan, menyisakan opsi Upload File saja.",-,Done,URL Avatar berhasil dihapus dan sudah diganti dengan upload file,Done
+30,Verifikasi filter tipe MIME (ekstensi file) pada fitur unggah Bukti Pembayaran Admin,Urgent,"Login Admin, buka menu Pembayaran (konfirmasi/upload manual)","1. Klik tombol upload bukti pembayaran
+2. Pilih file non-gambar (contoh: .pdf, .docx, .zip)
+3. Lakukan upload",Sistem menerima dan memproses semua jenis file tanpa adanya validasi format.,"Sistem menolak file selain gambar (hanya menerima JPG, PNG, WEBP) dan menampilkan pesan error format tidak didukung.",-,Done,File selain gambar sudah berhasil di tolak dan tidak bisa diunggah,Done
+31,Verifikasi filter format gambar pada form Thumbnail di menu Tambah Konten Video,Urgent,"Login Admin, masuk ke menu Tambah Konten (Video)","1. Pada field Thumbnail, klik area upload file
+2. Pilih file selain gambar (misal: .txt, .pdf, .zip)
+3. Coba simpan",Sistem mengizinkan upload format file yang salah (non-image) untuk dijadikan Thumbnail.,"File picker browser hanya menampilkan file gambar, dan backend menolak upload jika ekstensinya bukan gambar.",-,Done,"Sudah di fix, dan berhasil menolak file selain gambar dan video. untuk gambar sendiri cuma bisa upload gambar, dan video cuma bisa upload video. secara logika sudah sesuai",Done
+32,Verifikasi filter format media pada form Media di menu Tambah Konten Video,Urgent,"Login Admin, masuk ke menu Tambah Konten (Video)","1. Pada field upload Media, klik pilih file
+2. Pilih file dengan format aneh (misal: .zip, .exe, .csv)
+3. Coba upload","Tidak ada penyaringan tipe file (MIME type check), user bisa mengunggah file .zip ke tempat yang seharusnya berisi video.","Sistem membatasi dan hanya menerima upload file dengan ekstensi media video standar (MP4, MKV, WEBM, dll).",-,Done,"Sudah di fix, dan berhasil menolak file selain gambar dan video. untuk gambar sendiri cuma bisa upload gambar, dan video cuma bisa upload video. secara logika sudah sesuai",Done
+33,Verifikasi konsistensi bahasa (i18n) di keseluruhan Panel Admin,Kosmetik,Login Admin,"1. Navigasi ke berbagai halaman di Panel Admin
+2. Baca teks pada menu, tombol (buttons), tabel, dan popup alert","Bahasa antarmuka masih 'gado-gado', tercampur antara Bahasa Indonesia dan Bahasa Inggris.",Seluruh teks di Panel Admin 100% konsisten menggunakan satu bahasa yang dipilih (Bahasa Indonesia).,-,Done,Sudah konsisten,Done
+34,Verifikasi aktivasi benefit 'Share' pada paket 1 minggu (7 Hari),Urgent,User membeli paket 1 minggu yang menjanjikan benefit 'Bisa Share' dan 'Tanpa Iklan',"1. Beli paket 1 minggu sampai berhasil
+2. Coba gunakan fitur 'Share' (berbagi akses/akun)",Fitur 'Share' tidak bisa digunakan meskipun di deskripsi paket tertulis benefit tersebut aktif.,Benefit 'Share' otomatis aktif dan bisa digunakan oleh user sesuai dengan deskripsi paket 1 minggu.,-,Unused,Fitur tidak akan di develop,
+35,Verifikasi translasi kata 'pukul' pada halaman pasca-pembelian,Kosmetik,"User berhasil melakukan pembelian, sistem diatur ke bahasa Inggris/asing","1. Selesaikan transaksi
+2. Di halaman invoice/struk, ubah bahasa ke Inggris
+3. Cari teks waktu (misal: pukul 14:00)",Kata 'pukul' tidak diterjemahkan ke bahasa yang dipilih (misal menjadi 'at' atau 'time').,Kata 'pukul' berhasil diterjemahkan mengikuti format waktu bahasa (lokalisasi) yang aktif.,-,Done,"Masih ada kata ""pukul"" di user",Done
+36,Verifikasi penghapusan sisa teks 'WhatsApp' di tombol Help,Kosmetik,Buka menu Help / Bantuan,"1. Buka menu Bantuan
+2. Baca teks pada tombol/deskripsi bantuan",Masih tertulis kata 'WhatsApp' meskipun fitur aslinya sudah dihapus dari sistem.,Kata 'WhatsApp' telah dihapus sepenuhnya dari copywriting menu Help.,-,Done,sudah dihapus,Done
+37,Verifikasi validasi input pada form pengiriman pesan (Pencegahan Spam Spasi),Urgent,Berada di form kirim pesan/komentar,"1. Klik input pesan
+2. Ketik spasi saja (whitespace) beberapa kali tanpa huruf
+3. Klik Kirim",Sistem meloloskan pesan kosong (hanya berisi spasi) tanpa memberi peringatan.,"Sistem memblokir pengiriman, lalu memunculkan pesan error/feedback: 'Pesan tidak boleh kosong'.",-,Done,"Pengetikan spasi di pesan pusat bantuan sudah berhasil memblokirnya, ini membuat user random tidak bisa mengirim pesan yang hanya diisi oleh spasi saja",Done
+38,Verifikasi fitur Infinite Scroll (Auto-reload) pada daftar Anime,Urgent,Berada di halaman daftar Anime yang memiliki banyak konten,"1. Scroll halaman ke paling bawah
+2. Tunggu sistem memuat (load) data anime berikutnya",Infinite scroll tidak ter-trigger otomatis. User harus scroll naik/turun dulu baru konten dimuat.,"Saat user mendekati bagian bawah halaman, sistem otomatis memuat (auto-reload) data anime selanjutnya dengan mulus.",-,Done,Sudah bisa reload otomatis,Done
+40,Verifikasi feedback/validasi pada form 'Kode Akses' saat dikosongkan,Kosmetik,Berada di halaman Buka Kunci / Redeem Kode,"1. Biarkan field 'Kode Akses' kosong
+2. Langsung klik tombol 'Aktifkan Akses'",Sistem tidak memberikan respon atau pesan error apapun (silent fail).,Muncul peringatan teks merah (feedback) 'Kode akses wajib diisi' di dekat form.,-,Done,Pesan sudah bisa ditampilkan dengan jelas,Done
+41,Verifikasi responsivitas Card Video di Panel Admin pada tampilan Mobile,Kosmetik,"Login Admin, buka menu Video menggunakan HP","1. Akses menu Video via browser Mobile
+2. Perhatikan daftar Card Video",Ada bagian Card (teks atau gambar) yang terpotong/overflow karena layar kecil.,Card menyesuaikan lebar layar HP (responsive) tanpa ada elemen yang terpotong.,-,Done,"Card berhasil diubah dengan baik, sekarang sudah tidak terpotong lagi",Done
+42,Verifikasi tata letak (Layout) tombol pada Card Transaksi di Panel Admin (Mobile),Kosmetik,"Login Admin, buka menu Transaksi menggunakan HP","1. Buka menu Transaksi di HP
+2. Perhatikan posisi tombol-tombol aksi pada Card","Layout tombol berantakan (tidak sejajar 2x2, ada yang menggantung di tengah).",Layout tombol dirapikan (misal: dibuat grid 2 baris sejajar) agar estetis dan mudah diklik di HP.,-,Failed,"jika di mobile terus pilih filter list, tombol masih terlihat acak. terutama tombol ""bukti""",
+43,Verifikasi penambahan fitur Download Video/Film,Urgent,Membuka halaman pemutaran video,"1. Buka video/film
+2. Cari opsi Download",Fitur atau tombol Download belum tersedia di sistem.,Tersedia tombol Download dengan pilihan resolusi agar user bisa menonton secara offline.,-,Unused,Fitur tidak akan di develop,

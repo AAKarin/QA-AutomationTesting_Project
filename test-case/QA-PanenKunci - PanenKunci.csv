@@ -1,0 +1,201 @@
+no,skenario,prioritas,Tipe Test Case,prasyarat,tahapan,hasil yang diharapkan,hasil aktual,status,error,keterangan,tim dev
+1,"Mengunduh installer aplikasi Kie Catcher versi terbaru melalui tombol ""Download""",Urgent,Positive,Pengguna berada di halaman utama / landing page.,"1. Buka halaman utama.
+2. Temukan tombol ""Download"".
+3. Klik tombol ""Download"".",Proses unduhan file installer aplikasi Kie Catcher versi terbaru langsung berjalan dan berhasil disimpan ke perangkat.,Sesuai ekspektasi. File installer berhasil diunduh dan tersimpan ke perangkat.,Done,,sudah berhasil dan bisa di download,
+2,Melihat dan membaca bagian 3 langkah cara kerja platform,Kosmetik,Positive,Pengguna berada di halaman utama / landing page.,"1. Buka halaman utama.
+2. Gulir (scroll) ke bagian informasi ""Cara Kerja"".
+3. Periksa penjelasan langkah-langkah yang tersedia.",Menampilkan informasi 3 langkah cara kerja platform secara berurutan dan jelas (dari alur pendaftaran hingga pencairan saldo).,Sesuai ekspektasi. 3 langkah cara kerja tampil berurutan dan jelas.,Done,-,Cara kerja sudah ada dan bahasa yang dipakai mudah dipahami ,
+3,Melihat informasi total nominal dana yang berhasil dicairkan,Kosmetik,Positive,Pengguna berada di halaman utama / landing page.,"1. Buka halaman utama.
+2. Cari bagian statistik atau informasi pencairan dana.",Platform menampilkan angka total nominal dana yang telah berhasil dicairkan secara akurat untuk memberikan bukti (social proof).,Sesuai ekspektasi. Total nominal dana berhasil ditampilkan dengan akurat.,Done,-,Total minimal transaksi ada dan mudah dipahami oleh pengguna,
+4,Melihat daftar pilihan metode pembayaran yang didukung,Kosmetik,Positive,Pengguna berada di halaman informasi atau halaman pencairan saldo.,"1. Buka halaman informasi metode pembayaran atau halaman pencairan saldo.
+2. Lihat bagian opsi transfer/pencairan.","Terdapat daftar atau logo metode pembayaran (misal: Bank, E-Wallet) yang didukung oleh platform dengan jelas.",Sesuai ekspektasi. Daftar dan logo metode pembayaran tampil dengan jelas.,Done,-,metode pembayaran yang didukung berhasil ditampilkan dengan baik,
+5,Memeriksa kehadiran logo Panen Kunci dan ikon profil di header,Kosmetik,Positive,Pengguna telah mengakses aplikasi/website.,"1. Buka halaman web/aplikasi.
+2. Perhatikan area header bagian atas halaman.",Logo Panen Kunci tampil di sisi header (biasanya kiri). Keduanya terlihat dengan resolusi yang baik.,Sesuai ekspektasi. Logo dan ikon tampil di header dengan resolusi baik.,Done,-,Logo panen kunci sudah sesuai,
+6,Validasi proses Login menggunakan kredensial (Email/Username dan Password) yang valid,Urgent,Positive,Pengguna sudah memiliki akun Panen Kunci yang terdaftar dan aktif. Pengguna berada di halaman Login.,"1. Masukkan Email atau Username yang terdaftar di kolom yang disediakan.
+2. Masukkan Kata Sandi yang benar.
+3. Klik tombol ""Masuk"" / ""Login"".","Sistem memvalidasi kredensial, otentikasi berhasil, dan pengguna langsung diarahkan masuk ke halaman utama (Dashboard) akun Panen Kunci.",Sistem berhasil memvalidasi kredensial dan pengguna langsung diarahkan masuk ke halaman utama (Dashboard) akun Panen Kunci.,Done,-,"Jika user memasukan email dan password yang valid, user berhasil diarahkan ke halaman dashboard",
+7,Pengujian fungsionalitas ikon mata (Toggle Password Visibility) pada field Kata Sandi,Kosmetik,Positive,Pengguna berada di halaman Login.,"1. Ketik beberapa karakter pada field ""Kata Sandi"" (pastikan karakter tersensor menjadi titik/bintang).
+2. Klik ikon ""Mata"" (Show Password).
+3. Klik kembali ikon ""Mata"" (Hide Password).","Saat ikon mata diklik pertama kali, karakter sandi berubah dari tersensor menjadi teks yang terlihat jelas (plain text). Saat diklik kedua kali, teks kembali tersensor secara otomatis.","Teks kata sandi berubah menjadi plain text saat ikon diklik, dan kembali tersensor saat diklik ulang.",Done,-,"Berhasil ketika user klik ikon mata, sandi yang awalnya tersensor jadi dapat dilihat",
+8,"Validasi navigasi tautan ""Lupa Kata Sandi?"" menuju halaman pemulihan",Urgent,Positive,Pengguna berada di halaman Login.,"1. Cari dan klik tautan ""Lupa Kata Sandi?"".",Pengguna berhasil diarahkan (redirect) ke halaman Pemulihan Akun / Reset Password tanpa error.,Pengguna berhasil diarahkan ke halaman Pemulihan Akun / Reset Password.,Done,-,User berhasil diarahkan ke halaman pemulihan/reset password,
+9,Validasi proses Login menggunakan Single Sign-On (SSO) Google dan Apple,Urgent,Positive,Pengguna memiliki akun Google. Pengguna berada di halaman Login.,"1. Klik tombol ""Masuk dengan Google"".
+2. Selesaikan proses otorisasi di popup Google.
+3. Ulangi proses yang sama menggunakan tombol ""Masuk dengan Apple"" (jika di perangkat yang mendukung/tersedia).","Setelah otorisasi SSO berhasil, sistem otomatis mendaftarkan/memasukkan pengguna ke akun Panen Kunci dan diarahkan ke Dashboard tanpa perlu mengisi form login manual.","Otorisasi SSO Google berhasil, pengguna langsung masuk ke Dashboard.",Done,,user dapat login menggunakan google,
+10,"Validasi navigasi tautan ""Daftar Sekarang"" menuju halaman Registrasi",Urgent,Positive,Pengguna berada di halaman Login dan belum memiliki akun.,"1. Cari dan klik tautan ""Daftar Sekarang"".",Pengguna diarahkan dengan benar ke halaman form pendaftaran (Registrasi) untuk pembuatan akun baru Panen Kunci.,Pengguna berhasil diarahkan ke halaman form pendaftaran (Registrasi).,Done,-,User berhasil di arahkan ke halaman registerasi,
+11,"Validasi pendaftaran akun baru Panen Kunci dengan mengisi formulir registrasi lengkap (Nama Lengkap, Email, Kata Sandi, dan Konfirmasi Kata Sandi)",Urgent,Positive,Pengguna berada di halaman pendaftaran (Registrasi) Panen Kunci.,"1. Masukkan Nama Lengkap di kolom Nama.
+2. Masukkan alamat Email yang valid.
+3. Masukkan Kata Sandi yang memenuhi kriteria.
+4. Masukkan Konfirmasi Kata Sandi yang sama dengan Kata Sandi.
+5. Klik tombol ""Daftar"" / ""Register"".","Sistem berhasil memproses pendaftaran, akun Panen Kunci baru terbentuk, dan pengguna diarahkan ke halaman verifikasi email/dashboard.",Sistem berhasil memproses pendaftaran akun baru Panen Kunci dan mengarahkan pengguna ke halaman selanjutnya.,Done,-,Sistem berhasil memproses dan mengarahkan user ke dashboard,
+12,Pengujian fungsionalitas ikon mata (Toggle Password Visibility) pada field Kata Sandi dan Konfirmasi Kata Sandi,Kosmetik,Positive,Pengguna berada di halaman pendaftaran Kie Catcher.,"1. Ketik karakter pada field ""Kata Sandi"" dan ""Konfirmasi Kata Sandi"".
+2. Klik ikon mata pada field Kata Sandi.
+3. Klik ikon mata pada field Konfirmasi Kata Sandi.
+4. Klik kembali kedua ikon mata.","Karakter pada field Kata Sandi dan Konfirmasi Kata Sandi berubah dari tersensor menjadi plain text saat diklik, dan tersensor kembali saat diklik ulang.",Karakter pada kedua field kata sandi berhasil ditampilkan dan disembunyikan sesuai interaksi klik pada ikon mata.,Done,-,"Fitur berfungsi ketika user mengklik ikon mata, sandi langsung terlihat",
+13,Validasi persetujuan Syarat & Ketentuan Layanan sebelum menyelesaikan pendaftaran,Urgent,Positive,Pengguna telah mengisi data di formulir pendaftaran Kie Catcher.,"1. Baca dokumen/tautan Syarat & Ketentuan Layanan.
+2. Centang kotak persetujuan Syarat & Ketentuan Layanan.
+3. Klik tombol ""Daftar"".","Sistem memverifikasi bahwa persetujuan telah dicentang, sehingga proses pendaftaran dapat dilanjutkan secara sah sesuai ketentuan platform.",Kotak persetujuan berhasil dicentang dan pendaftaran dapat dilanjutkan tanpa hambatan.,Done,,sudah ada syarat dan ketentuan pada daftar akun,
+14,"Validasi navigasi tautan ""Masuk Sekarang"" menuju halaman Login bagi pengguna yang sudah memiliki akun",Urgent,Positive,Pengguna berada di halaman pendaftaran Kie Catcher.,"1. Cari dan klik tautan ""Masuk Sekarang"".",Pengguna berhasil dialihkan (redirect) dari halaman pendaftaran ke halaman Login.,Pengguna berhasil berpindah ke halaman Login secara langsung saat tautan diklik.,Done,-,"User berhasil diarahkan ke login ketika klik ""masuk di sini""",
+15,Validasi kemunculan pesan konfirmasi pendaftaran berhasil setelah pengguna selesai mendaftar,Urgent,Positive,Pengguna baru telah mengisi dan mengirimkan formulir pendaftaran akun.,"1. Selesaikan pengisian form pendaftaran akun baru.
+2. Klik tombol ""Daftar"".
+3. Amati pesan/notifikasi yang muncul di layar.",Sistem menampilkan pesan konfirmasi bahwa pendaftaran berhasil dan akun telah resmi aktif.,Pesan konfirmasi pendaftaran berhasil ditampilkan dengan jelas setelah pendaftaran selesai.,Done,-,Popup berhasil pendaftaran berhasil ditampilkan ke user,
+16,"Validasi navigasi tombol ""Mulai Sekarang"" untuk mengarahkan pengguna baru ke alur panduan penyetoran API Key",Kosmetik,Positive,Pengguna berada di layar konfirmasi pendaftaran berhasil.,"1. Cari tombol ""Mulai Sekarang"" pada layar konfirmasi.
+2. Klik tombol ""Mulai Sekarang"".",Sistem mengarahkan pengguna secara langsung ke alur panduan (onboarding) penyetoran API Key.,Pengguna berhasil diarahkan masuk ke alur panduan penyetoran API Key.,Done,-,user berhasil diarahkan ke halaman penyetoran api key,
+17,"Validasi fungsi opsi ""Lihat Dashboard"" untuk melewati (skip) alur panduan onboarding",Kosmetik,Positive,Pengguna berada di layar konfirmasi pendaftaran atau layar awal panduan.,"1. Cari opsi ""Lihat Dashboard"".
+2. Klik opsi ""Lihat Dashboard"".",Sistem melewati (bypass) alur panduan dan mengarahkan pengguna secara langsung ke halaman utama Dashboard.,Alur panduan berhasil dilewati dan pengguna langsung masuk ke halaman utama Dashboard.,Done,-,"user berhasil diarahkan ke halaman utama dashboard, ketika user klik tombol ""dashboard""",
+18,Validasi kemunculan modal konfirmasi login berhasil setelah pengguna terdaftar melakukan otentikasi,Urgent,Positive,Pengguna terdaftar memasukkan kredensial login yang valid.,"1. Masukkan Email/Username dan Kata Sandi yang valid di halaman Login.
+2. Klik tombol ""Masuk"".
+3. Periksa tampilan modal konfirmasi.",Sistem menampilkan modal konfirmasi login berhasil yang menginformasikan bahwa akun terverifikasi dengan benar.,Modal konfirmasi login berhasil ditampilkan setelah proses otentikasi sukses.,Done,-,popup pesan berhasil ditampilkan ke user ketika user berhasil masuk,
+19,"Validasi navigasi tombol ""Masuk ke Dashboard"" pada modal konfirmasi login berhasil",Urgent,Positive,Pengguna berada pada modal konfirmasi login berhasil.,"1. Klik tombol ""Masuk ke Dashboard"" di dalam modal konfirmasi.",Sistem menutup modal dan mengarahkan pengguna langsung ke halaman utama aplikasi (Dashboard).,Pengguna berhasil berpindah ke halaman utama aplikasi (Dashboard) secara lancar.,Done,-,"user berhasil diarahkan ke bagian dashboard ketika klik button ""Buka dashboard saya""",
+20,Validasi tampilan ringkasan Total Saldo Aktif dan Penghasilan Hari Ini secara real-time pada Dashboard,Urgent,Positive,Pengguna telah berhasil masuk dan berada di halaman Dashboard utama.,"1. Akses halaman Dashboard utama.
+2. Periksa widget/card ringkasan ""Total Saldo Aktif"" dan ""Penghasilan Hari Ini"".
+3. Amati pembaruan angka/data yang ditampilkan.","Sistem menampilkan ringkasan angka Total Saldo Aktif dan Penghasilan Hari Ini secara terstruktur, akurat, dan terbarui secara real-time.",Informasi Total Saldo Aktif dan Penghasilan Hari Ini ditampilkan dengan akurat dan real-time.,Done,-,total saldo aktif berhasil ditampilkan dengan jelas ,
+21,"Validasi aksesibilitas dan navigasi tombol aksi utama ""Setor API Key"" dan ""Tarik Saldo"" di Dashboard",Urgent,Positive,Pengguna berada di halaman Dashboard utama.,"1. Cari tombol aksi utama ""Setor API Key"" dan ""Tarik Saldo"" di area utama Dashboard.
+2. Klik tombol ""Setor API Key"" dan amati responnya.
+3. Kembali ke Dashboard lalu klik tombol ""Tarik Saldo"" dan amati responnya.",Kedua tombol aksi dapat diakses dengan mudah dan langsung mengarahkan pengguna ke form/modal transaksi terkait tanpa alur navigasi yang rumit.,"Tombol ""Setor API Key"" dan ""Tarik Saldo"" merespon dengan cepat dan mengarahkan pengguna ke alur transaksi masing-masing.",Done,-,"berhasil, ketika user klik ""setor key"", itu diarahkan ke halaman setor api key. kemudian ketika user klik ""tarik saldo"" maka user langsung diarahkan ke halaman tarik saldo",
+22,Validasi tampilan informasi jumlah API Key yang berhasil diverifikasi hari ini pada Dashboard,Kosmetik,Positive,Pengguna berada di halaman Dashboard utama.,"1. Akses halaman Dashboard.
+2. Periksa card/widget indikator jumlah API Key terverifikasi hari ini.
+3. Lakukan penyetoran API Key baru yang valid dan perbarui halaman.",Sistem menampilkan jumlah API Key yang berhasil diverifikasi hari ini dengan akurat dan nilainya bertambah secara otomatis setelah ada verifikasi baru.,Jumlah API Key terverifikasi hari ini ditampilkan secara akurat dan terbarui secara otomatis.,Done,-,Berhasil ditampilkan secara akurat,
+23,Validasi daftar transaksi terbaru beserta penanda nominal positif/negatif (keluar-masuk saldo),Urgent,Positive,Pengguna berada di halaman Dashboard utama dan memiliki riwayat transaksi.,"1. Akses bagian ""Transaksi Terbaru"" di Dashboard.
+2. Periksa daftar transaksi yang ditampilkan.
+3. Amati format nominal transaksi (misal: warna hijau/tanda + untuk masuk, warna merah/tanda - untuk keluar).",Sistem menampilkan daftar transaksi terbaru secara berurutan dengan indikasi warna/tanda positif/negatif yang jelas sesuai alur keluar-masuk saldo.,Daftar transaksi terbaru berhasil ditampilkan lengkap dengan penanda nominal positif (masuk) dan negatif (keluar).,Done,-,"berhasil, setiap kali ada saldo masuk (setor api key) warnanya hijau, sedangkan penarikan saldo warnanya merah",
+24,Validasi fungsionalitas dan navigasi antar halaman utama via Bottom Navigation Bar,Urgent,Positive,Pengguna berada di salah satu halaman utama aplikasi.,"1. Amati Bottom Navigation Bar di bagian bawah layar.
+2. Klik masing-masing ikon menu (misal: Beranda, Setor, Riwayat, Profil).
+3. Pastikan perpindahan halaman terjadi sesuai ikon yang dipilih.",Bottom Navigation Bar dapat berpindah antar halaman utama aplikasi dengan responsif dan menunjukkan indikator aktif pada menu yang dipilih.,Navigasi antar halaman melalui Bottom Navigation berjalan lancar dan indikator menu aktif berfungsi tepat.,Done,-,user berhasil pindah ke halaman yang sesuai dengan apa yang user klik,
+25,Validasi ketersediaan judul halaman dan tombol kembali (Back Button) pada alur penyetoran API Key,Kosmetik,Positive,Pengguna berada di halaman Penyetoran API Key.,"1. Periksa bagian header halaman.
+2. Pastikan judul halaman sesuai konteks (misal: ""Setor API Key"").
+3. Klik tombol ""Kembali"" (Back Button) di bagian header.",Judul halaman menampilkan konteks saat ini dengan jelas dan tombol kembali mengarahkan pengguna ke halaman sebelumnya/membatalkan proses.,Judul halaman sesuai konteks dan tombol kembali berhasil membatalkan proses dengan mengarahkan pengguna ke halaman sebelumnya.,Done,-,Judul halaman sudah sesuai konteks dan tombol kembali berhasil mengarahkan user ke halaman sebelumnya,
+26,Validasi keterbacaan dan kejelasan petunjuk langkah demi langkah mengambil API Key dari platform Kie.ai,Kosmetik,Positive,Pengguna berada di halaman Penyetoran API Key.,"1. Akses bagian petunjuk/panduan mendapatkan API Key.
+2. Baca langkah-langkah yang disediakan untuk mengambil API Key dari Kie.ai.","Sistem menampilkan teks petunjuk langkah demi langkah cara mendapatkan API Key dari platform Kie.ai dengan rinci, jelas, dan mudah dipahami.",Petunjuk langkah demi langkah pengambilan API Key dari Kie.ai ditampilkan secara rinci dan mudah diikuti.,Done,-,Petunjuk sudah tampil dengan baik,
+27,Validasi proses input/paste dan pengiriman API Key untuk verifikasi konversi menjadi saldo,Urgent,Positive,Pengguna memiliki API Key yang valid dari platform Kie.ai dan berada di halaman Penyetoran API Key.,"1. Masukkan atau tempel (paste) kode API Key ke kolom input yang tersedia.
+2. Klik tombol ""Kirim"" / ""Setor API Key"".
+3. Tunggu proses verifikasi sistem.","Sistem menerima input API Key, melakukan verifikasi, dan jika valid, mengonversi API Key tersebut menjadi saldo aktif akun.","API Key berhasil diinput, diverifikasi oleh sistem, dan otomatis dikonversi menjadi saldo aktif.",Done,-,"API Key berhasil diinput, diverifilasi dan berhasil dikonversi menjadi saldo aktif",
+28,Validasi riwayat dan status verifikasi penyetoran API Key sebelumnya (Valid / Tidak Valid),Urgent,Positive,Pengguna telah melakukan beberapa kali penyetoran API Key sebelumnya.,"1. Akses halaman atau tab ""Riwayat Penyetoran API Key"".
+2. Periksa daftar riwayat penyetoran yang dikirimkan.
+3. Amati status verifikasi (misal: Valid, Tidak Valid, Diproses) dan rincian waktu/nominal.",Sistem menampilkan seluruh riwayat penyetoran API Key beserta status verifikasinya secara akurat sehingga pengguna tahu mana Key yang valid atau tidak valid.,Riwayat penyetoran API Key menampilkan status verifikasi (valid/tidak valid) beserta detail informasi secara akurat.,Done,-,Penyetoran api key berhasil menampilkan mana saja yang sudah diverifikasi dan mana saja yang gagal,
+29,"Validasi fungsionalitas tautan ""Lihat Semua"" untuk menampilkan seluruh daftar riwayat penyetoran API Key",Kosmetik,Positive,Pengguna berada di halaman/widget riwayat penyetoran API Key ringkas.,"1. Cari tautan ""Lihat Semua"".
+2. Klik tautan ""Lihat Semua"".
+3. Periksa tampilan daftar riwayat penyetoran API Key.",Sistem mengarahkan pengguna ke halaman seluruh riwayat penyetoran API Key tanpa batasan jumlah tampilan.,"Tautan ""Lihat Semua"" berhasil mengarahkan pengguna ke halaman riwayat lengkap tanpa batasan tampilan.",Done,-,Berhasil mengarahkan user ke riwayat transaksi ,
+30,Validasi kemunculan modal konfirmasi keberhasilan dan nominal penambahan saldo saat memasukkan API Key yang valid,Urgent,Positive,Pengguna memasukkan API Key yang valid pada form penyetoran API Key.,"1. Input API Key yang valid.
+2. Klik tombol ""Kirim"" / ""Setor API Key"".
+3. Amati modal konfirmasi keberhasilan yang muncul.",Sistem menampilkan modal konfirmasi keberhasilan yang menginformasikan bahwa penyetoran berhasil beserta nominal penambahan saldo secara jelas.,Modal konfirmasi keberhasilan beserta rincian nominal penambahan saldo berhasil ditampilkan dengan jelas.,Done,-,Popup pesan berhasil ditampilkan ke user ketika user ,
+31,"Validasi fungsionalitas tombol ""Selesai"" untuk menutup modal keberhasilan dan memperbarui status transaksi di halaman",Kosmetik,Positive,Modal konfirmasi keberhasilan penyetoran API Key sedang terbuka di layar.,"1. Klik tombol ""Selesai"" di dalam modal keberhasilan.
+2. Periksa tampilan halaman dan status pembaruan transaksi.",Modal tertutup secara otomatis dan halaman memperbarui status transaksi/saldo secara langsung (refresh data).,Modal tertutup dan status pembaruan transaksi serta saldo langsung ter-update di halaman.,Done,-,"tombol ""Selesai"" berhasil di klik dan saldo berhasil ter-update",
+32,Validasi kemunculan modal pemberitahuan kegagalan beserta alasan penolakan saat memasukkan API Key tidak valid atau kehabisan kredit,Urgent,Negative,Pengguna berada di halaman penyetoran API Key.,"1. Input API Key yang tidak valid atau kuota/kreditnya sudah habis.
+2. Klik tombol ""Kirim"" / ""Setor API Key"".
+3. Amati modal pemberitahuan kegagalan.","Sistem menampilkan modal pemberitahuan kegagalan secara spesifik beserta alasan penyebab transaksi ditolak (misal: ""API Key Tidak Valid"" atau ""Kredit Habis"").",Modal pemberitahuan kegagalan muncul lengkap dengan pesan alasan penolakan transaksi yang jelas.,Done,-,popup pesan gagal berhasil ditampilkan ke user dan memberikan informasi yang jelas kepada user.,
+33,"Validasi fungsionalitas tombol ""Coba Lagi"" pada modal kegagalan penyetoran API Key",Kosmetik,Positive,Modal pemberitahuan kegagalan penyetoran API Key sedang terbuka.,"1. Klik tombol ""Coba Lagi"" pada modal kegagalan.
+2. Periksa form input API Key.",Modal kegagalan tertutup dan pengguna dikembalikan ke kolom input API Key untuk mencoba memasukkan kembali kode yang benar.,Modal tertutup dan kolom input siap menerima pengisian ulang API Key.,Done,-,"tombol ""coba lagi"" berhasil di klik oleh user",
+34,"Validasi opsi ""Hubungi Bantuan"" untuk mengarahkan pengguna yang mengalami kendala teknis ke dukungan pelanggan",Kosmetik,Positive,Pengguna mengalami kendala/melihat modal kegagalan atau berada di halaman bantuan.,"1. Cari dan klik opsi/tombol ""Hubungi Bantuan"".
+2. Amati halaman atau tautan eksternal (Customer Support) yang dibuka.",Sistem mengarahkan pengguna ke saluran bantuan/dukungan pelanggan (misal: Live Chat / WhatsApp Support / Email Support).,"Opsi ""Hubungi Bantuan"" berhasil mengarahkan pengguna ke saluran tim dukungan pelanggan.",Done,,pusat bantuan sudah berjalan dan melalui admin panel,
+35,Validasi ketersediaan judul halaman dan ikon kembali (Back Icon) untuk navigasi kembali ke dashboard,Kosmetik,Positive,Pengguna berada di salah satu halaman fitur (misal: Riwayat Penyetoran / Bantuan).,"1. Amati bagian header halaman.
+2. Pastikan judul halaman sesuai dengan konteks saat ini.
+3. Klik ikon ""Kembali"" (Back Icon).",Judul halaman menampilkan posisi konteks halaman saat ini dengan benar dan ikon kembali berfungsi mengarahkan pengguna kembali ke dashboard.,Judul halaman sesuai konteks dan ikon kembali sukses mengarahkan pengguna kembali ke halaman dashboard.,Done,-,tombol berhasil diklik dan mengarahkan pengguna kembali ke dashboard,
+36,Validasi tampilan rincian Saldo Siap Ditarik dan Total Pendapatan Historis (Lifetime),Urgent,Positive,Pengguna berada di halaman Penarikan Saldo / Keuangan.,"1. Akses halaman Penarikan Saldo.
+2. Periksa card/widget ""Saldo Siap Ditarik"" dan ""Total Pendapatan Historis (Lifetime)"".",Sistem menampilkan rincian nominal Saldo Siap Ditarik dan Total Pendapatan Historis secara akurat dan transparan.,Rincian Saldo Siap Ditarik dan Total Pendapatan Historis berhasil ditampilkan dengan akurat.,Done,-,sistem barhasil menampilkan nominal saldo yang bisa ditarik oleh user,
+37,Validasi tampilan progress bar persentase saldo menuju syarat minimum pencairan dana,Kosmetik,Positive,Pengguna berada di halaman Penarikan Saldo.,"1. Akses halaman Penarikan Saldo.
+2. Periksa indikator progress bar pencairan saldo.
+3. Hitung persentase saldo aktif dibanding batas minimum penarikan.",Sistem menampilkan progress bar persentase ketercapaian saldo menuju syarat minimum pencairan beserta sisa nominal yang harus dikumpulkan.,Progress bar persentase dan sisa nominal menuju batas minimum pencairan ditampilkan secara akurat.,Done,-,progress bar persentase berhasil bekerja dengan baik,
+38,Validasi indikator kelayakan status penarikan saldo (memenuhi syarat atau belum memenuhi syarat),Urgent,Positive,Pengguna berada di halaman Penarikan Saldo.,"1. Periksa status tombol/indikator penarikan saat saldo di bawah batas minimum.
+2. Periksa status tombol/indikator penarikan saat saldo sudah mencapai atau melebihi batas minimum.","Sistem menampilkan status kelayakan penarikan dengan jelas (misal: tombol nonaktif jika belum memenuhi syarat, atau aktif jika sudah memenuhi syarat).",Sistem memberikan indikasi kelayakan penarikan saldo secara tepat sesuai batas minimum.,Done,-,Tombol aktif jika saldo sudah melebihi batas nominal,
+39,Validasi tampilan riwayat transaksi pencairan dana sebelumnya dan status transfernya,Urgent,Positive,Pengguna berada di halaman Penarikan Saldo dan memiliki riwayat penarikan.,"1. Akses bagian ""Riwayat Penarikan Dana"".
+2. Periksa daftar transaksi pencairan dana sebelumnya.
+3. Amati status transfer (misal: Berhasil, Diproses, Gagal) dan rincian rekening/e-wallet tujuan.",Sistem menampilkan seluruh riwayat pencairan dana sebelumnya beserta status transfer dan detail penyedia layanan secara akurat.,Riwayat pencairan dana dan status transfer ke rekening/e-wallet ditampilkan dengan lengkap dan tepat.,Done,,fitur sudah dapat dilihat riwayat transaksi dan status transaksi berhasil atau gagal nya,
+40,Validasi tampilan total saldo tersedia (batas maksimum pencairan) dan akses mudah ke riwayat penarikan,Urgent,Positive,Pengguna berada di formulir/halaman Penarikan Saldo.,"1. Akses form penarikan saldo.
+2. Periksa informasi ""Total Saldo Tersedia"".
+3. Klik opsi/tautan menuju riwayat penarikan dana.",Sistem menampilkan informasi batas maksimum saldo yang bisa dicairkan dan menyediakan akses cepat menuju riwayat penarikan.,Total saldo tersedia ditampilkan sebagai batas maksimum pencairan dan tautan riwayat penarikan dapat diakses dengan cepat.,Done,-,total saldo yang tersedia berhasil ditampilkan sebagai batas maksimum pencarian,
+41,"Validasi pengisian nominal penarikan manual dan penggunaan fitur opsi ""Tarik Semua""",Urgent,Positive,Pengguna berada di form Penarikan Saldo dan memiliki saldo yang memenuhi syarat penarikan.,"1. Masukkan nominal penarikan secara manual pada kolom input.
+2. Hapus input manual lalu klik tombol/opsi ""Tarik Semua"".
+3. Periksa nominal yang otomatis terisi pada kolom input.","Kolom input dapat diisi secara manual sesuai batas kriteria, dan tombol ""Tarik Semua"" otomatis mengisikan seluruh nominal saldo yang tersedia.","Pengisian nominal manual berjalan fleksibel dan opsi ""Tarik Semua"" mengisikan saldo maksimum secara otomatis.",Done,-,"user berhasil mengisi saldo secara manual, dan opsi ""tarik semua"" bekerja dengan baik",
+42,Validasi pemilihan metode pencairan dana via E-Wallet dan Bank Transfer,Urgent,Positive,Pengguna berada di form Penarikan Saldo.,"1. Klik pilihan metode pencairan.
+2. Pilih opsi ""E-Wallet"" (misal: GoPay, OVO, Dana) atau ""Bank Transfer"" (misal: BCA, Mandiri, BRI).
+3. Pastikan pilihan terkonfirmasi pada form.",Sistem menampilkan pilihan metode pencairan yang lengkap (e-wallet / bank transfer) dan menyimpan opsi pilihan pengguna dengan benar.,Pilihan metode pencairan (E-Wallet & Bank Transfer) berfungsi dengan baik dan terekam pada form.,Done,,validasi sudah ditampilkan dan bekerja dengan baik,
+1,Validasi input nomor handphone/rekening tujuan dan verifikasi otomatis nama pemilik akun,Urgent,Positive,Pengguna telah memilih metode pencairan di form Penarikan Saldo.,"1. Masukkan nomor HP (untuk e-wallet) atau nomor rekening (untuk bank transfer).
+2. Tunggu proses pengecekan/verifikasi akun dari sistem.
+3. Periksa nama pemilik akun yang dimunculkan oleh sistem.",Sistem memverifikasi nomor yang diinput dan menampilkan konfirmasi nama pemilik akun secara otomatis untuk mencegah kesalahan transfer.,Nomor rekening/HP berhasil diverifikasi dan nama pemilik akun muncul secara otomatis sesuai data penyedia layanan.,Done,,akun tidak akan terverifikasi jika tidak memasukkan e wallet/bank,
+44,Validasi kalkulasi dan tampilan rincian potongan biaya admin serta total dana bersih yang diterima saat pencairan,Urgent,Positive,Pengguna berada di form/modal konfirmasi Penarikan Saldo dan telah memasukkan nominal penarikan.,"1. Masukkan nominal penarikan saldo.
+2. Periksa rincian potongan biaya admin.
+3. Periksa kalkulasi total dana bersih yang akan diterima.",Sistem menampilkan rincian potongan biaya admin dan menghitung total dana bersih secara tepat sebelum pengguna menyetujui penarikan.,Rincian biaya admin dan nominal dana bersih dihitung dan ditampilkan secara transparan dan akurat.,Done,-,Rincian dana berhasil ditampilkan secara rinci kepada user,
+45,"Validasi fungsionalitas tab ""Riwayat Setoran"" dan ""Riwayat Penarikan"" untuk memfilter kategori transaksi",Kosmetik,Positive,Pengguna berada di halaman Riwayat Transaksi (History).,"1. Akses halaman Riwayat Transaksi.
+2. Klik tab ""Riwayat Setoran"" dan periksa daftar transaksi.
+3. Klik tab ""Riwayat Penarikan"" dan periksa daftar transaksi.","Sistem memfilter daftar transaksi sesuai tab yang dipilih (hanya menampilkan setoran pada tab Riwayat Setoran, dan penarikan pada tab Riwayat Penarikan).",Perpindahan antar tab berfungsi baik dan daftar transaksi tersaring secara tepat sesuai kategori.,Done,-,"rincian berhasil disaring dengan baik, jika user ingin meliihat riwayat setoran, user tinggal klik maka sistem hanya akan menampilkan riwayat setoran saja",
+46,"Validasi rincian detail transaksi setoran API Key (asal layanan kunci, waktu penyetoran, dan nominal pendapatan)",Kosmetik,Positive,"Pengguna berada di tab ""Riwayat Setoran"".","1. Akses tab ""Riwayat Setoran"".
+2. Klik salah satu item transaksi setoran API Key untuk melihat rincian detail.
+3. Periksa informasi asal layanan kunci, timestamp/waktu penyetoran, dan nominal pendapatan.","Sistem menampilkan rincian tiap transaksi setoran API Key mencakup asal layanan kunci, waktu penyetoran yang presisi, serta nominal pendapatan secara lengkap.","Rincian detail transaksi setoran API Key menampilkan asal layanan, timestamp, dan nominal pendapatan secara akurat.",Done,,,
+47,Validasi indikator warna visual untuk membedakan status sukses dan gagal pada riwayat penyetoran API Key,Kosmetik,Positive,Pengguna memiliki riwayat penyetoran API Key dengan status Sukses dan Gagal.,"1. Akses daftar riwayat penyetoran API Key.
+2. Amati indikator warna visual pada status transaksi (misal: warna hijau untuk sukses, warna merah untuk gagal/tidak valid).",Sistem secara visual membedakan status sukses dan gagal menggunakan warna yang jelas sehingga pengguna cepat mengidentifikasi kunci yang tidak valid.,Indikator warna untuk status sukses (hijau) dan gagal (merah) tampil dengan visual yang jelas dan kontras.,Done,-,"indikator warna berhasil ditampilkan dengan baik, user jadi tahu mana yang berhasil dan mana yang gagal",
+48,"Validasi fungsionalitas fitur Referral (pembuatan/penyalinan kode referral, penggunaan kode saat registrasi, dan pencatatan komisi)",Urgent,Positive,Pengguna memiliki akun aktif atau pengguna baru sedang melakukan pendaftaran.,"1. Akses menu/halaman Referral dan salin kode referral.
+2. Input kode referral tersebut pada form pendaftaran akun baru.
+3. Selesaikan pendaftaran dan periksa pencatatan komisi/bonus referral pada akun pemilik kode.","Sistem berhasil memproses input kode referral, mengaitkan akun pengundang dan pendaftar baru, serta memberikan bonus/komisi referral secara otomatis.",Kode referral berhasil digunakan saat registrasi dan sistem otomatis mencatatkan komisi/bonus referral.,Done,,sudah di develop dan berfungsi,
+49,Mereset kata sandi dan menerima link reset melalui email,Urgent,Positive,Pengguna memiliki akun terdaftar dan berada di halaman login / lupa kata sandi.,"1. Buka halaman login.
+2. Klik tautan atau tombol ""Lupa Kata Sandi"".
+3. Masukkan alamat email yang terdaftar.
+4. Klik tombol kirim / submit.
+5. Periksa inbox email pengguna.",Link reset kata sandi berhasil dikirim ke email pengguna (bukan muncul sebagai pop-up). Email berisi tautan yang valid untuk mereset password.,,Done,,Link reset sudah melalui email dan berjalan,
+50,Memastikan konsistensi waktu setor API key antara halaman Home dan Riwayat,Kosmetik,Positive,Pengguna sudah login dan memiliki riwayat setor API key.,"1. Buka halaman Home.
+2. Lakukan setor API key (atau lihat data yang sudah ada).
+3. Catat waktu yang ditampilkan di Home.
+4. Buka halaman Riwayat.
+5. Bandingkan waktu setor API key yang sama.",Waktu (jam) setor API key di halaman Home dan di halaman Riwayat harus sama / sinkron.,,Done,,sudah di singkronkan dan sudah konsisten antara home dan riwayat,
+51,Menerima notifikasi bukti transfer,Urgent,Positive,Pengguna sudah login dan melakukan transaksi transfer / pencairan.,"1. Lakukan transaksi transfer atau pencairan saldo.
+2. Selesaikan proses pembayaran / transfer.
+3. Periksa area notifikasi di aplikasi (bell icon / notification center).
+4. Periksa juga email atau push notification jika tersedia.",Notifikasi bukti transfer muncul setelah transaksi berhasil (di dalam aplikasi dan/atau push notification).,,Done,,Notifikasi bukti transfer penting untuk konfirmasi dan trust pengguna,
+52,Menampilkan icon bank dan e-wallet yang sinkron,Kosmetik,Positive,Pengguna berada di halaman yang menampilkan metode pembayaran (Home / pencairan / metode pembayaran).,"1. Buka halaman yang menampilkan daftar metode pembayaran (Bank & E-Wallet).
+2. Periksa icon setiap bank dan e-wallet yang ditampilkan.
+3. Bandingkan dengan logo resmi atau data master yang seharusnya digunakan.","Icon bank dan e-wallet tampil dengan benar, sinkron, dan konsisten di seluruh halaman (tidak ada icon yang salah atau tidak cocok).",,Done,,Icon yang tidak sinkron mengurangi profesionalitas tampilan,
+53,Mengubah foto profil hanya dengan satu kali aksi,Kosmetik,Positive,Pengguna sudah login dan berada di halaman profil / pengaturan akun.,"1. Buka halaman profil atau pengaturan.
+2. Klik opsi ubah / ganti foto profil.
+3. Pilih foto dari galeri atau kamera.
+4. Konfirmasi / simpan perubahan (hanya sekali).
+5. Periksa apakah foto berhasil berubah.",Foto profil berhasil diubah hanya dengan satu kali proses pilih + simpan (tidak perlu diulang dua kali).,,Done,,Harus cukup sekali aksi agar UX lebih baik,
+54,Memastikan sesi login user tetap stabil dan tidak berpindah ke akun admin,Urgent,Positive,Pengguna sudah login menggunakan akun user biasa.,"1. Login menggunakan akun user.
+2. Navigasi ke beberapa halaman di dalam aplikasi.
+3. Refresh halaman atau biarkan idle beberapa saat.
+4. Periksa identitas akun yang sedang aktif (nama, role, menu yang muncul).",Sesi login tetap pada akun user yang sama. Tidak terjadi pergantian otomatis ke akun admin.,,Done,,Pergantian akun secara tiba-tiba mengindikasikan masalah session management,
+55,Menerima notifikasi bukti pembayaran setelah admin mengirim bukti transfer,Urgent,Positive,User sudah melakukan transaksi. Admin memiliki akses untuk mengirim bukti transfer.,"1. User melakukan transaksi / permintaan pencairan.
+2. Admin mengirim bukti transfer melalui sistem.
+3. User membuka area notifikasi (bell icon / notification center).
+4. Periksa apakah notifikasi bukti pembayaran muncul.",Notifikasi bukti pembayaran muncul di sisi user setelah admin berhasil mengirim bukti transfer.,,Done,,Notifikasi penting untuk konfirmasi pembayaran ke user,
+56,Verifikasi API Key berjalan dengan data real (bukan dummy),Urgent,Positive,Pengguna sudah login dan berada di halaman input / verifikasi API Key.,"1. Buka halaman verifikasi API Key.
+2. Masukkan API Key yang valid.
+3. Klik tombol verifikasi / submit.
+4. Periksa hasil verifikasi yang ditampilkan.",Sistem melakukan verifikasi API Key secara real (bukan menggunakan data dummy). Hasil verifikasi akurat sesuai status API Key yang dimasukkan.,,Done,,Verifikasi sudah tidak dummy dan konek ke kie,
+57,Button refresh pada live chat berfungsi dengan benar,Kosmetik,Positive,Pengguna sudah login dan membuka fitur live chat.,"1. Buka halaman Live Chat.
+2. Pastikan ada pesan atau data chat yang ditampilkan.
+3. Klik button Refresh.
+4. Periksa apakah data chat diperbarui.",Button Refresh berhasil memperbarui daftar pesan / status chat tanpa error atau behaviour yang salah.,,Done,,Button refresh yang tidak berfungsi mengganggu pengalaman live chat,
+58,Fitur ganti tema menampilkan warna yang konsisten dan sempurna,Kosmetik,Positive,Pengguna sudah login dan memiliki akses ke pengaturan tema.,"1. Buka pengaturan / profil.
+2. Pilih opsi Ganti Tema (Dark / Light atau tema lain yang tersedia).
+3. Terapkan tema yang dipilih.
+4. Navigasi ke beberapa halaman dan periksa warna elemen UI.","Warna tema diterapkan secara konsisten di seluruh elemen UI (background, text, button, icon, dll) tanpa warna yang bentrok atau tidak sempurna.",,Done,,Warna tema yang belum sempurna menurunkan kualitas visual aplikasi,
+59,Memverifikasi update status notifikasi pada aktivitas terkini saat penarikan dana di-approved admin,Urgent,Positive,Terdapat request penarikan dana (pending).,"1. Admin melakukan approve pada penarikan dana.
+2. User mengecek aktivitas terkini di homepage.","Notifikasi berubah menjadi ""Done"".",,Pending,,,
+60,Memeriksa ketersediaan API key asli dan menghapus dummy data,Kosmetik,Positive,Pengguna berada di halaman API key.,"1. Buka halaman daftar API Key.
+2. Periksa list key yang ditampilkan.",Tidak ada contoh key API (dummy) yang ditampilkan.,,Pending,,,
+61,Memverifikasi sinkronisasi Notifikasi Penarikan dengan Riwayat Penarikan,Urgent,Positive,Pengguna melakukan penarikan dana.,"1. Lakukan penarikan dana.
+2. Cek halaman Notifikasi.
+3. Cek halaman Riwayat Penarikan.",Data pada Notifikasi Penarikan sinkron dengan data di Riwayat Penarikan.,,Pending,,,
+62,Memvalidasi batas minimal input pada kolom nomor Rekening Bank/E-wallet,Urgent,Negative,Pengguna berada di halaman input rekening bank/e-wallet.,"1. Masukkan nomor rekening/e-wallet kurang dari 10 digit (misal: 5 digit).
+2. Klik simpan.",Sistem menolak dan menampilkan pesan error minimal pengisian nomor (misal ewallet 10 digit).,,Pending,,,
+63,Memvalidasi input karakter pada kolom nama pemilik bank,Urgent,Negative,Pengguna berada di form nama pemilik bank.,"1. Masukkan karakter angka atau simbol pada field nama pemilik bank.
+2. Klik simpan.",Sistem menolak dan menampilkan pesan error bahwa nama hanya boleh diisi huruf.,,Pending,,,
+64,"Memverifikasi fungsi tombol ""Bagikan Kode Referral""",Urgent,Positive,Pengguna berada di halaman Referral.,"1. Klik tombol ""Bagikan Kode Referral"".",Memunculkan opsi share atau menyalin tautan referral ke clipboard.,,Pending,,,
+65,Memverifikasi pesan notifikasi saat mengubah foto profil,Urgent,Positive,Pengguna mengunggah foto profil baru.,"1. Unggah foto profil baru.
+2. Periksa pop-up notifikasi yang muncul.",Menampilkan notifikasi sukses yang ramah pengguna (user-friendly).,,Pending,,,
+66,Mengecek UI halaman Setor API Key setelah menautkan kode referral,Kosmetik,Positive,Pengguna memiliki kode referral untuk ditautkan.,"1. Buka halaman Setor API Key.
+2. Tautkan kode referral.
+3. Periksa tampilan UI.",UI tetap rapi dan selaras dengan desain sistem.,,Pending,,,
+67,Memeriksa tampilan pop-up saat admin menolak penarikan dana,Kosmetik,Positive,Admin menolak penarikan dana.,"1. Admin klik tolak pada request penarikan.
+2. Periksa tampilan pop up konfirmasi/notifikasi.",Pop-up menggunakan custom UI dari desain aplikasi.,,Pending,,,
+68,Mengecek animasi ikon pada tombol di halaman Gudang API KEY,Kosmetik,Negative,Pengguna berada di halaman Gudang API KEY.,1. Arahkan kursor atau lihat tombol-tombol yang ada di halaman tersebut.,Ikon di dalam tombol bersifat statis (tidak memiliki animasi).,,Pending,,,
+69,Memverifikasi fungsionalitas sistem kode referral,Urgent,Positive,Pengguna membagikan dan menggunakan kode referral.,"1. Bagikan kode referral.
+2. Gunakan kode oleh user lain.
+3. Cek penambahan benefit.",Sistem kode referral berjalan dengan lancar dan benefit diterima sesuai rule.,,Pending,,,
+70,Memverifikasi ketersediaan fitur refresh pada halaman Gudang API KEY,Urgent,Positive,Pengguna berada di halaman Gudang API KEY.,"1. Buka halaman Gudang API KEY.
+2. Cari tombol/fitur refresh.",Terdapat fitur/tombol refresh data.,,Pending,,,
+71,Memverifikasi ketersediaan filter kunci invalid pada Gudang API KEY,Kosmetik,Positive,Terdapat beberapa API key invalid di Gudang API KEY.,"1. Buka halaman Gudang API KEY.
+2. Gunakan filter ""Kunci Invalid"".",Terdapat opsi filter dan list menampilkan hanya kunci yang invalid.,,Pending,,,
+72,Memeriksa tampilan aplikasi saat menggunakan tema Mode Siang (Light Mode),Kosmetik,Positive,Pengguna berada di menu pengaturan tema.,"1. Ubah tema dari mode malam ke mode siang (light mode).
+2. Jelajahi halaman aplikasi.","Warna teks, background, dan elemen UI terlihat jelas dan kontras di mode siang.",,Pending,,,
+73,Memverifikasi penghapusan session saat user/admin melakukan Log Out,Urgent,Negative,User/Admin sedang login.,"1. Klik tombol Log Out.
+2. Coba akses kembali halaman internal aplikasi dengan menekan tombol Back atau via URL.",Sistem menolak akses dan meminta user/admin login kembali (session terhapus).,,Pending,,,

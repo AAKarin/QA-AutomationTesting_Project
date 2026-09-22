@@ -47,7 +47,7 @@ export default defineConfig({
       testMatch: /apps\/01_aikreativ\/.*\.spec\.js/,
     },
     {
-      name: 'layar-baca-google-chrome',
+      name: 'aikreativ-google-chrome',
       use: { 
         ...devices['Desktop Chrome'],
         baseURL: process.env.AIKREATIV_PRAPRODUCTION_URL || 'https://pra-production.aikreativ.app',

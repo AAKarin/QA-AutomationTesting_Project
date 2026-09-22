@@ -7,14 +7,14 @@ dotenv.config();
 test.describe('Pusat Bantuan - Floating Button Flow', () => {
 
   test('1. Kirim Pesan ke Admin lewat Floating Button', async ({ page }) => {
-    test.setTimeout(60000);
+    test.setTimeout(90000);
     await setupAdBlocker(page);
     const targetUrl = process.env.LAYARBACA_PRAPRODUCTION_URL || 'https://layarbaca.app/app/home';
-    await page.goto(targetUrl, { waitUntil: 'domcontentloaded' });
+    await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
 
     // Klik Floating Button
-    const floatingBtn = page.locator('button').filter({ has: page.locator('svg') }).last();
-    await expect(floatingBtn).toBeVisible({ timeout: 15000 });
+    const floatingBtn = page.locator('.w-14.h-14.rounded-full, button[class*="rounded-full"][class*="fixed"], button[class*="bottom-"]').first();
+    await expect(floatingBtn).toBeVisible({ timeout: 20000 });
     await floatingBtn.click();
 
     // Klik Tanya Admin
@@ -42,13 +42,13 @@ test.describe('Pusat Bantuan - Floating Button Flow', () => {
   });
 
   test('2. Flow Panduan "Bagaimana cara beli paket?" hingga Pop-up Pilih Paket Akses', async ({ page }) => {
-    test.setTimeout(60000);
+    test.setTimeout(90000);
     await setupAdBlocker(page);
     const targetUrl = process.env.LAYARBACA_PRAPRODUCTION_URL || 'https://layarbaca.app/app/home';
-    await page.goto(targetUrl, { waitUntil: 'domcontentloaded' });
+    await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
 
     // 1. Klik Floating Button & Buka Panduan
-    await page.locator('.w-14.h-14.rounded-full').click();
+    await page.locator('.w-14.h-14.rounded-full, button[class*="rounded-full"][class*="fixed"]').first().click();
     await page.getByRole('button', { name: 'Bagaimana cara beli paket?' }).click();
 
     // 2. Klik Seluruh Tab Bagian Atas

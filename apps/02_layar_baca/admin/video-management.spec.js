@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Admin Panel - Management Video & Film', () => {
 
   test.beforeEach(async ({ page }) => {
-    test.setTimeout(60000);
+    test.setTimeout(90000);
     // Login Admin sebelum tiap test case
     await page.goto('https://layarbaca.app/admin/login', { waitUntil: 'domcontentloaded' });
     const usernameInput = page.getByRole('textbox').first();
@@ -65,7 +65,7 @@ test.describe('Admin Panel - Management Video & Film', () => {
   test('5. Form Tambah Konten Video Baru & Batal', async ({ page }) => {
     await page.getByRole('button', { name: 'Tambah Konten' }).click();
     await expect(page.getByRole('heading', { name: 'Tambah Konten' })).toBeVisible({ timeout: 10000 });
-    await page.getByRole('button', { name: 'Kembali' }).click();
+    await page.getByRole('button', { name: 'Kembali' }).first().click();
   });
 
 });

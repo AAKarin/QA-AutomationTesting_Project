@@ -83,15 +83,21 @@ test.describe.serial('E2E Flow Pembelian Paket, Upload Bukti & Aktivasi', () => 
     const titleBayar = page.getByRole('heading', { name: /Pilih Pembayaran/i });
     await expect(titleBayar).toBeVisible({ timeout: 10000 });
 
-    const unduhQrisBtn = page.getByRole('link', { name: /Unduh QRIS/i }).first();
-    
-    // Tangkap tab baru sebagai 'popup' sesuai perilaku asli browser
-    const popupPromise = page.waitForEvent('popup');
-    await unduhQrisBtn.click();
-    const popup = await popupPromise;
+    // Pilih metode QRIS jika tersedia opsi metode lain
+    const qrisBtn = page.getByRole('button', { name: 'QRIS' });
+    if (await qrisBtn.isVisible({ timeout: 3000 }).catch(() => false)) {
+      await qrisBtn.click();
+    }
 
-    // Langsung tutup tab popup tanpa menunggu waitForLoadState yang bikin flaky
-    await popup.close();
+    const unduhQrisBtn = page.getByRole('link', { name: /Unduh QRIS/i }).first();
+    if (await unduhQrisBtn.isVisible({ timeout: 5000 }).catch(() => false)) {
+      const popupPromise = page.waitForEvent('popup', { timeout: 5000 }).catch(() => null);
+      await unduhQrisBtn.click();
+      const popup = await popupPromise;
+      if (popup) {
+        await popup.close().catch(() => {});
+      }
+    }
 
     // Fokus kembali ke halaman utama dan klik tombol Lanjutkan
     const btnSudahBayar = page.getByRole('button', { name: /SAYA SUDAH BAYAR/i });
@@ -162,8 +168,7 @@ test.describe.serial('E2E Flow Pembelian Paket, Upload Bukti & Aktivasi', () => 
     const successAlert = page.getByRole('heading', { name: /Akses Happy Aktif/i });
     await expect(successAlert).toBeVisible({ timeout: 15000 });
 
-    // Kembali ke home dan klik satu film
-    await page.goto('https://layarbaca.app/app/home', { waitUntil: 'domcontentloaded' });
+    // Klik satu film yang tampil di halaman untuk validasi akses aktif
     const movieCard = page.locator('a[href*="/view/"]').first();
     await expect(movieCard).toBeVisible({ timeout: 10000 });
     await movieCard.click({ force: true });

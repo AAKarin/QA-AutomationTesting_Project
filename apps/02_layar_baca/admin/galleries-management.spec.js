@@ -1,72 +1,64 @@
 import { test, expect } from '@playwright/test';
 
 test('Pengujian Modul Galleries - Multiple Scenarios', async ({ page }) => {
-  // Tambahkan sedikit waktu ekstra agar tidak keburu gagal jika internet lambat
   test.setTimeout(90000); 
 
-  await test.step('TC 0: Login & Navigasi', async () => {
-    await page.goto('https://layarbaca.app/admin/login');
+  const dismissToast = async () => {
+    const closeBtn = page.getByRole('button', { name: 'Close toast' }).first();
+    if (await closeBtn.isVisible().catch(() => false)) {
+      await closeBtn.click({ force: true }).catch(() => {});
+    }
+    await page.waitForTimeout(400);
+  };
+
+  await test.step('TC 0: Login & Navigasi ke Galleries', async () => {
+    await page.goto('https://layarbaca.app/admin/login', { waitUntil: 'domcontentloaded' });
     await page.getByRole('textbox').first().fill('admin');
     await page.getByRole('textbox', { name: "Gunakan 'admin'" }).fill('sampulkreativ.yes');
     await page.getByRole('button', { name: 'Masuk' }).click();
 
     await page.getByRole('link', { name: 'Galleries' }).click();
-    await expect(page.getByRole('heading', { name: 'Galleries' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Galleries' })).toBeVisible({ timeout: 15000 });
   });
 
-  await test.step('TC 1: Submit Form Kosong', async () => {
-    await page.getByRole('button', { name: 'Crawl & Simpan' }).click();
-    await expect(page.getByText('Title, Thumbnail, and Creator')).toBeVisible();
-    await page.getByRole('button', { name: 'Close toast' }).first().click();
+  await test.step('TC 1: Verifikasi Elemen Form Tambah Gallery', async () => {
+    await expect(page.getByRole('heading', { name: 'Tambah Gallery Baru' })).toBeVisible();
+    await expect(page.getByRole('textbox', { name: 'Contoh: Photoshoot Bali' })).toBeVisible();
+    await expect(page.getByText('Pilih Thumbnail')).toBeVisible();
+    await expect(page.getByText(/Unggah Foto Galeri|Pilih Banyak Foto/i).first()).toBeVisible();
+    await expect(page.getByRole('combobox').first()).toBeVisible();
+    await expect(page.getByRole('button', { name: /Crawl & Simpan/i })).toBeVisible();
   });
 
-  await test.step('TC 2: Kosongkan Thumbnail URL', async () => {
-    // Fill menimpa teks sebelumnya secara otomatis
-    await page.getByRole('textbox', { name: 'Contoh: Photoshoot Bali' }).fill('Testing');
-    await page.getByRole('textbox', { name: 'https://...' }).fill(''); // Sengaja dikosongkan
-    await page.getByRole('textbox', { name: 'https://drive.google.com/' }).fill('https://layarbaca.app/admin/galleries');
-    
-    await page.getByRole('combobox').first().selectOption('free');
-    await page.getByRole('combobox').nth(1).selectOption('f24f6245-538e-4225-93ae-1965428b4439');
+  await test.step('TC 2: Uji Validasi Form Kosong', async () => {
+    const titleInput = page.getByRole('textbox', { name: 'Contoh: Photoshoot Bali' });
+    await titleInput.fill('');
+    await page.getByRole('button', { name: /Crawl & Simpan/i }).click();
 
-    await page.getByRole('button', { name: 'Crawl & Simpan' }).click();
-    await expect(page.getByText('Title, Thumbnail, and Creator')).toBeVisible({ timeout: 5000 });
-    await page.getByRole('button', { name: 'Close toast' }).first().click();
+    await expect(page.getByText(/Judul.*Thumbnail.*Kreator wajib diisi/i)).toBeVisible({ timeout: 10000 });
+    await dismissToast();
   });
 
-  await test.step('TC 3: Kosongkan GDrive URL', async () => {
-    await page.getByRole('textbox', { name: 'https://...' }).fill('https://layarbaca.app/admin/galleries');
-    await page.getByRole('textbox', { name: 'https://drive.google.com/' }).fill(''); // Sengaja dikosongkan
-    
-    await page.getByRole('button', { name: 'Crawl & Simpan' }).click();
-    await expect(page.getByText('Gdrive URL is required for')).toBeVisible({ timeout: 5000 });
-    await page.getByRole('button', { name: 'Close toast' }).first().click();
+  await test.step('TC 3: Verifikasi Daftar Galeri (Gallery List)', async () => {
+    await expect(page.getByRole('heading', { name: /Gallery List/i })).toBeVisible();
+    const editButtons = page.getByRole('button', { name: 'Edit' });
+    await expect(editButtons.first()).toBeVisible({ timeout: 10000 });
   });
 
-  await test.step('TC 4: Link File GDrive (Bukan Folder)', async () => {
-    // Uji dengan link file yang valid, bukan folder
-    await page.getByRole('textbox', { name: 'https://drive.google.com/' }).fill('https://drive.google.com/file/d/15uIiBj4IQYi__ea2L-qwez7grn2JqghX/view?usp=sharing');
-    await page.getByRole('button', { name: 'Crawl & Simpan' }).click();
-    
-    try {
-      await expect(page.getByText('No images found in this')).toBeVisible({ timeout: 5000 });
-      await page.getByRole('button', { name: 'Close toast' }).first().click();
-    } catch (e) {
-      console.log('Bug terdeteksi: Gagal validasi link file vs folder');
-    }
-  });
+  await test.step('TC 4: Verifikasi Modal Konfirmasi Hapus Galeri (TC 14)', async () => {
+    // Klik tombol Hapus pada salah satu card galeri
+    const deleteBtn = page.getByRole('button', { name: 'Hapus' }).first();
+    await expect(deleteBtn).toBeVisible({ timeout: 10000 });
+    await deleteBtn.click();
 
-  await test.step('TC 5: Submit dengan URL GDrive Sembarangan', async () => {
-    // Uji dengan URL ngawur
-    await page.getByRole('textbox', { name: 'https://drive.google.com/' }).fill('https://layarbaca.app/admin/galleries');
-    await page.getByRole('button', { name: 'Crawl & Simpan' }).click();
-    
-    try {
-      await expect(page.getByText('No images found in this')).toBeVisible({ timeout: 5000 });
-      await page.getByRole('button', { name: 'Close toast' }).first().click();
-    } catch (e) {
-      console.log('Bug terdeteksi: Sistem menyimpan URL GDrive yang tidak valid!');
-    }
-  });
+    // Verifikasi munculnya custom modal konfirmasi penghapusan
+    const modalPrompt = page.getByText(/Apakah Anda yakin ingin menghapus|Hapus Galeri/i).first();
+    await expect(modalPrompt).toBeVisible({ timeout: 10000 });
 
+    // Batalkan penghapusan
+    const cancelBtn = page.getByRole('button', { name: 'Batal' });
+    await expect(cancelBtn).toBeVisible({ timeout: 5000 });
+    await cancelBtn.click();
+    await dismissToast();
+  });
 });

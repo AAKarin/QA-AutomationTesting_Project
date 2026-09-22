@@ -1,0 +1,89 @@
+## KERJA PRAKTIK (KP) SEMESTER GANJIL TAHUN AKADEMIK 2026/2027 LOGBOOK HARIAN
+
+| Informasi | Keterangan |
+| --- | --- |
+| **Nama Mahasiswa 1** | Muhamad Yasir Noval |
+| **Nama Mahasiswa 2** | Muhamad Yusron Noval |
+| **Program Studi** | Teknik Informatika |
+| **Tempat KP** | PT SampulKreativ Technology |
+| **Periode Pelaksanaan KP** | 20 Juli 2026 s.d 20 September 2026 |
+| **Pembimbing Akademik** | Wina Witanti, S.T, M.T. |
+| **Pembimbing Lapangan** | Muhammad Yusar Ghani |
+
+---
+
+## LOGBOOK HARIAN KEGIATAN KERJA PRAKTIK
+
+**Petunjuk:** Logbook diisi setiap hari kegiatan KP dilaksanakan. Uraian kegiatan ditulis secara singkat dan jelas, sedangkan hasil/output diisi berdasarkan capaian pekerjaan pada hari tersebut. Logbook dapat diisi dengan diketik, dan jumlah baris pada tabel dapat disesuaikan dengan periode pelaksanaan KP masing-masing kelompok mahasiswa dengan menambah atau menghapus baris sesuai kebutuhan.
+
+| No. | Hari/Tanggal | Uraian Kegiatan | Hasil/Output |
+| :---: | :--- | :--- | :--- |
+| 1 | Senin, 20 Juli 2026 | Mengikuti sesi *onboarding* dan pengenalan perusahaan di PT SampulKreativ Technology bersama Pembimbing Lapangan (Muhammad Yusar Ghani). Membahas ruang lingkup proyek kerja praktik, pembagian fokus kerja tim (Quality Assurance Automation Testing dan System Analyst), serta penentuan target capaian berkala. | Pemahaman profil dan alur kerja perusahaan, kesepakatan pembagian peran tim, serta rencana kerja (*work plan*) kegiatan Kerja Praktik. |
+| 2 | Selasa, 21 Juli 2026 | Melakukan observasi dan analisis arsitektur terhadap portofolio produk digital aktif PT SampulKreativ Technology (AIKreativ, Layar Baca, Panen Kunci, Sharinginaja, Ruang Kreativ, serta platform CRM & Booking Klinik). Mempelajari *business flow* dan *tech stack* yang digunakan. | Dokumen catatan pemetaan produk eksisting, identifikasi dependensi teknologi, serta diagram alur sistem secara makro. |
+| 3 | Rabu, 22 Juli 2026 | Menyiapkan dan mengonfigurasi lingkungan kerja pengembangan (*development & testing environment*): instalasi runtime Node.js, Git version control, Antigravity IDE / VS Code, serta binary mesin peramban web (Chromium, Firefox, WebKit). | Environment kerja lokal terkonfigurasi lengkap dan siap digunakan untuk pengujian otomasi dan pemodelan prototipe. |
+| 4 | Kamis, 23 Juli 2026 | Menginisialisasi repositori Git `QA-AutomationTesting_Project` dan memasang framework pengujian Playwright. Menyusun konfigurasi awal `playwright.config.js` (viewport, timeout, retry strategy, reporting, dan matrix browser). | Repositori pengujian otomatis terinisiasi dengan framework Playwright siap pakai dan konfigurasi global yang valid. |
+| 5 | Jumat, 24 Juli 2026 | Merancang arsitektur folder test automation (`apps/`, `test-case/`, `utils/`) serta mengonfigurasi variabel lingkungan pada file `.env`. Melakukan pengujian awal konektivitas eksekusi script dummy Playwright. | Struktur direktori pengujian standar modular dan file konfigurasi `.env` berhasil diuji coba (*smoke test passed*). |
+| 6 | Senin, 27 Juli 2026 | Menyusun format dan standar penyusunan Test Case berbasis CSV (nomor, skenario, prioritas: Urgent/Normal/Kosmetik, tipe: Positive/Negative, prasyarat/precondition, tahapan pengujian, dan hasil yang diharapkan/expected result). | Standar template dokumen test case disepakati untuk digunakan pada seluruh pengujian aplikasi web. |
+| 7 | Selasa, 28 Juli 2026 | Melakukan elisitasi kebutuhan awal untuk perancangan platform *In-House Project Management System* guna mendukung kolaborasi internal developer, QA, dan project manager di PT SampulKreativ Technology. | Daftar kebutuhan awal (*requirements backlog*) modul manajemen sprint, backlog, dan pelacakan issue internal. |
+| 8 | Rabu, 29 Juli 2026 | Melakukan riset komparasi dan *benchmarking* terhadap platform manajemen proyek terkemuka industri (Jira Software, ClickUp, monday dev, Asana, dan Trello) untuk mengidentifikasi fitur unggulan yang relevan. | Matriks analisis perbandingan fitur benchmarking platform project management untuk adopsi in-house. |
+| 9 | Kamis, 30 Juli 2026 | Mempelajari modul praktikum Manajemen Proyek (Laboratorium Teknik Informatika UNJANI) sebagai acuan landasan teoretis penerapan kerangka kerja Scrum pada sistem manajemen internal. | Rangkuman metodologi Scrum dan aturan bisnis operasional sprint planning, daily standup, dan backlog grooming. |
+| 10 | Jumat, 31 Juli 2026 | Melakukan evaluasi sprint dua mingguan bersama Pembimbing Lapangan mengenai kesiapan framework QA automation dan roadmap elisitasi kebutuhan sistem. | Laporan evaluasi sprint fase persiapan dan arahan prioritas pengujian fungsional aplikasi produk digital. |
+| 11 | Senin, 3 Agustus 2026 | Melakukan analisis fitur dan penyusunan skenario pengujian komprehensif untuk aplikasi **AIKreativ** (platform kreasi konten berbasis kecerdasan buatan). Menyusun file skenario uji `QA-AIKreativ - AIKreativ.csv`. | Dokumen 162 skenario test case AIKreativ yang mencakup modul generate video, pricing, navigasi, dan antarmuka. |
+| 12 | Selasa, 4 Agustus 2026 | Mengembangkan script automation testing Playwright untuk aplikasi AIKreativ pada file `apps/01_aikreativ/user/landing_page.spec.js`. Menguji elemen Hero Section, tombol Help, dan validasi responsivitas tata letak. | Script pengujian landing page AIKreativ berhasil dibuat dan dijalankan secara otomatis pada browser headless. |
+| 13 | Rabu, 5 Agustus 2026 | Mengoptimalkan script pengujian Playwright AIKreativ untuk interaksi horizontal swipe/slide pada komponen paket harga (*pricing*) di viewport mobile serta memvalidasi label paket berlangganan. | Script pengujian Playwright AIKreativ tervalidasi stabil di desktop dan mobile viewport tanpa kendala flakiness. |
+| 14 | Kamis, 6 Agustus 2026 | Menganalisis alur bisnis dan fitur aplikasi **Layar Baca** (platform streaming film/anime dan baca digital). Menyusun skenario pengujian fungsional pada file `QA_LayarBaca - Test Case.csv`. | Dokumen 42 skenario test case Layar Baca mencakup alur player video, katalog, donasi, alih bahasa, dan modul admin. |
+| 15 | Jumat, 7 Agustus 2026 | Mengembangkan script automation Playwright `apps/02_layar_baca/user/player-flow.spec.js` untuk menguji fungsionalitas pemutaran video anime, resolusi player, dan verifikasi sumber pemutaran embed streaming. | Script pengujian pemutaran video Layar Baca berhasil dieksekusi dengan status *pass* pada skenario streaming. |
+| 16 | Senin, 10 Agustus 2026 | Mengembangkan script otomasi `apps/02_layar_baca/user/landing-page.spec.js`. Mengidentifikasi defect berupa error request timeout dan hilangnya selector tombol alih bahasa (ID/EN) saat rendering. | Temuan defect pada alur navigasi bahasa dan dokumentasi log kegagalan untuk diteruskan ke tim pengembang. |
+| 17 | Selasa, 11 Agustus 2026 | Memperbaiki penanganan elemen dinamis pada script pengujian bahasa `apps/02_layar_baca/user/language-switch.spec.js`. Menerapkan assertion toleran terhadap asynchronous loading data. | Script pengujian multi-bahasa Layar Baca berjalan sukses dan stabil memvalidasi teks Bahasa Indonesia dan Inggris. |
+| 18 | Rabu, 12 Agustus 2026 | **Tugas SA:** Melakukan riset domain dan benchmarking kompetitor untuk platform klinik nutrisi **Nutriflow**. Menganalisis fitur 6 aplikasi kompetitor (Cronometer, MyFitnessPal, Nutrium, NutriAdmin, PracticeBetter, GetHealthie, INutriMon). | Dokumen komparasi fitur aplikasi nutrisi klinis dan perumusan Unique Selling Point (USP) NutriFlow. |
+| 19 | Kamis, 13 Agustus 2026 | **Tugas SA:** Menyusun dokumen spesifikasi teknis **Software Requirement Specification (SRS) NutriFlow** (`SRS-NutriFlow.md`) dan arsitektur data **Software Design Description (SDD) Nutriflow** (`SDD-Nutriflow.md`). | Dokumen lengkap SRS dan SDD aplikasi Nutriflow yang mencakup portal klien dan portal spesialis ahli gizi. |
+| 20 | Jumat, 14 Agustus 2026 | **Tugas SA:** Melakukan riset kebutuhan sistem reservasi dan klinik **Fisioterapi**. Menyusun analisis kebutuhan layanan rehabilitasi fisik, manajemen terapis, serta perancangan model bisnis layanan. | Dokumen analisis kebutuhan klinik Fisioterapi, dokumen perencanaan bisnis, dan draf fitur unggulan terapis. |
+| 21 | Senin, 17 Agustus 2026 | **Hari Kemerdekaan Republik Indonesia ke-81.** (Kegiatan Studi Mandiri): Mempelajari literatur arsitektur Page Object Model (POM) pada Playwright dan best practices isolasi data multi-tenant. | Ringkasan teknis optimalisasi pola modularisasi script automation testing dan arsitektur database multi-tenant. |
+| 22 | Selasa, 18 Agustus 2026 | Mengembangkan script automation Playwright `apps/02_layar_baca/user/purchase-flow.spec.js` untuk menguji alur pembelian paket baca/donasi, validasi dialog pembayaran, dan penerbitan akses donatur. | Script otomatisasi alur pembelian paket Layar Baca berhasil dieksekusi secara end-to-end tanpa kendala. |
+| 23 | Rabu, 19 Agustus 2026 | Melakukan refaktorisasi dan pembaruan kode pada test suite `player-flow.spec.js` serta merapikan struktur assertions untuk meningkatkan keandalan eksekusi (*clean code* pengujian). | Kode script pengujian video player lebih bersih, modular, dan waktu eksekusi pengujian berkurang 15%. |
+| 24 | Kamis, 20 Agustus 2026 | Menambahkan skenario uji baru pada modul pusat bantuan `apps/02_layar_baca/user/help-center.spec.js` serta mengonfigurasi mekanisme *ad-blocker* via Playwright network request routing. | Modul Help Center teruji otomatis dan intersepsi iklan pengganggu berhasil diterapkan pada pengujian Layar Baca. |
+| 25 | Jumat, 21 Agustus 2026 | **Tugas SA:** Melakukan analisis kebutuhan platform kebugaran **Personal Trainer**. Membandingkan fitur kompetitor (ABC Trainerize, FIT HUB, Fita, Freeletics, Future, TrueCoach) dan menyusun USP Personal Trainer. | Dokumen analisis fitur kompetitor dan dokumen Unique Selling Point (USP) aplikasi Personal Trainer. |
+| 26 | Senin, 24 Agustus 2026 | Mengembangkan script automation testing untuk portal **Admin Layar Baca** (`apps/02_layar_baca/admin/`): `login-admin.spec.js`, `dashboard.spec.js`, `dashboard-navigation-and-profile.spec.js`, dan `profil-admin.spec.js`. | Script otomasi autentikasi admin dan navigasi dasbor Layar Baca berhasil diverifikasi dan berstatus *pass*. |
+| 27 | Selasa, 25 Agustus 2026 | Melanjutkan scripting pengujian portal Admin Layar Baca: `donatur-management.spec.js`, `galleries-management.spec.js`, `kode-akses-management.spec.js`, dan `kreator-management.spec.js`. | Modul manajemen donatur, galeri, voucher kode akses, dan data kreator teruji secara otomatis melalui Playwright. |
+| 28 | Rabu, 26 Agustus 2026 | Menyelesaikan sisa modul pengujian portal Admin Layar Baca: `package-management.spec.js`, `pembayaran-management.spec.js`, `pusat-bantuan-management.spec.js`, `transaksi-management.spec.js`, dan `video-management.spec.js`. | Seluruh 13 script pengujian portal Admin Layar Baca tuntas dibuat dan terverifikasi beroperasi dengan baik. |
+| 29 | Kamis, 27 Agustus 2026 | **Tugas SA:** Melakukan riset kebutuhan dan ekstraksi data untuk aplikasi **Spa (Serenity and Soul)**. Melakukan scraping data referensi layanan relaksasi dan merancang dokumen USP Serenity and Soul. | Dataset referensi katalog perawatan spa, dokumen kebutuhan bisnis spa, dan draf fitur unggulan reservasi relaksasi. |
+| 30 | Jumat, 28 Agustus 2026 | **Tugas SA:** Menyusun dokumen formal **SRS Sistem Manajemen Proyek InHouse** (`SRS_Sistem_Manajemen_Proyek_InHouse.md`) dan **SDD Sistem Manajemen Proyek InHouse** standar IEEE Std 830-1998 / ISO 29148. | Dokumen resmi SRS dan SDD Sistem Manajemen Proyek In-House v2.0 yang memuat pemodelan database dan alur Scrum. |
+| 31 | Senin, 31 Agustus 2026 | Mengikuti sesi review proposal sistem reservasi klinik bersama Pembimbing Lapangan. Menerima arahan: sistem booking harus mencakup klinik konvensional, modern, dan faskes, serta proposal difokuskan pada bahasa bisnis/non-teknis. | Catatan revisi proposal bisnis, penetapan alur klinikal formulir intake keluhan, dan persetujuan penyusunan SRS teknis. |
+| 32 | Selasa, 1 September 2026 | Mendiskusikan arsitektur notifikasi WhatsApp Gateway vs Email (80% open rate WhatsApp), alur rujukan (*referral*) via bridging API ke SIMRS klinik tanpa menyimpan rekam medis (scope boundary non-medical record), dan privasi PDPA. | Draf dokumen `SRS_SISTEM_BOOKING_KLINIK.md` yang memuat matriks prioritas fitur MoSCoW dan arsitektur bridging data. |
+| 33 | Rabu, 2 September 2026 | Mengembangkan kode automation testing untuk aplikasi **Panen Kunci** (`apps/03_panen_kunci/`): merancang 58 test case dan mengimplementasikan 11 script uji (login, register, dashboard, setor API, tarik saldo, riwayat transaksi). | Script automation Playwright Panen Kunci selesai dibuat dan berhasil memvalidasi seluruh fungsionalitas transaksi saldo. |
+| 34 | Kamis, 3 September 2026 | Mempresentasikan progres dokumen SRS dan wireframe antarmuka sistem booking klinik. Menerima arahan mentor: penyederhanaan aktor sistem menjadi 3 role (Owner, Admin, User/Pasien) dan penambahan modul Pengaturan Profil Klinik. | Dokumen SRS dan wireframe disetujui, repositori Git pengembangan disiapkan, dan spesifikasi 3 role diterapkan. |
+| 35 | Jumat, 4 September 2026 | Melakukan perbaikan inkonsistensi bahasa UI (eliminasi campuran ID/EN), mengimplementasikan *working booking engine* nyata pada aplikasi booking Cliniva, serta menambahkan pilihan template bisnis Wellness (Spa) melengkapi TCM. | Prototipe Cliniva berfungsi interaktif untuk proses reservasi ujung-ke-ujung dengan pilihan template TCM dan Wellness/Spa. |
+| 36 | Senin, 7 September 2026 | Mengintegrasikan Dynamic Intake Form (pilihan body pain map TCM vs preferensi spa) pada form reservasi. Membimbing rekan tim magang (Aji & Awal) dalam setup IDE & Stitch tooling. Mengaktifkan fungsi operasional modul CRM minimal 50%. | Form intake dinamis terintegrasi, rekan tim terbantu dalam onboarding, dan 50% fungsionalitas inti CRM beroperasi nyata. |
+| 37 | Selasa, 8 September 2026 | Mengoptimalkan tampilan antarmuka mobile (*Mobile View First* berbasis infografis ringkas), alur pembayaran PayNow/DuitNow & reschedule tiket, restrukturisasi isolasi data cabang per lini bisnis, serta wizard onboarding Super Admin. | Antarmuka mobile booking lebih ringkas dan bersih, modul multi-branch terisolasi, dan rancangan setup wizard admin siap. |
+| 38 | Rabu, 9 September 2026 | Menerima mandat prioritas presentasi dari mentor: fokus penuh pada pemolesan User Front-End Mobile yang intuitif (*self-explanatory*), memangkas teks berulang (*decluttering*), meniadakan POS di web, dan konfirmasi reservasi tegas. | Halaman portal pasien bersih dari teks redundan, modul POS web ditiadakan, dan pesan konfirmasi kedatangan pasien tervalidasi. |
+| 39 | Kamis, 10 September 2026 | Mengimplementasikan desain mobile-friendly di seluruh portal dan mengoneksikan database Supabase lintas browser. Mendiskusikan arsitektur platform B2B SaaS: dual landing page, guest appointment tanpa login, dan paywall cabang B2B. | Database Supabase aktif tersinkronisasi, perancangan skema dua jenis landing page, dan mekanisme pembayaran cabang baru. |
+| 40 | Jumat, 11 September 2026 | Memvalidasi alur Guest Booking per cabang pada integrasi Supabase. Mengembangkan script automation Playwright untuk aplikasi **Sharinginaja** (`apps/04_sharinginaja/`) berdasarkan 100 skenario `QA-Sharinginaja - TestCase.csv`. | Alur guest booking Supabase terverifikasi lancar, dan seluruh script uji landing page, login, serta dasbor Sharinginaja lulus uji. |
+| 41 | Senin, 14 September 2026 | Memperbarui konfigurasi Playwright global dan mengembangkan script pengujian komprehensif untuk aplikasi **Ruang Kreativ** (`apps/05_ruang_kreativ/`): autentikasi dan 12 modul alur pemesanan jasa video serta kelas online. | Seluruh 158 skenario test case Ruang Kreativ berhasil diotomasi dan script Playwright lulus uji dengan tingkat keberhasilan 100%. |
+| 42 | Selasa, 15 September 2026 | Menjalankan *Full Regression Testing* Playwright secara menyeluruh terhadap 5 aplikasi produk digital (AIKreativ, Layar Baca, Panen Kunci, Sharinginaja, dan Ruang Kreativ). Menganalisis laporan eksekusi Playwright HTML Report. | Laporan komprehensif hasil pengujian otomasi (520+ total test cases tervalidasi, tanpa defect kritis/blocking tersisa). |
+| 43 | Rabu, 16 September 2026 | Melakukan verifikasi fungsional akhir terhadap 5 aplikasi prototipe klinik/kebugaran (`prototype_application_crm`, `nutrition`, `personal_trainer`, `physioterapy`, `spa`) untuk memastikan kesiapan demonstrasi produk. | Seluruh 5 prototype aplikasi terverifikasi berjalan stabil, bebas error runtime, dan siap dipresentasikan. |
+| 44 | Kamis, 17 September 2026 | Menyusun kompilasi draf Laporan Akhir Kerja Praktik, mengorganisasikan seluruh artefak teknis pengujian (file test case CSV, script Playwright, laporan eksekusi), serta dokumen System Analyst (SRS, SDD, Proposal, Analisis Fitur). | Draf lengkap Laporan Akhir Kerja Praktik beserta bundel lampiran teknis tersusun secara rapi dan sistematis. |
+| 45 | Jumat, 18 September 2026 | Melakukan presentasi dan review akhir hasil pelaksanaan Kerja Praktik bersama Pembimbing Lapangan (Muhammad Yusar Ghani). Melakukan serah terima seluruh deliverable kode dan dokumen, penandatanganan berkas evaluasi, dan penutupan resmi KP. | Berkas penilaian dan evaluasi Kerja Praktik ditandatangani oleh Pembimbing Lapangan, seluruh deliverable diserahkan, dan KP resmi berakhir. |
+
+---
+
+<br>
+
+Tanggal 18 September 2026
+
+| Pembimbing Lapangan | Mahasiswa 1 | Mahasiswa 2 |
+| :---: | :---: | :---: |
+| <br><br><br> | <br><br><br> | <br><br><br> |
+| **(Muhammad Yusar Ghani)** | **(Muhamad Yasir Noval)** | **(Muhamad Yusron Noval)** |
+
+<br>
+
+<div align="center">
+
+Mengetahui,<br>
+**Pembimbing Akademik**
+
+<br><br><br>
+
+**(Wina Witanti, S.T, M.T.)**
+
+</div>

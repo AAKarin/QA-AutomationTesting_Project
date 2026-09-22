@@ -1,0 +1,460 @@
+No,Skenario,Prioritas,Prasyarat (Precondition),Tahapan (Steps),Hasil yang Diharapkan (Expected Result),Hasil Aktual (Actual Result),Status,Keterangan,Tim Dev
+1,Tombol Help muncul di tab generate video,Kosmetik,User login dan berada di Dashboard,"1. Buka tab ""Generate Video""
+2. Periksa tampilan UI/layar","Tombol ""Help"" muncul di halaman Generate Video",Sesuai ekspektasi. Tombol Help muncul di bagian pojok kiri bawah pada halaman video,DONE,aman tanpa bug,
+2,"di halaman top up setelah login, pengen bisa di slide pricing nya (mobile), soalnya yang sekarng tuh kayak harus di click dulu biar pindah",Kosmetik,"Menggunakan device mobile, User sudah login","1. Masuk ke halaman ""Top Up""
+2. Coba geser (slide) kartu harga/pricing",Opsi harga (pricing) dapat digeser (swipe/slide) secara horizontal tanpa harus di-klik,Sesuai ekspektasi. Slider berfungsi baik di versi mobile.,DONE,aman tanpa bug,
+3,"hilangkan kata unlimited di pricing(subscription), di ganti dengan custom",Kosmetik,User belum/sudah login berada di halaman Pricing,"1. Buka halaman Subscription/Pricing
+2. Periksa teks pada pilihan paket","Teks ""Unlimited"" sudah berubah menjadi ""Custom""",Sesuai ekspektasi. Teks telah berubah menjadi Custom.,DONE,aman tanpa bug,
+4,"kasih validasi hash, agar sistem menolak bukti transaksi yang sudah di upload",Urgent,User berada di halaman upload bukti bayar,"1. Upload bukti transfer A
+2. Coba upload lagi file bukti transfer A yang sama",Sistem mendeteksi hash file dan menolak upload bukti transaksi yang sama/duplikat,Sesuai ekspektasi. Sistem menolak duplikat file.,DONE,aman tanpa bug,
+5,"di halaman key api, buat menjadi mobile friendly",Kosmetik,Menggunakan device mobile,"1. Login via smartphone
+2. Masuk ke halaman ""Key API""","Tampilan responsif, teks tidak terpotong, tombol dapat ditekan dengan baik",Sesuai ekspektasi. UI responsif dan rapi.,DONE,aman tanpa bug,
+6,Menambahkan sistem validasi API apakah valid atau tidak,Urgent,Memiliki API Key (valid & invalid),"1. Input API Key yang valid di halaman admin
+2. Input API Key yang invalid/salah di halaman admin","Sistem memberikan response sukses jika valid, dan error message jika tidak valid",Sesuai ekspektasi. Validasi berfungsi baik.,DONE,aman tanpa bug,
+7,translate error,Kosmetik,Memicu error (misal form kosong),"1. Lakukan aksi yang memicu sistem error
+2. Periksa teks peringatan",Pesan error tampil dengan terjemahan (bahasa) yang benar dan mudah dimengerti,Pesan error sudah ditampilkan menggunakan bahasa yang benar dan mudah dipahami,DONE,-,"Sudah saya ubah, tapi di cek lagi aja"
+8,Terdapat UI error pada model ketika transisi dari image to image ke image to video (Desktop Ver),Kosmetik,"Credit 0, berada di Image to Image","1. Set model ""nano banana 2"" di halaman ""image to image""
+2. Pindah ke halaman ""Image to Video""","Model ""nano banana 2"" tidak ikut terbawa ke tab baru, UI normal",Sesuai ekspektasi. Transisi halaman aman tanpa bug UI model bawaan.,DONE,aman tanpa bug,
+9,"Model awal harus terpilih secara otomatis pada halaman image to video, sama halnya seperti yang ada di halaman image to image (Mobile ver)",Kosmetik,Menggunakan device mobile,"1. Buka ""Image to Video""
+2. Periksa option Model",Option model langsung menampilkan/memilih default model secara otomatis,Sesuai ekspektasi. Model awal terpilih otomatis.,DONE,aman tanpa bug,
+10,Tombol untuk memperkecil dan memperbesar harus bisa digunakan sebagaimana fungsinya (Desktop ver),Kosmetik,Memiliki gambar hasil generate (Desktop),"1. Arahkan ke gambar hasil
+2. Klik tombol Zoom In/Out",Gambar membesar atau mengecil sesuai tombol yang ditekan,Fitur dihilankang dalam production,DONE,-,dihilangkan
+11,"Tombol ""Hapus input sesi"" yang ada di salah satu halaman image to video maupun image to image, harus terisolasi supaya fungsinya tidak mempengaruhi halaman yang satu nya",Kosmetik,Terdapat input di halaman A dan B,"1. Isi form di halaman A & B
+2. Hapus sesi di halaman A","Muncul peringatan konfirmasi. Jika ya, hanya form halaman A yang terhapus (terisolasi), data pada form halaman B tidak ikut terhapus","Sesuai ekspektasi, tombol ""hapus input sesi"" sudah terisolasi satu sama lain, ketika sesi pada halaman ""image to image"" di hapus, maka fungsi hapus tersebut tidak menghapus file sumber di halaman ""image to video""",DONE,aman tanpa bug,
+12,Tombol notifikasi harus berfungsi sebagaimana mesti nya (Dekstop ver),Kosmetik,"Login di Desktop, memiliki notifikasi",1. Klik ikon lonceng/notifikasi,Muncul pop-up/dropdown berisi daftar notifikasi terbaru,Fitur dihilankang dalam production,DONE,-,Fitur Dihilangkan
+13,"Tambahkan tombol notifikasi untuk memberitahu user, sama halnya seperti versi dekstop nya (Mobile ver)",Kosmetik,Login menggunakan Mobile,1. Periksa header bar aplikasi di Mobile,Tombol ikon lonceng/notifikasi tersedia dan bisa ditekan,Fitur dihilankang dalam production,DONE,-,Fitur Dihilangkan
+14,Aspek rasio yang ada di halaman image to image harus terisolir dan tidak mempengaruhi halaman image to video,Kosmetik,Buka aplikasi di Desktop/Mobile,"1. Ubah rasio di ""Image to Image""
+2. Pindah ke ""Image to Video""",Rasio di halaman Image to Video kembali ke default (tidak terpengaruh halaman lain),Sesuai ekspektasi. Rasio pada setiap halaman sudah terisolasi.,DONE,aman tanpa bug,
+15,"Gambar referensi untuk setiap halaman harus terisolasi dan tidak terhubung dengan halman yang lain, misalnya gambar referensi yang ada di halaman image to image, tidak muncul atau menjadi refenresi halaman image to video ketika berpindah halaman, berlaku sebaliknya",Urgent,Upload gambar di salah satu fitur,"1. Upload referensi di ""Image to Image""
+2. Buka ""Image to Video""","Kolom sumber gambar di ""Image to Video"" tidak otomatis terisi gambar dari fitur sebelumnya",Sesuai ekspektasi. Sumber gambar sudah tidak saling terhubung.,DONE,aman tanpa bug,
+16,Pesan peringatan pada pop up ketika prompt tidak diisi harus tampil terjemahan (bahasa) yang dimengerti oleh user,Kosmetik,Berada di halaman Generate,"1. Kosongkan prompt area
+2. Klik Generate","Menampilkan pop-up ""Prompt tidak boleh kosong"" (Bukan code error)",Test case sudah di handle dengan tombol yang disabled jika user tidak mengisi prompt,DONE,Perlu perbaikan dalam menampilkan pesan error,"Ini dihilingkan aja, soalnya sekarang pake fitur disable button kalo prompt/gambar referensi kosong, jadi tidak perlu notice "
+17,"Tombol help menutupi tombol yang menampilkan ""memproses"", ""Tugas Selesai"" (Desktop ver)",Kosmetik,Masuk ke halaman generate,"1. Masukan gambar referensi
+2. Masukan prompt
+3. Klik generate untuk mengenerate image atau video
+4. Cek posisi tombol ""Help"" floating","Tombol Help tidak overlap (menimpa) tombol keterangan ""memproses"" dan ""Tugas Selesai"", semua tombol bisa diklik","Sesuai ekspektasi, tombol help tidak menutupi / overlap dengan tombol keterangan ""memproses"" dan ""tugas selesai""",DONE,aman tanpa bug,
+18,credit harus tetap (tidak berkurang) jika hasil dari generate video gagal,Urgent,Saldo credit awal 828,"1. Generate video yang akan failed
+2. Refresh halaman, cek saldo","Saldo harus dikembalikan (refund) ke 828, tidak bertambah jadi 838",Sesuai ekspektasi. Perhitungan refund saldo saat failed sudah akurat.,DONE,"Veo, Wan 2.7 (Spicy)",
+19,"setelah generate video, video nya tidak bisa stop, masih terputar di latar belakang",Urgent,Berhasil men-generate video,"1. Putar video hasil
+2. Tutup pop-up / navigasi ke tab lain",Audio/Video berhenti memutar ketika elemen ditutup atau berganti halaman,Fitur belum ter-deploy ke environment testing.,DONE,aman tanpa bug,
+20,nambahin model baru di img2img untuk model seedream 5,Urgent,Berada di dropdown model Image to Image,1. Klik list Model,"Model ""Seedream 5"" tersedia di dalam list untuk dipilih",Sesuai ekspektasi. model berhasil men-generate gambar yang berbeda dari gambar sumber/referensi,DONE,aman tanpa bug,
+21,Tombol Help yang terdapat dalam App AIKreativ muncul di halaman admin,Kosmetik,Login sebagai Admin,1. Masuk ke halaman Dashboard Admin Panel,Tombol Help khusus App/User tidak muncul di panel Admin,"seesuai ekspektasi, tidak ada tombol help di panel admin",DONE,aman tanpa bug,
+22,untuk image to video bisa hasilin video dari text gak?(modal prompt),Urgent,Berada di halaman Image to Video,"1. Kosongkan image referensi
+2. Isi modal prompt teks
+3. Klik Generate",Sistem menolak/meminta user mengupload gambar referensi terlebih dahulu,Sesuai ekspektasi. Harus menyertakan gambar referensi (tidak bisa text-only).,DONE,aman tanpa bug,
+23,tambahin capcha/turnstile di form bantuan(floating dan landing page),Urgent,Akses halaman Bantuan / Landing Page,"1. Buka form bantuan
+2. Cek sebelum tombol submit",Terdapat fitur Captcha (reCAPTCHA/lainnya) yang harus diselesaikan,"Sesuai ekspektasi, fitur captcha/turnstile dapat berfungsi dengan baik dan email berhasil terikirim ke admin",DONE,aman tanpa bug,
+24,tombol refresh di halaman generate profile hapus,Kosmetik,"Buka halaman ""Generate Profile""",1. Periksa area navigasi dan form,"Tidak ada tombol ""Refresh"" di halaman tersebut","Sesuai ekspektasi, tidak terdapat tombol refresh di riwayat",DONE,aman tanpa bug,
+25,"di halaman detail transaksi, website bisa di scroll ke pinggir",Kosmetik,Layar diset ke ukuran terkecil (mobile) / buka detail transaksi,"1. Masuk ke detail transaksi
+2. Coba scroll horizontal","Tidak ada horizontal scroll (overflow-x hidden), tabel menyesuaikan layar","Sesuai ekspektasi. Overflow sudah diperbaiki, tampilan rapi.",DONE,,
+26,"di landing page, ketika click tombol image to video, malah mengarah ke image to image",Kosmetik,Berada di Landing Page,"1. Klik tombol fitur ""Image to Video""","Navigasi mengarah dengan benar ke halaman ""Image to Video"" (Atau mengarah ke anchor yang salah?)","Sesuai ekspektasi, ketika klik tombol ""image to video"", sistem otomatis mengarah ke halaman image to video",DONE,aman tanpa bug,
+27,tambahin agar bisa select currency di landing page,Urgent,Berada di bagian harga/Pricing Landing Page,1. Periksa dropdown mata uang,Terdapat opsi pilihan mata uang (misal: IDR / USD) dan harga menyesuaikan,Sesuai ekspektasi. Mata uang dapat dirubah dan sistem menerima dengan konversi mata uang IDR dengan jumlah yang sama,DONE,aman tanpa bug,
+28,kalimat di halaman landing page masih ada yang belom di translate,Kosmetik,"Atur bahasa website ke ""ID"" (Indonesia)",1. Scroll dan baca seluruh copy/teks di Landing Page,Seluruh teks sudah sepenuhnya diterjemahkan tanpa ada bahasa asing yang tersisa,"Sesuai ekspektasi, setiap kata dalam landing page sudah ditranslate sesuai dengan bahasa yang dipilih",DONE,aman tanpa bug,
+29,admin panel. banner unduh app harusnya gak ada,Kosmetik,Login ke Admin Panel,1. Periksa tampilan header/footer di Panel Admin,"Banner promosi ""Unduh App"" tidak dimunculkan di sisi Admin",Sesuai ekspektasi. Banner berhasil dihilangkan di Panel Admin.,DONE,,
+30,"di halaman dashboard, menu jangan di scroll otomatis(mobile)",Kosmetik,Buka Dashboard menggunakan mobile,1. Perhatikan perilaku menu navigasi saat halaman direfresh/dibuka,Posisi menu tetap statis/diam (tidak autoscroll sendiri),"Sesuai ekspektasi, menu tidak otomatis ter-scroll",DONE,aman tanpa bug,
+31,"di halaman AI history, harus ada advance filter (generate kapan, ada error?, dll.)",Urgent,Punya data AI history yang bervariasi,"1. Buka halaman ""AI History""
+2. Klik tombol ""Filter""","Muncul dropdown Advance Filter (Berdasarkan Tanggal, Status Error, Tipe Model)","sesuai ekspektasi, terdapat advance filter untuk mengetahui informasi tertentu (generate kapan, error pada model, dll)",DONE,aman tanpa bug,
+32,admin belom bisa config password,Urgent,Login sebagai Super Admin,"1. Buka pengaturan akun/admin
+2. Ganti password
+3. Simpan",Sistem memperbarui password admin dan password baru dapat digunakan untuk login,Sesuai ekspektasi. Konfigurasi ubah password admin berfungsi normal.,DONE,aman tanpa bug,
+33,"berikan alert, kalo misalkan credit 80 KIE hampir habis(sisa 10) harap segera top up ke email admin",Urgent,Atur saldo Credit menjadi 10,"1. Generate/gunakan fitur hingga saldo = 10
+2. Cek notifikasi sistem","Muncul notifikasi Alert: ""Credit hampir habis (Sisa 10), harap segera top up"" yang terhubung ke email Admin",Sesuai ekspektasi. Alert email terkirim saat credit menyentuh limit bawah.,DONE,aman tanpa bug,
+34,"berikan alert, untuk key API untuk credit yang lebih dari 80(1000), minimal memberikan alert nya pada kondisi 200 token lagi",Urgent,Atur sisa token/credit API ke 200,1. Lakukan request API hingga kuota sisa 200 token,Sistem mengirimkan trigger Alert/Notifikasi sisa kuota menipis (200 Token),Sesuai ekspektasi. Trigger notifikasi API key berfungsi.,DONE,aman tanpa bug,
+35,tambahkan advance filter di halaman transaction (admin),Urgent,"Login Admin, buka ""Transaction""",1. Periksa opsi Filter data,"Tersedia Advance Filter (Tanggal, Status Transaksi, User, Jumlah)","sesuai ekspektasi, dalam halaman transaction (admin) sudah terdapat filter untuk mengetahui tanggal berapa transaksi tersebut terjadi, apakah di terima, di tolak, palsu, dan jenis transaksi nya",DONE,aman tanpa bug,
+36,terdapat pagination yang menampilkan 5 - 10 transaksi dalam 1 halaman,Kosmetik,"Login Admin, buka ""Transaction""",1. scroll ke paling bawah,Tersedia tombol prev dan next untuk berpindah halaman 1 ke halaman selanjutnya atau sebaliknya (jika n > 1),Sudah sesuai,DONE,-,"ini harusnya done, gak usah ada button pintasan untuk ke top"
+37,tambahkan export excel di transaksi untuk bisa di jadikan laporan transaksi,Urgent,Terdapat setidaknya 1 data transaksi (Admin),"1. Buka list ""Transaction""
+2. Klik ""Export to Excel""",Data transaksi terunduh dalam format .xlsx / .csv dengan rapi,"Fitur berhasil di uji dan hasilnya baik, excel berhasil di download dan di buka di ms excel dengan format yang sudah rapih",DONE,,Belom deploy 
+38,tambahkan advance filter di halaman support,Urgent,Buka halaman Support/Tiket Bantuan,1. Periksa alat pencarian/Filter,"Terdapat Advance Filter (Status Tiket, Tgl Dibuat, Prioritas)",Filter sudah ditambahkan,DONE,Aman tanpa  bug,sudah deploy
+39,tambahkan tutorial seperti di KIE untuk pengguna pertama,Kosmetik,Buat akun baru (Fresh Account),1. Login untuk pertama kali,Muncul pop-up onboarding / Walkthrough tutorial penggunaan aplikasi,"Tutorial sudah ditambahkan di landing page, dengan menklik tombol ""Lihat cara kerja"" maka user langsung di arahkan ke tutorial",DONE,,
+40,"ngambil KIE Key, langsung dari tele",Urgent,Buka integrasi bot Telegram / KIE Key config,1. Coba request pengambilan Key via Telegram,Sistem langsung mengambil data KIE Key tanpa intervensi manual yang rumit,Sesuai ekspektasi. Fetching KIE Key via Telegram berjalan sukses.,DONE,aman tanpa bug,
+41,"sebelum generate image, harus centang persetujuan terlebih dahulu(kayak privasi)",Urgent,Berada di form Generate Image,"1. Isi prompt dan gambar referensi
+2. Langsung klik ""Generate"" tanpa centang ToS","Tombol Generate disabled atau muncul pop-up validasi jika kotak ""Persetujuan Privasi"" belum di-centang",Sesuai ekspektasi. tombol generate ter disable dan muncul pop-up untuk menyetuji privasi sebelum lanjut generate,DONE,,
+42,Tombol help tidak muncul bersamaan dengan banner promosi seedream 5 pro (Versi Mobile),Kosmetik,Berada di landing page,"1. masuk kedalam aplikasi, akan muncul halaman landing page yang berisi banner promosi seedream 5 pro","Tombol ""Help"" tidak muncul sebelum banner promosi seedream 5 pro yang ada dalam landing page hilang","Pada tampilan mobile, tombol ""Help"" tidak lagi muncul",DONE,-,Sudah Fix
+43,Translate email marketing sesuai preferensi user (ind/eng),Kosmetik,Buat marketing email di menu marketing,1. masuk admin. 2. masuk menu marketing. 3. buat email marketing baru. 4. cek di app yang ind dan eng. bahasa harus mengikuti preferensi mereka,bahasa di email sesuai dengan preferensi user,Fitu ini dihilangkan dari Production,DONE,,Fitur Dihilangkan
+44,Field dari gambar referensi yang dihapus tidak muncul sebagai gambar referensi kosong,Kosmetik,Berada di halaman image to image,"1. input gambar referensi sebanyak 3 gambar.
+2. hapus gambar referensi menggunakan tombol ""Hapus input sesi""","jumlah field yang dihapus sama dengan jumlah gambar yang dihapus dengan menggunakan tombol ""hapus input sesi""","Sesuai ekspektasi, jumlah field dari gambar yang dihapus sudah sesuai dengan banyaknya gambar yang dihapus",DONE,aman tanpa bug,
+45,"Model Grok Imagine pada ""image to video"" harus gagal men-generate jika user mengirimkan prompt kosong atau "" "" ",Urgent,Berada di halaman Image to video,"1. input gambar sumber
+2. masukan prompt "" ""
+3. klik hasilkan video","video gagal digenerate karena prompt yang diberikan kosong atau "" ""","Sesuai ekspektasi, video gagal di generate dikarenakan prompt kosong atau berisi "" """,DONE,aman tanpa bug,
+46,"Model Seedance 1.5 (spicy) pada ""image to video"" harus gagal men-generate jika user mengirimkan prompt kosong atau "" "" ",Urgent,Berada di halaman Image to video,"1. input gambar sumber
+2. masukan prompt "" ""
+3. klik hasilkan video","video gagal digenerate karena prompt yang diberikan kosong atau "" ""","Sesuai ekspetasi. video gagal di generate oleh model Seedance 1.5 (spicy) karena user menginput "" """,DONE,aman tanpa bug,
+47,Sistem menampilkan lisensi agreement ketika generate video menggunakan model tertentu (Spicy),Urgent,Berda di halaman image to video,"1. input gambar sumber
+2. masukan prompt
+3. pilih model AI yang memliki label (Spicy)
+4. Verifikasi lisensi agreement",Sistem menampilkan lisensi agreement sebelum generate video dimulai,Sesuai ekspetasi. lisensi agreement muncul ketika user hendak men-generate video,DONE,aman tanpa bug,
+48,Akun baru (Referred) otomatis mendapat saldo kredit +6 (Bonus Daftar).,Urgent,localStorage memiliki referral_code. Pastikan akun Google yang digunakan belum pernah terdaftar,"Klik tombol ""Daftar/Login dengan Google"". Selesaikan autentikasi Google.",Akun baru (Referred) otomatis mendapat saldo kredit +6 (Bonus Daftar).,"Sesuai ekspektasi, akun baru yang referred mendapatkan bonus +6 kredit",DONE,aman tanpa bug,
+49,Akun pemilik kode (Referrer) otomatis mendapat saldo kredit +3 (Bonus Mengundang).,Urgent,Berada di halaman akun,"1. klik program referal
+2. lihat total yang diundang dan total kredit yang diraih nya",Akun lama (pemiliki kode referral) mendapatkan bonus sebanyak +3,"Sesuai ekspektasi, akun pemiliki kode otomatis bertambah +3 credit",DONE,aman tanpa bug,
+50,Pelacakan URL Referral,Urgent,User membuka aplikasi (belum login),"1. Buka URL web dengan parameter referral (contoh: https://[domain]/?ref=KODE_VALID)
+2. Periksa localStorage browser",Parameter ref tersimpan di localStorage sebagai referral_code. Halaman Landing Page menyesuaikan (jika ada komponen/banner referral),Sesuai ekspektasi. data referral sudah tersimpan dalam local storage pada akun baru yang login dengan menggunakan link referral,DONE,aman tanpa bug,
+51,Login Akun Google Lama via Link Referral (Negative Test),Urgent,localStorage memiliki referral_code. Akun Google yang digunakan sudah pernah terdaftar sebelumnya,1. Lakukan Login Google,"Pengguna berhasil login. TIDAK ADA penambahan bonus kredit pendaftaran untuk siapa pun, karena pengguna bukan akun baru","Sesuai ekspektasi, akun lama tidak mendapatkan bonus credit untuk akun baru dari program referral ketika login menggunakan link referral",DONE,aman tanpa bug,
+52,Tampilan Kode Referral Milik Sendiri,Kosmetik,Login dengan akun mana saja,"1. Buka panel Studio -> klik Avatar (pojok kanan atas)
+2. Klik tombol ""Program Referral"" (warna hijau)","Diarahkan ke halaman /profile. Kode Referral unik milik akun tersebut tampil dengan jelas. Tombol ""Salin"" (Copy) berfungsi untuk menyalin full URL (https://.../?ref=KODE)","Sesuai ekspektasi, halaman menampilkan kode referral milik akun tersebut",DONE,aman tanpa bug,
+53,Input Manual Kode Referral (Sukses),Urgent,Akun A belum pernah menggunakan kode referral siapapun (referredBy kosong). Akun B adalah pemilik kode,"1. Buka Halaman Profil Akun A
+2. Pada form ""Gunakan Kode Referral"", ketikkan kode milik Akun B
+3. Klik tombol ""Gunakan""","Muncul notifikasi sukses (""Kode berhasil digunakan!""). Form input menghilang, digantikan State Terkunci (""Anda mendaftar atau menggunakan kode milik @[username-akun-b]. Anda akan mendapat bonus +20% saat Top Up pertama!""). TIDAK ADA penambahan kredit pendaftaran (6 & 3)","Sesuai ekspektasi, akun A yang belum pernah menggunakan kode referral dari siapapun (referred kosong), berhasil di kaitkan dan mendapatkan bonus +6 untuk akun A dan akun B mendapatkan bonus +3",DONE,aman tanpa bug,
+54,Input Manual dengan Kode Sendiri (Negative Test),Urgent,Akun A belum pernah menggunakan kode referral siapapun,"1. Masukkan kode referral milik Akun A itu sendiri
+2. Klik tombol ""Gunakan""","Ditolak oleh sistem dengan pesan error (misal: ""Cannot use your own referral code"")","Sesuai ekspektasi, sistem menolak kode referral milik akun sendiri",DONE,aman tanpa bug,
+55,Input Manual Kode Tidak Valid (Negative Test),Urgent,Akun A belum pernah menggunakan kode referral siapapun,"1. Masukkan teks asal (contoh: KODE_ASAL123)
+2. Klik tombol ""Gunakan""","Ditolak oleh sistem dengan pesan error (misal: ""Invalid referral code"")","Sesuai ekspektasi, sistem menolak kode referral yang diinputkan oleh user ",DONE,aman tanpa bug,
+56,Pembelian Paket Top-Up Pertama Kali (Referred User),Urgent,Akun A sudah terkait dengan Referrer B (via Link URL/Input Manual). purchaseBonusCount masih 0,"1. Akun A melakukan pembelian paket kredit (misal: Beli 100 Kredit)
+2. Transaksi sukses di-approve (Admin Panel /payment/admin-action atau sistem API)","Akun A menerima 100 Kredit + 20 Bonus Kredit (Total 120). Akun B otomatis menerima 30 Bonus Kredit (30% dari 100). purchaseBonusCount berubah menjadi 1. Di Halaman Profil Akun B, tab Riwayat Undangan, total ""Kredit Diraih"" dari Akun A bertambah +30",Sesuai ekspektasi Akun A top up dan menerima bonus +20 dan Akun B bertambah kredit sebesar 30% dari transaksi yang dilakukan Akun A,DONE,aman tanpa bug,
+57,Pembelian Paket Top-Up Kedua (Negative Test),Urgent,Melanjutkan test sebelumnya. purchaseBonusCount sudah bernilai 1,1. Akun A kembali melakukan Top-Up (misal: Beli 50 Kredit),Akun A hanya menerima 50 Kredit (tanpa tambahan 20%). Akun B TIDAK menerima bonus apapun,Sesuai ekspektasi Akun A melakukan top up yang kedua kali nya dan tidak mendapatkan bonus dari program referral dan Akun B juga tidak mendapatkan bonus sebesar 30% dari Akun A,DONE,aman tanpa bug,
+58,Pembelian Paket Top-Up (Non-Referred User),Urgent,Gunakan akun murni tanpa kode referral (tanpa klik link dan tanpa input manual),1. Lakukan Top-Up kredit,"Akun tersebut hanya mendapat kredit standar, tidak ada bonus 20% dan tidak ada pihak lain yang diuntungkan",Sesuai ekspektasi Akun murni (tanpa kode referral dan tanpa klik link serta tanpa input manual) tidak mendapatkan bonus drai program maupun dari pihak manapun,DONE,aman tanpa bug,
+59,Uji Tata Letak (Responsive Layout) Input Manual,Kosmetik,Buka halaman /profile,"1. Buka di berbagai ukuran layar (Desktop, Tablet, Mobile/iPhone SE)
+2. Ubah bahasa antara Indonesia dan Inggris","Tombol ""Gunakan""/""Apply"" TIDAK terpotong, mengecil, atau tulisannya pindah baris. Kotak input bisa menyesuaikan sisa lebar layar secara elastis","Sesuai ekspektasi, tidak ada kata yang terpotong, mengecil, atau tulisannya berpindah garis. kotak input juga dapat menyesuaikan lebar nya",DONE,aman tanpa bug,
+60,Paket Pro diperbaharui menjadi 880 Credit,Urgent,Buka Landing Page atau Halaman Harga,"1. Cek tabel harga untuk ""Paket Pro""",Harga yang tertampil pada Paket Pro berubah menjadi angka 880 Credit,Sesuai ekspektasi. Harga Paket Pro sudah berubah menjadi 880 Credit dan tercatat konsisten pada daftar transaksi,DONE,Sudah deploy,
+61,Tracking Credit (Riwayat/Log Mutasi Kredit),Urgent,"Akun memiliki riwayat transaksi kredit (Top Up, Bonus Referral, penggunaan fitur Generate, dll)","1. Buka halaman riwayat/histori kredit pada akun
+2. Bandingkan jumlah & waktu perubahan saldo dengan log transaksi yang tercatat di database","Setiap perubahan saldo kredit (penambahan maupun pengurangan) tercatat dengan jelas beserta sumber transaksi, jumlah, dan waktu (timestamp), sehingga saldo dapat ditelusuri/di-audit",Sesuai ekspektasi. perhitungan credit dapat di tracking dengan cukup baik,DONE,aman tanpa bug,
+62,Fixing Bug Autoplay Video Hasil Generate (Desktop ver),Urgent,"Berhasil men-generate video, menggunakan Desktop","1. Generate video hingga proses selesai
+2. Amati apakah video hasil generate langsung ter-play otomatis","Video hasil generate TIDAK autoplay secara otomatis, video hanya dapat diputar ketika user menekan tombol Play secara manual",Sesuai ekspektasi. Bug autoplay pada versi desktop sudah diperbaiki,DONE,aman tanpa bug,
+63,button regenerate di hilangkan di modal hasil generate,Kosmetik,Berhasil men-generate video atau gambar,"1. masuk kedalam gambar atau video yang berhasil di generate
+2. cari tombol regenerate untuk melakukan generate ulang",tombol regenerate tidak muncul di modal hasil dari generate video maupun image,Sesuai ekspektasi. tidak ditemukan tombol regenearet pada hasil generate dari gambar maupun video,DONE,aman tanpa bug,
+64,"button zoom in & out, berbagi, unduh, tutup sesi(lupa namanya) pada desktop ver di hapus",Kosmetik,"Buka halaman ""Image to Image"" atau ""Image to Video""","1. cari tombol zoom in, zoom out, berbagi, unduh, dan tutup sesi","Tombol tombol tersebut tidak muncul di halaman ""Image to Image"" dan ""Image to Video""","Sesuai ekspektasi. tidak ditemukan tombol zoom in, zoom out, berbagi, unduh, dan tutup sesi pada halaman ""Image to Image"" dan ""Image to Video""",DONE,aman tanpa bug,
+65,Tombol Regenerate Dihilangkan di Modal Hasil Generate,Kosmetik,"Berhasil generate image/video, modal hasil generate terbuka","1. Buka modal hasil generate
+2. Periksa daftar tombol aksi yang tersedia pada modal","Tombol ""Regenerate"" tidak muncul/sudah dihilangkan dari modal hasil generate",Sesuai ekspektasi. Tombol Regenerate sudah tidak ditampilkan pada modal,DONE,aman tanpa bug,
+66,"Tombol Zoom In/Out, Berbagi, Unduh, dan Tutup Sesi (Desktop ver) Dihapus",Kosmetik,"Berhasil generate image/video, menggunakan Desktop","1. Buka modal hasil generate
+2. Periksa tombol Zoom In/Out, Berbagi (Share), Unduh (Download), dan Tutup Sesi","Tombol Zoom In/Out, Berbagi, Unduh, dan Tutup Sesi sudah dihapus/tidak ditampilkan pada modal hasil generate versi Desktop",Sesuai ekspektasi. Seluruh tombol tersebut sudah dihapus dari modal versi desktop,DONE,aman tanpa bug,
+67,"Processing tetap tampil dan tidak hilang meskipun halaman di-refresh. Jika proses generate gagal, hasil/error masuk ke kotak gagal, bukan fallback atau masuk ke riwayat user biasa.",Urgent,"User login, memiliki credit yang cukup, dan berada di halaman generate image/video","1. Masukkan prompt dan/atau gambar referensi sesuai kebutuhan model
+2. Klik tombol Generate
+3. Saat status masih Processing, refresh halaman browser
+4. Periksa apakah status/model Processing masih tetap tampil
+5. Tunggu sampai proses generate selesai atau gagal
+6. Jika proses gagal, periksa lokasi hasil/error generate","Status/model Processing tetap tampil dan tidak hilang meskipun halaman di-refresh. Jika proses generate gagal, hasil/error masuk ke kotak gagal, bukan fallback atau masuk ke riwayat user biasa.",hasil generate masih tercampur dengan riwayat user baik yang error maupun yang sukses,DONE,-,
+68,"Status generate tidak konsisten antara Production dengan Riwayat Generasi AI yang terdapat dalam halaman admin, Tugas Latar Belakang, dan Riwayat setelah browser di-refresh",Kosmetik,"User login, memiliki credit yang cukup, berada di halaman Image to Image / Generate Image","1. Generate gambar
+2. Segera refresh browser setelah tulisan/status """"Memproses"""" muncul
+3. Lihat status proses pada tombol/panel """"Tugas Latar Belakang""""
+4. Cek hasil generate pada halaman Riwayat
+5. Refresh kembali browser
+6. Bandingkan status yang tampil di production dengan yang di halaman riwayat genereasi AI (admin), Tugas Latar Belakang, dan Riwayat hasil generate","Status generate harus konsisten di semua tempat. Jika proses berhasil, maka Production, Tugas Latar Belakang, dan Riwayat harus menampilkan status berhasil serta hasil gambar tampil. Jika proses gagal, maka semuanya harus menampilkan status gagal dan masuk ke kotak gagal. Sistem tidak boleh menampilkan gagal di Production/Tugas Latar Belakang tetapi berhasil di Riwayat, atau sebaliknya.","Sesuai ekspektasi, status generate sudah konsisten di semua tempat",DONE,aman tanpa bug,
+69,Uji fungsi generate menggunakan model Wan,Urgent,"User sudah login, kredit mencukupi, dan model Wan berstatus enable","1. Pilih model 'Wan' di menu dropdown.
+2. Masukkan prompt yang valid.
+3. Klik tombol 'Generate'.","Proses generate berhasil tanpa error, hasil output sesuai dengan prompt, dan kredit berkurang sesuai tarif model Wan.","Sesuai ekspektasi, proses berhasil di generate tanpa error maupun stuck, dan  kredit berkurang sesuai tarif model Wan",DONE,aman tanpa bug,
+70,Uji fungsi generate menggunakan model Qwen,Urgent,"User sudah login, kredit mencukupi, dan model Qwen berstatus enable","1. Pilih model 'Qwen' di menu dropdown.
+2. Masukkan prompt yang valid.
+3. Klik tombol 'Generate'.","Proses generate berhasil tanpa error, hasil output sesuai dengan prompt, dan kredit berkurang sesuai tarif model Qwen.","Sesuai ekspektasi, proses berhasil di generate tanpa error maupun stuck, dan  kredit berkurang sesuai tarif model Qwen",DONE,aman tanpa bug,
+71,Uji fungsi generate menggunakan model Grok,Urgent,"User sudah login, kredit mencukupi, dan model Grok berstatus enable","1. Pilih model 'Grok' di menu dropdown.
+2. Masukkan prompt yang valid.
+3. Klik tombol 'Generate'.","Proses generate berhasil tanpa error, hasil output sesuai dengan prompt, dan kredit berkurang sesuai tarif model Grok.",Proses generate berhasil dan kredit berkurang sesuai tarif model Grok,DONE,-,Done
+72,Verifikasi widget Turnstile pada Form Help,Urgent,User berada di halaman Bantuan (Help Form),"1. Buka halaman Form Help.
+2. Periksa kemunculan widget Cloudflare Turnstile.
+3. Isi form bantuan dan lakukan verifikasi Turnstile.
+4. Klik tombol 'Submit/Kirim'.","Widget Turnstile muncul dengan sempurna. Form berhasil dikirim jika Turnstile valid, dan sistem menolak pengiriman jika Turnstile belum terverifikasi.","Sesuai ekspektasi, widget Turnstile muncul, dan form berhasil dikirim jika Turnstile valid",DONE,-,
+73,Verifikasi widget Turnstile pada Floating Help,Kosmetik,User mengakses halaman yang memiliki tombol Floating Help,"1. Klik ikon Floating Help yang melayang.
+2. Periksa kemunculan widget Turnstile di pop-up form.
+3. Isi pesan bantuan & verifikasi Turnstile.
+4. Klik tombol 'Kirim'.",Widget Turnstile tampil proporsional di dalam widget melayang dan berfungsi memvalidasi pengiriman pesan/form.,"Sesuai ekspektasi, widget Turnstile muncul, dan form berhasil dikirim jika Turnstile valid",DONE,aman tanpa bug,
+74,Mencegah double generate (klik ganda dalam satu waktu),Urgent,"User berada di halaman Generate, mengisi prompt valid, saldo mencukupi","1. Masukkan prompt pada kolom input.
+2. Klik tombol 'Generate' secara cepat 2 kali atau lebih (double/multiple click).
+3. Periksa riwayat generasi dan mutasi kredit.",Tombol 'Generate' langsung disabled (loading state) pada klik pertama. Sistem hanya memproses 1 request generate dan memotong kredit hanya 1 kali.,"Sesuai ekspektasi, sistem hanya memproses klik yang pertama meskipun user meng-klik lebih dari 1x secara cepat",DONE,aman tanpa bug,
+75,Nonaktifkan (Disable) model AI dari Admin Panel,Kosmetik,Login sebagai Admin di Admin Panel,"1. Buka menu Konfigurasi Model di Admin Panel.
+2. Ubah status model tertentu dari Enable menjadi Disable.
+3. Simpan perubahan.
+4. Coba cek daftar model di akun User.",Model yang di-disable tidak muncul / tidak dapat dipilih lagi oleh user di halaman generate.,Sudah dibuat dan aman digunakan,DONE,-,
+76,Aktifkan (Enable) kembali model AI dari Admin Panel,Kosmetik,"Login sebagai Admin, model dalam status Disable","1. Buka menu Konfigurasi Model di Admin Panel.
+2. Ubah status model dari Disable menjadi Enable.
+3. Simpan perubahan.
+4. Refresh browser pada halaman User.",Model kembali muncul di daftar pilihan model dan berfungsi normal saat digunakan untuk generate oleh user.,sudah dibuat dan aman digunakan,DONE,-,
+77,Verifikasi pengiriman email notifikasi saat terjadi error (notif-email-error),Urgent,Email penerima alert sudah dikonfigurasi; terjadi error sistem/generate,"1. Kondisikan sistem agar terjadi kegagalan/error saat generate (misal: API key invalid/RTO).
+2. Periksa log sistem & kotak masuk (inbox/spam) email admin/developer.","Sistem otomatis mengirimkan email notifikasi error secara real-time yang berisi detail error, user ID, waktu kejadian, dan model yang digunakan.",Pesan berhasil terkirim ke email admin,DONE,-,
+78,"Verifikasi fungsi tombol Quick Action (Refund, dll.) pada notifikasi error",Urgent,Terjadi error transaksi/generate; admin menerima notifikasi error dengan tombol aksi,"1. Buka email/alert notifikasi error yang diterima.
+2. Periksa ketersediaan tombol aksi cepat (misal: 'Refund Credit').
+3. Klik tombol 'Refund' tersebut.
+4. Periksa saldo kredit user yang mengalami error.",Tombol aksi cepat tersedia dan berfungsi. Sistem langsung mengeksekusi pengembalian kredit ke akun user tanpa admin perlu login dan mencari transaksi manual ke dalam Admin Panel.,Tombol aksi cepat sudah tersedia dan berfungsi dengan baik,DONE,-,
+79,"tambahkan pop up untuk memberitahu kepada user, ""jangan lupa gunakan kode referral dari akun yang terkait untuk mendapatkan bonus credit""",Urgent,"berada di halaman ""profil & referral"" dan pastikan terdapat kode referral dari link yang tertaut","1. login dengan link referral
+2. masuk akun google
+3. muncul pop up kepada user untuk mengklik tombol gunakan supaya mendapatkan bonus dari program referral","muncul pop up yang memberitau user untuk mengklik tombol gunakan pada halaman ""profil & referral""",Hasilnya muncul sebuah popup dan kredit bertambah yang awalnya 6 jadi 12 kredit,DONE,aman tanpa bug,Sudah Di tambahkan
+80,"Gambar di-generate dengan model lain, namun di riwayat nama model berubah menjadi Nano Banana",Urgent,"User login, memiliki credit cukup, dan berada di halaman generate image","1. Pilih model selain Nano Banana, misalnya Qwen/Grok/Wan/Seedream
+2. Masukkan prompt valid
+3. Klik Generate
+4. Setelah berhasil, buka halaman Riwayat/History
+5. Periksa nama model pada hasil generate tersebut","Nama model di halaman riwayat harus sesuai dengan model yang benar-benar digunakan saat generate, bukan selalu berubah menjadi Nano Banana",Nama model di halaman riwayat sudah sesuai dengan model yang digunakan saat generat,DONE,Bug validasi pencatatan model pada history,
+81,Pesan error pada saat generate di halaman riwayat harus diterjemahkan,Kosmetik,User login dan pernah mengalami generate gagal/error,"1. Lakukan generate yang menyebabkan error
+2. Buka halaman Riwayat/History
+3. Periksa pesan error pada item riwayat gagal","Pesan error tampil dalam bahasa yang mudah dipahami user, sesuai preferensi bahasa, bukan berupa raw error/sintaks teknis","Pesan error berhasil ditampilkan dengan bahasa yang mudah dipahami, sesuai preferensi bahasa",DONE,Perlu validasi translation error di history,
+82,Pesan kredit refund oleh admin tidak boleh muncul di halaman riwayat generate,Urgent,User memiliki riwayat refund credit dari admin,"1. Admin melakukan refund credit kepada user
+2. Login sebagai user terkait
+3. Buka halaman Riwayat/History generate AI
+4. Periksa apakah pesan refund muncul di riwayat generate",Pesan refund credit oleh admin tidak tampil di halaman riwayat generate AI. Refund hanya boleh tampil di mutasi/riwayat kredit jika tersedia,Pesan refund credit tidak muncul di halaman riwayat generate AI user. Riwayat transaksi refund terpisah dengan benar dan hanya tampil di panel admin,DONE,Memisahkan riwayat generate dengan riwayat transaksi kredit,
+83,User tidak bisa kembali dari halaman referral ke halaman dashboard untuk generate AI maupun top up credit pada Firefox,Urgent,User login menggunakan browser Firefox dan berada di halaman Referral/Profile,"1. Buka aplikasi menggunakan Firefox
+2. Login sebagai user
+3. Masuk ke halaman Referral/Profile
+4. Klik navigasi kembali ke Dashboard/Generate AI
+5. Klik navigasi ke Top Up Credit/Token",User dapat berpindah dari halaman Referral ke Dashboard Generate AI maupun halaman Top Up Credit tanpa stuck/error,Navigasi dari halaman Referral ke Dashboard dan Top Up Credit di browser Firefox berjalan lancar tanpa stuck/error,DONE,Khusus validasi browser Firefox,
+84,Tambahkan tombol switch untuk mematikan dan menyalakan model AI khusus model berlabel Spicy,Urgent,Login sebagai Admin dan terdapat model AI dengan label Spicy,"1. Masuk ke Admin Panel
+2. Buka halaman konfigurasi model AI
+3. Cari model dengan label Spicy
+4. Matikan switch model Spicy
+5. Login sebagai user dan cek daftar model
+6. Nyalakan kembali switch model Spicy
+7. Cek kembali daftar model di user","Model AI berlabel Spicy dapat di-disable/enable melalui switch admin. Jika disabled, model tidak muncul/tidak bisa digunakan user. Jika enabled, model kembali tersedia","Sesuai ekspektasi, terdapat tombol switch di akun pengguna pada halaman generate",DONE,aman tanpa bug,Sudah Di Tambahkan
+85,Modal hasil generate pada mobile sudah responsive dan fungsi download berjalan normal,Kosmetik,User login menggunakan mobile dan berhasil generate image/video,"1. Buka aplikasi melalui device mobile
+2. Generate image/video sampai berhasil
+3. Buka modal hasil generate
+4. Periksa tampilan modal di berbagai ukuran layar mobile
+5. Klik tombol Download","Modal hasil generate tampil responsive, tidak terpotong, tidak overflow horizontal, dan file berhasil di-download dengan benar tanpa masalah URL blob","Tampilan modal hasil generate responsif pada tampilan mobile (tidak terpotong/overflow), dan fungsi download file berjalan normal tanpa kendala URL blob.",DONE,Validasi responsive modal dan download mobile,
+86,Teks pencarian tidak boleh mencari berdasarkan prompt demi privasi,Urgent,Terdapat data riwayat generate dengan prompt tertentu,"1. Buka halaman Riwayat/AI History/Admin History
+2. Masukkan kata yang hanya terdapat di prompt user ke kolom pencarian
+3. Klik Cari atau tekan Enter","Sistem tidak menampilkan hasil pencarian berdasarkan isi prompt. Pencarian hanya boleh berdasarkan field yang diizinkan seperti username, email, model, status, atau error message jika disediakan","Fitur pencarian tidak mencari berdasarkan isi prompt user. Saat prompt dimasukkan ke kolom pencarian admin, hasil yang ditampilkan kosong",DONE,Untuk menjaga privasi prompt user,
+87,Pencarian berdasarkan model harus menggunakan dropdown,Kosmetik,Terdapat data generate dari beberapa model AI,"1. Buka halaman Riwayat/AI History
+2. Periksa filter model
+3. Klik filter model
+4. Pilih salah satu model dari dropdown","Filter model berbentuk dropdown, bukan input teks bebas. User/admin dapat memilih model dari daftar yang tersedia",Filter model sudah berbentuk dropdown,DONE,Menghindari typo dan pencarian tidak valid,
+88,Credit user dapat dicari berdasarkan rentang nilai,Urgent,Terdapat data user dengan variasi saldo/pemakaian credit,"1. Buka halaman AI History/Admin History
+2. Isi filter credit minimum dan maksimum, misalnya 10 sampai 100
+3. Klik Cari/Apply Filter",Sistem hanya menampilkan data user/generate yang memiliki credit dalam rentang nilai yang dipilih,Filter rentang credit berfungsi dengan baik. Tabel hanya menampilkan data user yang pemakaian kreditnya sesuai dengan rentang nilai yang dipilih.,DONE,Validasi filter range credit,
+89,Status dapat dicari menggunakan dropdown,Kosmetik,"Terdapat data generate dengan status Success, Failed, Processing","1. Buka halaman AI History/Admin History
+2. Klik filter status
+3. Pilih status dari dropdown, misalnya Success/Failed/Processing
+4. Terapkan filter",Filter status tersedia dalam bentuk dropdown dan hasil data sesuai dengan status yang dipilih,Filter status sudah tersedia dalam bentuk dropdown,DONE,Dropdown status lebih konsisten,
+90,Input teks dapat mencari berdasarkan error message,Urgent,Terdapat riwayat generate yang memiliki error message,"1. Buka halaman AI History/Admin History
+2. Masukkan kata kunci dari error message pada input pencarian error
+3. Klik Cari",Sistem menampilkan data yang memiliki error message sesuai kata kunci yang dicari,Sistem berhasil menampilkan error sesuai dengan kata kunci,DONE,"Khusus pencarian error, bukan prompt",
+91,Tambahkan filter rentang tanggal pada riwayat generate,Kosmetik,Terdapat data generate pada beberapa tanggal berbeda,"1. Buka halaman AI History/Admin History
+2. Pilih tanggal mulai dan tanggal akhir
+3. Klik Cari/Apply Filter",Sistem hanya menampilkan data generate yang berada dalam rentang tanggal yang dipilih,Filter telah dilengkapi rentang tanggal untuk menampilkan data sesuai pilihan,DONE,-,Sudah Di Tambahkan
+92,Card riwayat dibuat accordion default tertutup agar tampilan lebih ramping,Kosmetik,Menggunakan halaman riwayat versi mobile atau card layout,"1. Buka halaman Riwayat/AI History pada mobile
+2. Periksa tampilan list card
+3. Klik salah satu card
+4. Klik kembali untuk menutup","Setiap card tampil dalam bentuk accordion, default dalam kondisi tertutup. Detail hanya muncul saat card dibuka",Card riwayat pada versi mobile tampil dalam bentuk accordion dan detail riwayat dapat dibuka-tutup dengan lancar saat diklik.,DONE,Membuat tampilan mobile lebih ringkas,
+93,"Pagination dapat diklik seperti 1, 2, ..., 50",Kosmetik,Terdapat banyak data riwayat/transaksi lebih dari satu halaman,"1. Buka halaman dengan data banyak
+2. Scroll ke bagian pagination
+3. Klik angka halaman 1, 2, dan halaman lain
+4. Klik halaman terakhir jika tersedia","Pagination menampilkan nomor halaman yang dapat diklik, misalnya 1, 2, ..., 50, dan data berubah sesuai halaman yang dipilih",Nomor halaman dapat diklik dan data berubah sesuai halaman yang dipilih,DONE,-,Sudah Di Tambahkan
+94,Bagian filter di desktop tidak menjadi 2 baris dan tetap dalam 1 baris,Kosmetik,Buka halaman AI History/Admin History menggunakan desktop,"1. Buka halaman yang memiliki banyak filter
+2. Periksa layout filter pada resolusi desktop
+3. Ubah ukuran layar desktop secara bertahap","Filter tetap tersusun rapi dalam 1 baris pada desktop, tidak turun menjadi 2 baris selama masih memungkinkan secara responsive",Filter tetap tersusun rapi ketika resolusi di ubah secara bertahap,DONE,-,
+95,"Semua filter ditampilkan tanpa tombol filter lanjutan pada desktop, sedangkan mobile boleh menggunakan filter lanjutan",Kosmetik,Buka halaman AI History/Admin History pada desktop dan mobile,"1. Buka halaman pada desktop
+2. Periksa apakah semua filter langsung terlihat
+3. Buka halaman pada mobile
+4. Periksa apakah filter masuk ke fitur lanjutan/collapse jika ruang sempit",Pada desktop semua filter tampil langsung tanpa tombol filter lanjutan. Pada mobile filter boleh diringkas ke menu filter lanjutan agar tampilan tidak sempit,"Tampilan filter sesuai. Di Desktop semua filter tampil terbuka, sedangkan di Mobile filter diringkas ke menu filter lanjutan.",DONE,-,
+96,Tampilan icon dashboard diperkecil agar dalam satu halaman bisa memuat 4 icon atau lebih,Kosmetik,User/admin berada di halaman dashboard mobile,"1. Buka dashboard pada mobile
+2. Periksa ukuran teks, icon, padding, dan jarak antar card/menu
+3. Hitung jumlah icon/menu yang tampil dalam satu viewport","Ukuran teks, icon, dan spacing diperkecil secara proporsional sehingga satu halaman dapat memuat minimal 4 icon/menu atau lebih tanpa tampilan terlalu padat",Ukuran elemen UI dashboard mobile sudah proporsional dan mampu menampilkan 4 ikon atau lebih dalam satu layar,DONE,-,
+97,"Ketika gagal generate model video, credit user bertambah dan credit API berkurang hanya secara visual",Urgent,"User memiliki credit cukup, model video tersedia, dan terdapat kondisi generate gagal","1. Catat credit user dan credit API sebelum generate
+2. Generate video menggunakan model yang berpotensi gagal
+3. Saat generate gagal, periksa tampilan credit user dan credit API di UI
+4. Refresh halaman
+5. Bandingkan dengan data asli/database jika tersedia","Jika generate gagal, credit user tidak boleh bertambah secara visual maupun aktual secara tidak wajar, dan credit API tidak boleh terlihat berkurang jika sebenarnya hanya bug visual. Tampilan credit harus konsisten setelah refresh",Tampilan credit user dan credit di Admin konsisten saat generate video gagal. Tidak ditemukan bug visual.,DONE,Bug visual saldo user dan API saat generate video gagal,
+99,Pengiriman notifikasi email ke pengguna menggunakan layanan Fonnte,Urgent,API Fonnte sudah terintegrasi di sistem. Data email pengguna tujuan valid.,"1. Lakukan trigger yang memicu notifikasi (contoh: transaksi sukses/registrasi).
+2. Sistem mengirim request ke API Fonnte.
+3. Periksa inbox email tujuan.",Email notifikasi berhasil diterima oleh pengguna melalui gateway Fonnte dengan isi pesan yang tepat.,Notifikasi berhasil terkirim ke email tujuan,DONE,Menguji integrasi API Fonnte untuk Email,
+100,Pengiriman notifikasi via WhatsApp kepada Admin,Urgent,Nomor WA Admin tujuan sudah dikonfigurasi. Layanan WA API aktif.,"1. Lakukan aktivitas yang memerlukan notifikasi admin (contoh: komplain, transaksi baru).
+2. Sistem mengirim pesan otomatis ke WA Admin.
+3. Cek aplikasi WhatsApp di nomor Admin.",Pesan WhatsApp diterima oleh Admin secara real-time dan format pesannya sesuai.,Pesan berhasil terkirim dan dapat diterima oleh admin,DONE,Bisa menggunakan Fonnte juga jika berlaku untuk WA,
+101,"Verifikasi pembuatan dan integrasi akun PayPal ""aiKreativ""",Urgent,"Akun PayPal bisnis ""aiKreativ"" telah didaftarkan dan di-setup di environment aplikasi.","1. Login ke aplikasi sebagai user.
+2. Lakukan simulasi pembelian/top-up.
+3. Pilih metode pembayaran PayPal.
+4. Selesaikan pembayaran menuju akun aiKreativ.
+5. Cek mutasi pada akun PayPal aiKreativ.","Pembayaran berhasil, dana masuk ke saldo akun PayPal aiKreativ, dan status transaksi di aplikasi menjadi sukses.","Sesuai ekspektasi, akun pembayaran berhasil dan dana masuk ke saldo akun PayPal aiKreativ",DONE,Pengecekan akun dan integrasi payment,Udah Done ya
+103,Validasi penolakan unggah foto referensi di bawah 240x240 pixel,Urgent,User berada di halaman Generate Image. Memiliki file gambar dengan resolusi di bawah 240x240 pixel (misal 150x150 px).,"1. Buka fitur ""Generate Image"".
+2. Klik unggah/upload foto referensi.
+3. Pilih file gambar beresolusi < 240x240 px.
+4. Amati reaksi sistem.","Sistem menolak gambar tersebut dan memunculkan pesan error/validasi (misal: ""Ukuran gambar terlalu kecil, minimal 240x240 px"") secara langsung di sisi frontend tanpa mengirim data ke backend.",Berhasil menampilkan pesan dan mengembalikan kredit secara otomatis,DONE,Negative case: Mencegah error dari backend,
+104,Unggah foto referensi dengan ukuran sesuai (>= 240x240 pixel),Urgent,User berada di halaman Generate Image. Memiliki file gambar dengan resolusi minimal 240x240 pixel (misal 500x500 px).,"1. Buka fitur ""Generate Image"".
+2. Klik unggah/upload foto referensi.
+3. Pilih file gambar beresolusi >= 240x240 px.
+4. Lanjutkan klik tombol Generate.","Tidak ada pesan error terkait ukuran gambar, proses unggah berhasil, dan request gambar berhasil diteruskan ke backend untuk diproses.",Tidak ada pesan error dan gambar berhasil di generate,DONE,aman tanpa bug,
+105,Validasi input kosong (Tombol Generate disabled),Urgent,User berada di halaman Generate (Video atau Image),"1. Buka halaman Generate.
+2. Biarkan form input foto/video referensi dan prompt dalam keadaan kosong.
+3. Periksa status tombol ""Generate"".
+4. (Opsional) Coba klik tombol ""Generate"" jika masih bisa di-klik.","Tombol ""Generate"" dalam keadaan tidak aktif (disabled). Jika masih bisa diklik, sistem harus menampilkan pesan validasi error bahwa input tidak boleh kosong dan tidak memproses ke server.","Tombol ""Generate"" berhasil disable ketika prompt dalam keadaan kosong",DONE,Pencegahan submit data kosong,Udah done ya menjadi button disable
+106,Pengujian output Model Kling dengan referensi video pendek,Urgent,User berada di halaman Generate Video. Memiliki video referensi berdurasi pendek (contoh: video dance 3 detik).,"1. Pilih model AI ""Kling"".
+2. Unggah video referensi berdurasi 3 detik.
+3. Masukkan prompt yang relevan.
+4. Klik Generate dan tunggu hingga selesai.
+5. Periksa durasi dan gerakan pada video hasil.",Hasil generate berhasil dibuat dengan gerakan (dance) yang akurat. Durasi video output sinkron atau mengikuti durasi dari video referensi input (3 detik).,"Model Kling berhasil meng-generate video berdasarkan video referensi. Gerakan pada video hasil generate cukup akurat, serta durasi video output sinkron dan konsisten mengikuti durasi video input",DONE,Pengecekan konsistensi durasi model Kling,
+107,Pengujian generate dengan Aspect Ratio Landscape,Urgent,User berada di halaman Generate dengan input (prompt/foto/video) yang valid.,"1. Isi prompt dan input yang diperlukan.
+2. Pilih pengaturan Aspect Ratio ke ""Landscape"" (misal: 16:9).
+3. Klik Generate dan tunggu hasilnya.
+4. Periksa dimensi/rasio dari gambar/video yang dihasilkan.",Sistem berhasil melakukan generate dan file output yang dihasilkan benar-benar memiliki format rasio aspek landscape (memanjang horizontal).,File output gambar benar-benar memiliki rasio aspek landscape,DONE,Pengecekan fungsi aspect ratio,
+108,Validasi resolusi gambar di bawah 240px pada Model-model Baru,Urgent,Sistem memiliki beberapa pilihan model baru. User memiliki file gambar beresolusi < 240x240px.,"1. Pilih model AI wan 2.7.
+2. Unggah gambar referensi dengan ukuran < 240px.
+3. Periksa apakah sistem memblokir unggahan atau menonaktifkan proses generate.
+4. Ulangi untuk setiap model baru yang tersedia.","Hanya model wan 2.7 yang memiliki validasi frontend: Menolak gambar < 240px dengan menampilkan pesan error validasi ukuran, dan tidak mengirim request yang bisa menyebabkan server error.",Model berhasil menolak dan menampilkan pesan,DONE,Pengecekan handling error resolusi per model,
+109,Pengujian penanganan batas resolusi gambar referensi (> 4K vs <= 4K) dan validasi error handling pada Wan 2.7 serta Model AI lainnya,Urgent,User login dan berada di halaman Generate. Memiliki sampel gambar referensi beresolusi <= 4K dan > 4K (misal 5K/8K).,"1. Pilih model Wan 2.7 / model AI lainnya.
+2. Coba unggah gambar referensi beresolusi > 4K lalu klik Generate.
+3. Periksa notifikasi/pesan error di UI user, perubahan saldo kredit, dan log status di Panel Admin.
+4. Sebagai pembanding, coba unggah gambar beresolusi <= 4K lalu klik Generate.","1. Untuk gambar <= 4K: Generate berhasil dan kredit terpotong.
+2. Untuk gambar > 4K: Jika model tidak mendukung, sistem menampilkan pesan error validasi resolusi yang jelas di UI user, kredit tidak terpotong, dan log di Panel Admin secara konsisten mencatat status ""Failed"".",Sistem berhasil menampilkan pesan error validasi resolusi yang jelas di UI user dan kredit tidak terpotong,DONE,Silent fail pada model Wan 2.7 saat menggunakan gambar > 4K. Perlu validasi resolusi di frontend/backend sebelum diproses model.,Done Sudah di tambahkan validasi beserta popup error
+110,Pembaruan pesan log error API Sistem habis menjadi bahasa yang ramah pengguna (awam),Urgent,Quota API sistem habis/dalam kondisi kuota penuh.,"1. Lakukan aksi generate hingga memicu batas limit/quota API sistem.
+2. Periksa pesan error/notifikasi yang muncul di UI pengguna.","Pesan error menampilkan kalimat bahasa Indonesia awam yang mudah dimengerti (contoh: ""Layanan sedang sibuk, silakan coba beberapa saat lagi"") dan tidak menampilkan sintaks/code error teknis raw API.","Notifikasi/pesan error yang tampil di UI sudah menggunakan bahasa Indonesia dan mudah dimengerti, serta tidak menampilkan sintaks/code error teknis raw API",DONE,Peningkatan kenyamanan UI/UX error handling,
+111,"Fixing bug salah status ""Credit Tidak Mencukupi"" pada model Seedance 2",Urgent,User memiliki saldo kredit yang mencukupi sesuai tarif model Seedance 2.,"1. Login menggunakan akun user yang memiliki saldo kredit mencukupi.
+2. Pilih model ""Seedance 2"".
+3. Masukkan prompt/input lalu klik tombol Generate.
+4. Amati respon sistem dan potongan kredit.","Proses generate berhasil berjalan tanpa terblokir pesan ""Credit tidak mencukupi"", dan kredit terpotong sesuai harga model Seedance 2.","Berhasil di generate tanpa terblokir pesan, dan kredit terpotong sesuai dengan harga model Seedance 2",DONE,Fixing transaksi & pengecekan saldo model Seedance 2,
+112,Penambahan notifikasi error saat mengunggah foto/video dengan resolusi > 4K,Urgent,User berada di halaman unggah/generate media. Memiliki file foto/video beresolusi di atas 4K (contoh: 5K atau 8K).,"1. Buka halaman unggah/generate.
+2. Pilih file foto atau video yang memiliki resolusi > 4K.
+3. Coba unggah file tersebut.","Sistem langsung memblokir proses unggah dan menampilkan notice error yang jelas (contoh: ""Ukuran resolusi file melebihi batas maksimal 4K"").",Sistem berhasil meblokir dan menampilkan pesan error yang jelas,DONE,Validasi batas resolusi unggahan media,
+113,Fixing bug redirect loop berulang ke halaman /studio saat user sudah login,Urgent,User dalam status sudah login (authenticated).,"1. Login ke akun pengguna.
+2. Buka halaman /studio (generate) atau berpindah antar menu/layar di dalam aplikasi.
+3. Periksa perilaku perujukan (redirect) URL browser.","Halaman /studio dapat diakses dengan lancar tanpa terjadi looping/refresh berulang-ulang, dan user dapat menavigasi ke menu lain dengan normal.","Halaman /studio terbuka stabil, URL tidak berganti-ganti secara otomatis/berulang.",DONE,Fixing routing & auth session middleware,
+114,Penambahan tombol inspect detail dengan icon mata pada hasil generate versi Mobile,Kosmetik,Menggunakan perangkat/tampilan Mobile (responsive view). User memiliki riwayat hasil generate.,"1. Akses aplikasi dari tampilan mobile.
+2. Buka daftar/kartu hasil generate.
+3. Periksa keberadaan icon mata pada kartu hasil.
+4. Klik tombol icon mata tersebut.","Icon mata tampil dengan rapi pada setiap kartu hasil generate di versi mobile, dan ketika diklik akan membuka modal/tampilan inspect detail hasil generate.","Icon mata sudah tampil dengan baik di mobile, dan ketika diklik berhasil membuka modal/tampilan inspect detail hasil generate",DONE,Fitur inspect detail di tampilan mobile,
+115,"Fixing bug nama model pada riwayat generate yang selalu menampilkan ""nano banana 2""",Kosmetik,"User telah melakukan generate menggunakan beberapa model AI yang berbeda (misal: Wan 2.7, Seedance 2, Kling).","1. Lakukan generate menggunakan berbagai model AI yang berbeda.
+2. Buka halaman Riwayat Generate.
+3. Cek label nama model pada tiap-tiap item riwayat.","Label nama model pada daftar riwayat sesuai persis dengan model AI yang digunakan saat generate (bukan selalu tertulis ""nano banana 2"").",Label nama model sudah sesuai persis dengan model AI yang digunakan saat generate,DONE,Fixing pemetaan data nama model di Riwayat,
+116,Dinamisme metode pembayaran berdasarkan pengosongan link/foto di config Admin,Urgent,Akses ke Panel Admin (konfigurasi pembayaran) dan Halaman Pembayaran User.,"1. Buka Panel Admin > Konfigurasi Metode Pembayaran.
+2. Kosongkan link/foto pada salah satu metode pembayaran lalu simpan.
+3. Buka halaman checkout/pembayaran di sisi User.
+4. Isi kembali link/foto di Admin dan cek ulang halaman User.","Metode pembayaran yang link/fotonya dikosongkan di admin akan secara otomatis tersembunyi/menghilang dari daftar opsi pembayaran User. Ketika diisi kembali, opsi muncul kembali.","Saat link/foto dikosongkan di Admin, metode pembayaran otomatis hilang di UI User.",DONE,Fitur dinamis konfigurasi payment gateway/methods,
+117,"Fixing tautan direct tombol ""Bagikan Kode Referral"" di Landing Page",Urgent,User berada di halaman utama (Landing Page).,"1. Buka Landing Page aplikasi.
+2. Cari tombol ""Bagikan Kode Referral"".
+3. Klik tombol tersebut dan amati hasilnya.","Tombol berfungsi dengan benar, mengarahkan ke halaman referral atau membuka pop-up/dialog bagikan kode referral dengan tautan yang valid.",Tombol berfungsi dan berhasil mengarahkan ke halaman referral,DONE,Fixing broken link / action button landing page,
+118,Fixing layout Form Prompt panjang agar tidak menimpa visual hasil generate pada Desktop,Kosmetik,Menggunakan tampilan Desktop. Memiliki hasil generate dengan teks prompt yang sangat panjang.,"1. Akses halaman riwayat/detail hasil generate pada layar Desktop.
+2. Cari hasil generate dengan prompt yang panjang.
+3. Amati tampilan teks prompt dan posisi gambar/video hasil.","Teks prompt yang panjang ter-wrap atau memiliki mekanisme scroll/truncate dengan rapi, serta tidak menimpa (overlapping) area gambar/video hasil generate.","Teks prompt yang panjang ter-wrap / memiliki mekanisme scroll dengan rapi pada tampilan Desktop, serta tidak menimpa visual gambar/video hasil generate.",DONE,Fixing CSS / layout wrapping versi desktop,
+119,Fixing penanganan unduhan hasil generate pada iOS (iPhone) agar tersimpan ke Galeri,Urgent,Menggunakan perangkat iPhone (iOS). Terdapat hasil generate yang siap diunduh.,"1. Buka aplikasi via Safari/Chrome di perangkat iPhone.
+2. Buka salah satu hasil generate (gambar/video).
+3. Klik tombol Download / Simpan.
+4. Buka aplikasi Photos/Galeri iPhone.",File gambar/video hasil generate yang diunduh berhasil tersimpan langsung ke Galeri (Photos) iPhone dan dapat diputar/dilihat dengan normal.,File gambar/video hasil generate berhasil tersimpan ke galeri dan dapat diputar/dilihat,DONE,Fixing download handler & mime type khusus iOS,
+119,Generate 1x dengan prompt sensitif pada model non-spicy untuk mengecek fungsi auto-refund,Urgent,"User sudah login, memiliki saldo kredit, dan memilih model AI ""non-spicy"".","1. Buka halaman Generate.
+2. Pilih model ""non-spicy"".
+3. Masukkan prompt sensitif (contoh: ""berdarah"", ""mati"", ""bunuh"").
+4. Klik tombol Generate.
+5. Pantau hasil layar dan periksa riwayat/log kredit user.",Sistem menolak/menggagalkan proses generate karena mendeteksi prompt sensitif. Saldo kredit user TIDAK berkurang (auto-refund berjalan normal / kredit tidak ditarik).,Sistem berhasil menolak/menggagalkan proses geenerate dan saldo kredit berhasil di auto-refund,DONE,Pengecekan fungsi dasar pencegahan prompt sensitif dan perlindungan kredit.,
+120,Generate repetitif (terus-menerus/spam) dengan prompt sensitif pada model non-spicy,Urgent,"User sudah login, memiliki saldo kredit, memilih model AI ""non-spicy"". Siapkan skenario untuk spamming / klik berulang.","1. Buka halaman Generate.
+2. Pilih model ""non-spicy"".
+3. Masukkan prompt sensitif.
+4. Lakukan eksekusi Generate secara terus-menerus dan berulang kali (spamming) walau proses sebelumnya gagal.
+5. Pantau log generate dan cek mutasi saldo kredit secara real-time.","Meskipun user melakukan spam/terus-menerus menggunakan prompt sensitif yang gagal, auto-refund KONSISTEN bekerja di setiap percobaan. Saldo kredit user sama sekali tidak berkurang/bocor.",Fitur auto-refund dan proteksi kredit bekerja secara KONSISTEN. Meskipun dilakukan aksi spamming generate berulang kali menggunakan prompt sensitif,DONE,"Fixing bug ""user supernova"": auto-refund harus tetap ke-trigger walau di-spam.",
+121,Interaksi manual (User Manusia) pada Captcha di halaman Support dan Landing Page,Urgent,User mengakses web menggunakan browser standar tanpa ekstensi bot. Halaman Support dan Landing Page sudah terpasang Captcha/Cloudflare Turnstile.,"1. Buka halaman Landing Page.
+2. Lakukan interaksi (klik) pada widget Captcha.
+3. Ulangi langkah yang sama pada halaman Support.","Captcha dapat diklik dan diverifikasi dengan sukses oleh user manusia. Jika ada tantangan (puzzle/gambar), user bisa menyelesaikannya dan melanjutkan proses submit form.",Captcha dapat diklik oleh user manusia,DONE,Positive case: memastikan user asli tidak terblokir,
+122,Pengujian keamanan Captcha/Cloudflare menggunakan script Bot/AI (Automated Testing),Urgent,"Siapkan environment automation/bot (misal: Selenium biasa, Puppeteer, atau tool bot/AI) untuk mengakses web.","1. Jalankan script bot/AI untuk mengakses halaman Landing Page atau Support.
+2. Instruksikan bot untuk mencoba bypass atau mengklik Captcha.
+3. Coba submit form secara otomatis.","Sistem keamanan Cloudflare/Captcha mendeteksi anomali trafik bot dan memblokir akses tersebut (misal: menampilkan halaman ""Access Denied"", challenge yang tidak bisa diselesaikan bot, atau Captcha gagal diverifikasi).",Proteksi Cloudflare/Captcha berhasil mendeteksi dan memblokir akses otomatisasi,DONE,Security case: memastikan bot terblokir oleh proteksi Cloudflare,
+123,Generate menggunakan video referensi TANPA karakter manusia (Negative Case),Urgent,"User berada di halaman Generate. Pilih model Kling 2.6 motion. Siapkan video referensi tanpa objek manusia (misal: video pemandangan, benda mati, atau hewan).","1. Pilih model Kling 2.6 motion.
+2. Unggah video referensi yang tidak menampilkan manusia.
+3. Klik tombol Generate.
+4. Perhatikan pesan error yang muncul pada UI (User Interface).","Sistem menolak/menggagalkan proses dan menampilkan pesan error yang diterjemahkan dengan bahasa yang mudah dipahami user (contoh: ""Video referensi harus menampilkan karakter manusia"" atau ""Karakter manusia tidak terdeteksi pada video""). Pesan raw teknis ""No valid characters detected in the video"" TIDAK boleh muncul ke user.",Pesan muncul dan sistem berhasil menolak/menggagalkan proses dan menampilkan pesan error,DONE,Mengubah log/error mentah dari API agar lebih ramah bagi user awam.,
+124,Generate menggunakan video referensi DENGAN karakter manusia (Positive Case),Urgent,User berada di halaman Generate. Pilih model Kling 2.6 motion. Siapkan video referensi yang menampilkan karakter manusia dengan jelas.,"1. Pilih model Kling 2.6 motion.
+2. Unggah video referensi yang memiliki objek manusia di dalamnya.
+3. Klik tombol Generate.
+4. Pantau proses generate hingga selesai.",Sistem berhasil memproses request dan tidak memunculkan pesan error terkait validasi karakter. Hasil generate berhasil dibuat.,Sistem berhasil memproses request dan tidak memunculkan pesan error,DONE,Memastikan bahwa fitur tetap berjalan normal ketika diberikan input video yang valid (ada manusia).,
+125,Pengecekan dan komparasi UI (User Interface) dengan versi production,Kosmetik,User berada di halaman utama aplikasi.,"1. Buka aplikasi di environment testing/staging.
+2. Bandingkan tampilan secara visual dengan versi production (live).
+3. Lakukan pengecekan pada tata letak, warna, dan elemen UI lainnya.","Tampilan UI sama persis dengan versi production, rapi, dan tidak ada elemen yang bergeser atau rusak.","UI tidak ada masalah, sama dengan production, tidak ada bug.",DONE,Aman,
+126,"Pengujian tombol ""Bagikan Kode Referral""",Kosmetik,User berada di halaman yang memiliki tombol referral.,"1. Cari tombol Referral.
+2. Klik tombol tersebut.
+3. Amati halaman tujuan.",Tombol dapat diklik dan langsung mengarahkan user ke halaman kode referral dengan benar.,Tombol berfungsi dengan baik dan langsung mengarahkan ke halaman kode referral tanpa bug.,DONE,Aman,
+127,"Pengujian fungsi tombol ""Masuk"" (Login)",Urgent,User belum login dan berada di halaman pendaftaran/awal.,"1. Klik tombol Masuk.
+2. Isi kredensial yang valid (opsional jika hanya test tombol).
+3. Verifikasi perpindahan halaman.","Tombol berfungsi dengan baik, membuka form login atau langsung memproses login jika ada sesi.",Tombol masuk untuk login berfungsi dengan baik tanpa bug.,DONE,Aman,
+128,"Pengujian seluruh model ""Image-to-Image"" dan feedback pesan error",Urgent,"User memiliki kredit, memilih model image-to-image, dan menyiapkan gambar referensi/prompt.","1. Pilih model Image-to-Image.
+2. Lakukan generate secara normal.
+3. Buat skenario yang memicu error (misal gambar resolusi tidak valid jika ada).
+4. Cek hasil dan pesan yang muncul.","Semua model berhasil melakukan generate gambar. Jika terjadi error, pesan yang muncul menggunakan bahasa yang mudah dipahami (user-friendly).","Semua model berfungsi dengan baik, pesan error yang muncul menggunakan bahasa yang mudah dipahami, tidak ada bug.",DONE,Aman,
+129,"Pengujian fungsionalitas seluruh model ""Image-to-Video"" dan sistem pemotongan kredit",Urgent,"User login, memiliki saldo kredit, dan memilih model image-to-video.","1. Pilih model Image-to-Video.
+2. Masukkan input gambar/prompt.
+3. Klik Generate dan tunggu hingga selesai.
+4. Cek hasil video dan saldo kredit.","Sistem berhasil melakukan generate video tanpa error, dan saldo kredit terpotong sesuai tarif (kredit aman).","Semua model berfungsi dengan baik, tidak ada error, kredit terpotong dengan aman, tidak ada bug.",DONE,Aman,
+130,Pengujian tombol Help dan fitur Show/Hide notifikasi proses generate,Kosmetik,User sedang dalam proses melakukan generate (menunggu loading selesai).,"1. Coba klik tombol Help.
+2. Saat generate berjalan, coba sembunyikan (hide) pop-up/notifikasi prosesnya.
+3. Coba tampilkan (show) kembali proses tersebut.",Tombol help berfungsi. User bisa dengan lancar menyembunyikan dan melihat kembali progres/proses generate tanpa mengganggu proses di background.,Tombol help dan notifikasi berfungsi baik. User dapat melihat dan menyembunyikan proses generate tanpa bug.,DONE,Aman,
+131,Pengujian proteksi kata sensitif (bunuh/darah/mutilasi) di mode non-spicy,Urgent,"User memilih model AI mode ""non-spicy"" dan memiliki kredit.","1. Masukkan prompt dengan kata-kata sensitif (contoh: bunuh, darah, mutilasi).
+2. Klik Generate.
+3. Cek hasil generate dan saldo kredit.","Sistem memblokir prompt, gambar gagal di-generate karena proteksi keamanan, dan kredit user di-refund/tidak terpotong (aman).","Sistem menolak meng-generate prompt sensitif, kredit user tetap aman. Tidak ada bug.",DONE,Fungsi auto-refund / perlindungan kredit berjalan sempurna,
+132,Pengujian fitur pembayaran (Top Up Kredit),Urgent,User login dan berada di halaman pembayaran/top up.,"1. Pilih paket kredit yang ingin dibeli.
+2. Lakukan proses pembayaran hingga selesai.
+3. Cek notifikasi transaksi masuk ke dev/admin.
+4. Cek saldo kredit pada akun user.","Uang berhasil terkirim ke sistem/gateway, dan kredit pengguna otomatis bertambah sesuai dengan paket yang dibeli.","Fitur pembayaran berfungsi dengan baik, uang terkirim dan kredit berhasil bertambah, tidak ada bug.",DONE,Aman,
+133,Pengujian fitur pengiriman pesan testing (feedback/contact) ke tim Dev,Urgent,User menggunakan form kontak/feedback.,"1. Isi form pesan percobaan (testing).
+2. Klik tombol kirim.
+3. Konfirmasi kepada pihak dev apakah pesan masuk atau tidak.","Pesan berhasil terkirim dari sisi user, dan sistem backend berhasil meneruskannya ke dashboard/inbox pihak developer.",Pesan testing berhasil terkirim dan diterima dengan baik oleh pihak dev tanpa bug.,DONE,Aman,
+134,Pengujian fitur Pengaturan Bahasa pada pesan error dan Riwayat,Kosmetik,User berada di menu Pengaturan dan memiliki riwayat/memicu error.,"1. Ubah pengaturan bahasa aplikasi (misal ke Bahasa Indonesia).
+2. Akses halaman Riwayat Generate.
+3. Picu suatu kondisi error yang ringan.
+4. Baca teks yang ditampilkan pada UI.",Semua teks terjemahan pada pesan error dan riwayat sesuai dengan bahasa yang dipilih dan mudah dimengerti.,"Pengaturan bahasa bekerja dengan baik, pesan error dan riwayat berhasil diterjemahkan dan dimengerti. Tidak ada bug.",DONE,Aman,
+135,Kesesuaian tampilan UI secara keseluruhan dibandingkan dengan versi Production,Kosmetik,"User login dan dapat mengakses seluruh halaman utama aplikasi (Landing Page, Dashboard, Generate, dll)","1. Buka aplikasi pada environment testing/staging
+2. Bandingkan tampilan (layout, warna, komponen, posisi elemen) pada setiap halaman dengan versi Production
+3. Catat apabila ditemukan perbedaan atau perubahan tampilan","Tampilan UI pada environment testing sama persis dengan Production, tidak ada perubahan layout maupun elemen visual yang tidak sesuai",Sesuai ekspektasi. Tampilan UI sudah dibandingkan dengan Production dan tidak ditemukan perubahan maupun bug pada tampilan.,DONE,aman tanpa bug,
+136,Tombol Login berfungsi dengan baik,Urgent,User memiliki akun terdaftar dan berada di halaman Login,"1. Buka halaman Login
+2. Masukkan kredensial akun yang valid (email/Google)
+3. Klik tombol ""Login""",User berhasil login dan diarahkan ke halaman Dashboard tanpa error,Sesuai ekspektasi. Tombol Login berfungsi dengan baik dan user berhasil masuk ke Dashboard tanpa bug.,DONE,aman tanpa bug,
+137,Tombol Help berfungsi dengan baik dan pesan bantuan langsung muncul ke Admin,Kosmetik,User berada di halaman manapun dalam aplikasi dan tombol Help tampil,"1. Klik tombol ""Help"" (floating button)
+2. Isi form/pesan bantuan yang tersedia
+3. Kirim/submit pesan bantuan",Pesan bantuan dari user berhasil terkirim dan langsung muncul di sisi Admin,Sesuai ekspektasi. Tombol Help berfungsi dengan baik dan pesan bantuan langsung muncul ke Admin tanpa bug.,DONE,aman tanpa bug,
+138,Credit berkurang dengan benar saat proses Generate Image to Image / Image to Video,Urgent,User login dan memiliki saldo credit yang cukup,"1. Buka halaman ""Image to Image"" atau ""Image to Video""
+2. Masukkan gambar referensi dan prompt yang sesuai
+3. Klik tombol Generate dan tunggu hingga proses selesai
+4. Bandingkan saldo credit sebelum dan sesudah generate","Saldo credit berkurang sesuai biaya (cost) model yang digunakan setelah proses generate berhasil, pada kedua fitur (Image to Image dan Image to Video)",Sesuai ekspektasi. Saldo credit berkurang dengan tepat pada kedua fitur tanpa bug.,DONE,aman tanpa bug,
+139,Tombol Referral berfungsi dengan baik,Urgent,User login dan berada di halaman Dashboard/Profile,"1. Klik tombol/menu ""Referral""
+2. Periksa halaman Referral yang terbuka (kode referral, link, riwayat undangan)
+3. Coba salin (copy) atau bagikan kode referral",Tombol Referral mengarahkan user ke halaman Referral dengan benar dan seluruh fungsinya (salin/bagikan kode) berjalan normal,Sesuai ekspektasi. Tombol Referral berfungsi dengan baik tanpa bug.,DONE,aman tanpa bug,
+140,Tombol F5 (Refresh Browser) berfungsi dengan baik dan mengembalikan tampilan ke kondisi semula,Kosmetik,User berada di halaman manapun dalam aplikasi,"1. Buka salah satu halaman aplikasi (Dashboard/Generate/dll)
+2. Tekan tombol F5 pada keyboard
+3. Amati tampilan setelah halaman dimuat ulang",Halaman kembali menampilkan tampilan/kondisi semula tanpa error atau layout yang rusak,"Sesuai ekspektasi. Tombol F5 berfungsi dengan baik, halaman kembali ke tampilan semula tanpa bug.",DONE,aman tanpa bug,
+141,Tombol Top Up berfungsi dengan baik dan mengarahkan langsung ke halaman Top Up,Urgent,User login dan berada di halaman Dashboard,"1. Klik tombol ""Top Up""
+2. Amati halaman yang terbuka",User langsung diarahkan ke halaman Top Up tanpa error,Sesuai ekspektasi. Tombol Top Up berfungsi dengan baik dan langsung mengarahkan ke halaman Top Up tanpa bug.,DONE,aman tanpa bug,
+142,Tombol Kembali (Back) berfungsi dengan baik,Kosmetik,User berada di salah satu halaman dalam aplikasi,"1. Buka salah satu halaman (misal halaman Detail/Riwayat)
+2. Klik tombol ""Kembali""",User kembali ke halaman sebelumnya dengan lancar tanpa stuck atau error,Sesuai ekspektasi. Tombol Kembali berfungsi dengan baik tanpa bug.,DONE,aman tanpa bug,
+143,Tombol Refresh pada halaman Riwayat Pembayaran berfungsi dengan baik,Kosmetik,User login dan berada di halaman Riwayat Pembayaran,"1. Buka halaman ""Riwayat Pembayaran""
+2. Klik tombol ""Refresh""",Data riwayat pembayaran termuat ulang dengan data terbaru tanpa error,Sesuai ekspektasi. Tombol Refresh pada halaman Riwayat Pembayaran berfungsi dengan baik tanpa bug.,DONE,aman tanpa bug,
+144,Tombol Bukti Transfer berfungsi dengan baik dan menampilkan foto bukti transfer di tab baru,Urgent,Terdapat data riwayat pembayaran yang memiliki bukti transfer terupload,"1. Buka halaman Riwayat Pembayaran
+2. Klik tombol/link ""Bukti Transfer"" pada salah satu transaksi",Sistem membuka tab baru dan menampilkan foto bukti transfer dengan benar,"Sesuai ekspektasi. Tombol Bukti Transfer berfungsi dengan baik, membuka tab baru dan menampilkan foto bukti transfer tanpa bug.",DONE,aman tanpa bug,
+145,Validasi state tombol Generate saat unggah gambar < 240x240 (Model Wan 2.7 Image-to-Image),Urgent,User berada di halaman Studio. Memilih model Wan 2.7 Image-to-Image. Menyiapkan gambar beresolusi < 240x240.,"1. Pilih model Wan 2.7 Image-to-Image.
+2. Unggah gambar referensi dengan resolusi di bawah 240x240.
+3. Perhatikan status tombol Generate saat pesan error/validasi muncul.","Tombol ""Generate"" harus dalam kondisi disabled (tidak bisa diklik) sebelum proses pengecekan di sistem selesai secara penuh.",Pesan muncul dan di panel admin tidak diproses,DONE,Bug: Tombol langsung enable mengabaikan proses background,
+146,Sinkronisasi pemutaran video dengan detail info (Riwayat/Hasil),Kosmetik,Terdapat riwayat hasil generate video yang sukses.,"1. Buka halaman hasil atau detail riwayat video.
+2. Putar video yang ada.
+3. Perhatikan data detail info di samping/bawah video selama pemutaran.","Visual video dan detail info yang ditampilkan (misal: prompt, metadata, durasi) berjalan secara sinkron/sesuai.",Video dan detail info sudah sinkron,DONE,Bug: Ketidaksinkronan data UI vs Video,Udah di fix
+147,"Pengujian pengaturan Aspect Ratio ""Portrait""",Urgent,User berada di halaman generate.,"1. Siapkan prompt atau gambar referensi.
+2. Ubah pengaturan Aspect Ratio menjadi ""Portrait"".
+3. Klik Generate.
+4. Cek resolusi dan bentuk hasil akhir.",File hasil akhir berupa gambar/video berformat vertikal (Portrait) sesuai dengan request aspect ratio.,Hasil generate sesuai dengan request aspect ratio,DONE,Bug: Aspect ratio parameter tidak terbaca/ter-override oleh API,Ini model apa? kalo grok udah di sesuaikan
+148,Validasi routing dan auto-select parameter saat klik model dari Landing Page (Contoh: VEO 3.1 FAST),Urgent,"User berada di Landing Page. Siapkan uji coba untuk berbagai model selain ""nano banana"".","1. Klik salah satu model dari landing page (contoh: ""VEO 3.1 FAST"").
+2. Perhatikan halaman /studio saat terbuka.
+3. Cek Tab yang sedang aktif (Image to Image / Image to Video).
+4. Cek nama model yang otomatis terpilih di panel pengaturan.","User diarahkan ke /studio dengan Tab aktif yang tepat (contoh: VEO 3.1 FAST harusnya di ""Image to Video"") dan nama model tersebut otomatis terpilih di dropdown/panel.",User berhasil di arahkan ke studio dengan tab aktif yang tepat,DONE,Bug: Routing parameter dari Landing Page ke Studio patah,
+149,"Pengujian tombol ""Coba Model"" pada pop-up promo (Redirect & Auto-select model ""Seedream 5"")",Urgent,"User login/berada di Dashboard dan melihat pop-up promo yang menawarkan model ""Seedream 5"".","1. Tunggu atau trigger agar pop-up promo muncul di layar.
+2. Klik tombol ""Coba Model"" pada pop-up tersebut.
+3. Perhatikan halaman tujuan (URL dan antarmuka).
+4. Periksa nama model AI yang secara otomatis terpilih di halaman tujuan.","Sistem mengarahkan user ke halaman ""Image-to-Image"" dan model yang terpilih secara otomatis adalah ""Seedream 5"" sesuai dengan promo.",-,nan,Fitur di  cancel oleh tim dev,udah deploy
+150,Pengujian stabilitas state obrolan pada Prompt Generator saat ganti model dan refresh halaman,Kosmetik,User berada di halaman Prompt Generator.,"1. Pilih model ChatGPT 5.6-sol.
+2. Masukkan input/lakukan generate prompt.
+3. Refresh halaman web.
+4. Ubah pilihan model ke AI lain.
+5. Refresh halaman kembali.","Riwayat chat/prompt tidak hilang, dan status AI berada dalam kondisi normal (idle/standby), bukan memproses secara terus-menerus (stuck loading).",,DONE,Fixing bug state management chat AI yang hilang dan stuck processing.,
+151,Validasi redirect Gambar dan Prompt dari Prompt Generator ke fitur Image-to-Image (I2I),Urgent,User memiliki hasil gambar dan prompt di halaman Prompt Generator.,"1. Buka hasil di Prompt Generator.
+2. Klik tombol aksi arahkan/kirim ke Image-to-Image.
+3. Perhatikan form di halaman Image-to-Image.","User berhasil diarahkan ke halaman Image-to-Image, dengan form input Gambar dan Teks Prompt sudah terisi secara otomatis dari Prompt Generator.",Gambar dan prompt berhasil dipindahkan  dari prompt generator ke I2I,DONE,Fixing bug passing data ke rute Image-to-Image.,Udah di test? Kalo yang aku coba mah aman sih
+152,Validasi redirect Gambar dan Prompt dari Prompt Generator ke fitur Image-to-Video (I2V),Urgent,User memiliki hasil gambar dan prompt di halaman Prompt Generator.,"1. Buka hasil di Prompt Generator.
+2. Klik tombol aksi arahkan/kirim ke Image-to-Video.
+3. Perhatikan form di halaman Image-to-Video.",User berhasil diarahkan ke Image-to-Video. Teks Prompt DAN Gambar berhasil dipassing (terisi otomatis). Gambar tidak boleh hilang.,Gambar dan prompt berhasil dipindahkan  dari prompt generator ke I2V,DONE,Fixing bug gambar kosong saat dipassing ke I2V.,Udah di test? soalnya udah
+153,Validasi routing URL pada tombol Topup dan Akun di dalam halaman Prompt Generator,Kosmetik,User login dan berada di halaman Prompt Generator.,"1. Klik tombol Topup (Kredit).
+2. Kembali ke halaman Prompt Generator.
+3. Klik tombol Akun (Profil).",Tombol Topup tepat mengarahkan ke halaman Pembayaran (Top up). Tombol Akun tepat mengarahkan ke halaman Profil. (TIDAK salah arah ke halaman Image-to-Image).,Sudah di uji dan berhasil,DONE,Fixing routing href tombol navigasi (User story 3 & 5).,"Udah deplooy, tinggal test"
+154,Pengujian pada tombol pembatalan manual dari panel admin,Urgent,Admin membatalkan promt dan seharusnya langsung auto refund dan notif hijau.,"1. Klik tombol Aksi .
+2. Klik tombol gagal kan & refund kredit.","Ketika sesudah menekan tombol gagalkan langsung auto gagal dan me refund kredit pada user, dan memunculkan notif auto-refunded bukan memunculkan notif belum di refund.",Oke sudah tidak terjadi bug lagi,DONE,Bug: Ketidaksingkronan data,Ini udah
+155,Pengujian pada Promt Generator ,Urgent,User hanya bisa memasukan 1 foto / gambar referensi yang seharus nya bisa lebih. ,,"Gambar / foto referensi bisa lebih dari 1, karena di  coba di web lain dengan model yang sama itu bisa memasukan foto lebih dari 1.",Gambar referensi berhasil ditambah lebih dari 1,DONE,,maksimal mau berapa?soalnya kalo banyak ada kemungkinan bakalan lama banget
+156,"Fungsionalitas tombol ""Back"" (Kembali) di halaman Prompt Generator",Kosmetik,User mengakses aplikasi dan menavigasi masuk ke halaman Prompt Generator dari halaman lain.,"1. Buka halaman Prompt Generator.
+2. Cari dan klik tombol ""Back"" (Kembali).
+3. Amati perubahan halaman.",User berhasil diarahkan kembali ke halaman sebelumnya (history router sebelumnya) dengan benar tanpa memicu error atau redirect yang salah.,Tombol ada dan bisa di klik,DONE,Peningkatan navigasi UI/UX,
+157,"Penggunaan tombol ""Salin Foto Ke Prompt Generator"" pada detail hasil generate",Kosmetik,User memiliki riwayat hasil generate gambar (Image-to-Image / Text-to-Image) yang sudah selesai.,"1. Buka halaman detail dari salah satu hasil generate gambar.
+2. Klik tombol ""Salin Foto Ke Prompt Generator"".
+3. Periksa halaman Prompt Generator yang terbuka.",Sistem mengarahkan user ke halaman Prompt Generator dan foto dari hasil generate tersebut otomatis masuk ke dalam form input/referensi Prompt Generator.,Tombol berfungsi dengan baik,DONE,Fitur shortcut re-use image,
+158,"Validasi penonaktifan fitur ""Auto Salin Foto"" ke Prompt Generator saat terdapat session input",Kosmetik,User baru saja melakukan aktivitas generate atau mengunggah foto referensi (menyimpan session input gambar).,"1. Lakukan aktivitas yang melibatkan foto referensi.
+2. Navigasi secara manual ke halaman Prompt Generator.
+3. Periksa form input foto pada Prompt Generator.",Foto referensi dari session sebelumnya TIDAK disalin secara otomatis ke form. Form input foto di Prompt Generator dalam keadaan kosong bersih.,Foto referensi yang ada di prompt generator sudah tidak otomatis tersalin,DONE,Mencegah perilaku auto-fill yang tidak diinginkan,
+159,Pengujian performa (Response Time) setelah optimasi ringan untuk speed AI,Urgent,Sistem sudah di-deploy dengan pembaruan optimasi speed AI.,"1. Lakukan proses generate gambar/video menggunakan parameter standar.
+2. Catat waktu tunggu (latency) sejak menekan tombol Generate hingga hasil/progress diterima.
+3. Bandingkan dengan performa sebelum optimasi.","Waktu tunggu (loading) proses generate terasa lebih cepat, atau setidaknya menunjukkan metrik performa (speed) yang lebih stabil tanpa bottleneck di sisi internal server.",Speed sudah lebih baik dari sebelumnya tapi ada beberapa model yang masih lambat dari KIE,DONE,Perfoma sudah bagus,
+160,Instalasi dan aksesibilitas PWA (Progressive Web App) pada Admin Panel,Urgent,Akses panel admin melalui browser modern (Chrome/Edge/Safari) yang mendukung fitur PWA di Desktop/Mobile.,"1. Buka URL Admin Panel.
+2. Periksa munculnya icon/prompt ""Install App"" pada address bar atau menu browser.
+3. Lakukan instalasi PWA.
+4. Buka aplikasi Admin Panel dari shortcut OS (Desktop/Homescreen).","Admin Panel dapat di-install dengan sukses dan berjalan di mode standalone (tanpa UI browser) layaknya aplikasi native, dengan service worker dan manifest yang valid.",Berhasil di install dan di jalankan di mobile,DONE,Pengecekan manifest.json dan service worker,
+161,Validasi fungsi klik (Preview) pada foto yang dipilih di halaman Image-to-Image,Kosmetik,User berada di halaman Image-to-Image dan sudah memilih atau mengunggah sebuah foto ke dalam sistem.,"1. Masuk ke fitur Image-to-Image.
+2. Pilih atau unggah sebuah foto referensi.
+3. Klik pada foto yang sudah dipilih/diunggah tersebut.","Foto tersebut akan membesar (muncul pop-up/lightbox preview) agar user bisa melihat detail foto dengan jelas, TANPA mengarahkan/memaksa user masuk ke alur pengisian prompt atau proses generate.",Sistem malah mengarahkan user ke prompt/alur generate secara otomatis ketika foto diklik.,DONE,Sudah diperbaiki dan bekerja dengan baik di mobile,
+164,Pengujian state UI proses Prompt Generator saat berpindah halaman (Navigasi),Kosmetik,User berada di halaman Prompt Generator dan siap melakukan generate.,"1. Masukkan teks/prompt dan klik tombol Generate.
+2. Saat status AI sedang memproses (loading), segera navigasi/pindah ke halaman lain.
+3. Kembali lagi ke halaman Prompt Generator.
+4. Amati tampilan UI proses dan hasil akhirnya.","Indikator proses (loading) tetap tersinkronisasi di UI jika AI masih memproses. Jika AI sudah selesai, hasil langsung ditampilkan dengan rapi tanpa hilangnya status state UI di tengah jalan.",Indikator proses tetap tersinkron dan berjalan dengan baik,DONE,Bug pada state management UI komponen saat halaman di-unmount/ditinggalkan.,
+165,Validasi pesan error (Feedback) saat proses Image-to-Video terganggu akibat pindah halaman,Urgent,User berada di halaman Image-to-Video dan memulai proses generate.,"1. Masukkan gambar/prompt dan mulai proses generate video.
+2. Saat proses berjalan, pindah ke halaman Prompt Generator.
+3. Kembali ke halaman Image-to-Video.
+4. Periksa kelanjutan proses dan notifikasi yang muncul.","Idealnya proses tetap berjalan di background. Namun, JIKA sistem memang membatalkan proses akibat perpindahan halaman, HARUS muncul pesan error/feedback peringatan yang jelas kepada user bahwa proses gagal/dibatalkan.","Proses generate berhasil, dan jika ada yang bermasalah, popup pesan langsung di tampilkan",DONE,Missing error handling/notifikasi untuk pembatalan proses.,

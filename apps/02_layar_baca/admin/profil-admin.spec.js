@@ -1,22 +1,31 @@
 import { test, expect } from '@playwright/test';
 
 test('Pengujian Modul Profil Admin (Ganti Password)', async ({ page }) => {
+  test.setTimeout(90000);
+
+  const dismissToast = async () => {
+    const closeBtn = page.getByRole('button', { name: 'Close toast' }).first();
+    if (await closeBtn.isVisible().catch(() => false)) {
+      await closeBtn.click({ force: true }).catch(() => {});
+    }
+    await page.waitForTimeout(400);
+  };
 
   await test.step('TC 0: Login & Navigasi ke Profil', async () => {
-    await page.goto('https://layarbaca.app/admin/login');
+    await page.goto('https://layarbaca.app/admin/login', { waitUntil: 'domcontentloaded' });
     await page.getByRole('textbox').first().fill('admin');
     await page.getByRole('textbox', { name: /gunakan 'admin'/i }).fill('sampulkreativ.yes');
     await page.getByRole('button', { name: 'Masuk' }).click();
 
     await page.getByRole('button', { name: 'Profil Admin' }).click();
-    await expect(page.getByRole('heading', { name: 'Profil Admin' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Profil Admin' })).toBeVisible({ timeout: 15000 });
   });
 
   await test.step('TC 1: Validasi Gagal - Password Saat Ini Kosong', async () => {
     await page.getByRole('button', { name: 'Simpan Password Baru' }).click();
     
-    await expect(page.getByText('Masukkan password saat ini.')).toBeVisible();
-    await page.getByRole('button', { name: 'Close toast' }).first().click();
+    await expect(page.getByText(/Masukkan password saat ini/i)).toBeVisible({ timeout: 10000 });
+    await dismissToast();
   });
 
   await test.step('TC 2: Validasi Gagal - Konfirmasi Password Berbeda', async () => {
@@ -25,11 +34,11 @@ test('Pengujian Modul Profil Admin (Ganti Password)', async ({ page }) => {
     
     // Sengaja dibuat typo (kurang huruf 's')
     await page.getByRole('textbox', { name: 'Ulangi password baru' }).fill('sampulkreativ.ye');
-    await expect(page.getByText('Password tidak cocok')).toBeVisible();
+    await expect(page.getByText(/Password tidak cocok/i)).toBeVisible({ timeout: 10000 });
 
     await page.getByRole('button', { name: 'Simpan Password Baru' }).click();
-    await expect(page.getByText(/Konfirmasi password tidak/i)).toBeVisible();
-    await page.getByRole('button', { name: 'Close toast' }).first().click();
+    await expect(page.getByText(/Konfirmasi password tidak/i)).toBeVisible({ timeout: 10000 });
+    await dismissToast();
   });
 
   await test.step('TC 3: Validasi Gagal - Password Saat Ini Salah', async () => {
@@ -40,8 +49,8 @@ test('Pengujian Modul Profil Admin (Ganti Password)', async ({ page }) => {
     await page.getByRole('textbox', { name: '••••••••' }).fill('sampulkreativ.ye');
     
     await page.getByRole('button', { name: 'Simpan Password Baru' }).click();
-    await expect(page.getByText('Password saat ini tidak sesuai')).toBeVisible();
-    await page.getByRole('button', { name: 'Close toast' }).first().click();
+    await expect(page.getByText(/Password saat ini tidak sesuai/i)).toBeVisible({ timeout: 10000 });
+    await dismissToast();
   });
 
   await test.step('TC 4: Berhasil Ganti Password', async () => {
@@ -49,20 +58,20 @@ test('Pengujian Modul Profil Admin (Ganti Password)', async ({ page }) => {
     await page.getByRole('textbox', { name: '••••••••' }).fill('sampulkreativ.yes');
     
     await page.getByRole('button', { name: 'Simpan Password Baru' }).click();
-    await expect(page.getByText('Password berhasil diperbarui!')).toBeVisible();
-    await page.getByRole('button', { name: 'Close toast' }).first().click();
+    await expect(page.getByText(/Password berhasil diperbarui/i)).toBeVisible({ timeout: 10000 });
+    await dismissToast();
   });
 
   await test.step('TC 5: Uji Logout & Login Ulang', async () => {
     await page.getByRole('button', { name: 'Keluar' }).click();
-    await expect(page.url()).toContain('/login');
+    await expect(page).toHaveURL(/.*\/login/, { timeout: 10000 });
 
     // Coba login dengan password yang baru disimpan (di kasus ini tetap 'sampulkreativ.yes')
     await page.getByRole('textbox').first().fill('admin');
     await page.getByRole('textbox', { name: /gunakan 'admin'/i }).fill('sampulkreativ.yes');
     await page.getByRole('button', { name: 'Masuk' }).click();
 
-    await expect(page.getByText('Login berhasil')).toBeVisible();
-    await page.getByRole('button', { name: 'Close toast' }).first().click();
+    await expect(page.getByText(/Login berhasil/i)).toBeVisible({ timeout: 10000 });
+    await dismissToast();
   });
 });
