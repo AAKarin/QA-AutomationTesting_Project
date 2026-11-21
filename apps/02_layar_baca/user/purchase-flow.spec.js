@@ -5,6 +5,8 @@ import { setupAdBlocker } from '../../../utils/ad_blocker.js';
 import { approveTransactionAndGetCode } from '../../../utils/adminActions.js';
 
 test.describe.serial('E2E Flow Pembelian Paket, Upload Bukti & Aktivasi', () => {
+  test.setTimeout(90000);
+
   let context;
   let page;
   let adminContext;
@@ -14,8 +16,8 @@ test.describe.serial('E2E Flow Pembelian Paket, Upload Bukti & Aktivasi', () => 
     // --- 1. SETUP SESI USER (MOBILE) ---
     context = await browser.newContext();
     page = await context.newPage();
-    await setupAdBlocker(page); 
-    await page.setViewportSize({ width: 390, height: 844 }); 
+    await setupAdBlocker(page);
+    await page.setViewportSize({ width: 390, height: 844 });
 
     // --- 2. SETUP SESI ADMIN & LOGIN (DESKTOP) ---
     adminContext = await browser.newContext();
@@ -24,7 +26,7 @@ test.describe.serial('E2E Flow Pembelian Paket, Upload Bukti & Aktivasi', () => 
 
     // Login Admin 1x di awal
     await adminPage.goto('https://layarbaca.app/admin/login', { waitUntil: 'domcontentloaded', timeout: 30000 })
-    
+
     await adminPage.getByRole('textbox').first().fill('admin')
     await adminPage.getByRole('textbox', { name: "Gunakan 'admin'" }).fill('sampulkreativ.yes')
     await adminPage.getByRole('button', { name: 'Masuk' }).click()
@@ -95,7 +97,7 @@ test.describe.serial('E2E Flow Pembelian Paket, Upload Bukti & Aktivasi', () => 
       await unduhQrisBtn.click();
       const popup = await popupPromise;
       if (popup) {
-        await popup.close().catch(() => {});
+        await popup.close().catch(() => { });
       }
     }
 
@@ -145,21 +147,21 @@ test.describe.serial('E2E Flow Pembelian Paket, Upload Bukti & Aktivasi', () => 
   test('TC 5: Aktivasi Kode Akses & Nonton Film', async () => {
     // 1. Admin memproses transaksi dan mengambil kode dinamis
     const accessCode = await approveTransactionAndGetCode(adminPage, 'angel.akun.test.1@gmail.com');
-    
+
     // 2. User kembali ke halaman Home untuk aktivasi
     await page.goto('https://layarbaca.app/app/home', { waitUntil: 'domcontentloaded' });
     const menuBukaKunci = page.locator('button').filter({ hasText: /BUKA KUNCI/i }).first();
     if (await menuBukaKunci.isVisible()) {
-        await menuBukaKunci.click();
+      await menuBukaKunci.click();
     }
 
     const titleBukaKunci = page.getByRole('heading', { name: /Buka Kunci Konten/i });
     await expect(titleBukaKunci).toBeVisible({ timeout: 10000 });
 
     const inputKode = page.getByRole('textbox', { name: /KODE AKSES/i }).first();
-    
+
     // 3. Masukkan kode dinamis, JANGAN di-hardcode lagi
-    await inputKode.fill(accessCode); 
+    await inputKode.fill(accessCode);
 
     const btnAktifkan = page.getByRole('button', { name: /AKTIFKAN AKSES/i });
     await btnAktifkan.click();

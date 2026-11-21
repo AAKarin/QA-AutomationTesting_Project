@@ -18,8 +18,8 @@ test.describe.serial('Admin Panel - Verifikasi Dasbor Utama & Aksi Cepat', () =>
     await submitBtn.click();
 
     // Validasi toast login & redirect ke dasbor
-    await expect(page.getByText('Login berhasil')).toBeVisible({ timeout: 15000 });
     await page.waitForURL('**/admin/**', { timeout: 20000 });
+    await expect(page.getByText('Login berhasil')).toBeVisible({ timeout: 15000 });
   });
 
   test('1. Verifikasi Komponen Statistik & Informasi Dasbor', async () => {

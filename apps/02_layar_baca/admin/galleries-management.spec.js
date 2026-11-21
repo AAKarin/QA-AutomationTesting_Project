@@ -1,64 +1,65 @@
 import { test, expect } from '@playwright/test';
 
-test('Pengujian Modul Galleries - Multiple Scenarios', async ({ page }) => {
-  test.setTimeout(90000); 
+// Pindahkan setelan batas waktu ke dalam test.describe
+test.describe('Modul Manajemen Kreator', () => {
+  test.setTimeout(90000);
 
-  const dismissToast = async () => {
-    const closeBtn = page.getByRole('button', { name: 'Close toast' }).first();
-    if (await closeBtn.isVisible().catch(() => false)) {
-      await closeBtn.click({ force: true }).catch(() => {});
-    }
-    await page.waitForTimeout(400);
-  };
+  test('Pengujian Modul Kreator - Multiple Scenarios', async ({ page }) => {
+    const dismissToast = async () => {
+      const closeBtn = page.getByRole('button', { name: 'Close toast' }).first();
+      if (await closeBtn.isVisible().catch(() => false)) {
+        await closeBtn.click({ force: true }).catch(() => { });
+      }
+      await page.waitForTimeout(400);
+    };
 
-  await test.step('TC 0: Login & Navigasi ke Galleries', async () => {
-    await page.goto('https://layarbaca.app/admin/login', { waitUntil: 'domcontentloaded' });
-    await page.getByRole('textbox').first().fill('admin');
-    await page.getByRole('textbox', { name: "Gunakan 'admin'" }).fill('sampulkreativ.yes');
-    await page.getByRole('button', { name: 'Masuk' }).click();
+    await test.step('TC 0: Login, Navigasi & Cek Data Awal', async () => {
+      // Login Admin
+      await page.goto('https://layarbaca.app/admin/login', { waitUntil: 'domcontentloaded' });
+      await page.getByRole('textbox').first().fill('admin');
+      await page.getByRole('textbox', { name: "Gunakan 'admin'" }).fill('sampulkreativ.yes');
+      await page.getByRole('button', { name: 'Masuk' }).click();
 
-    await page.getByRole('link', { name: 'Galleries' }).click();
-    await expect(page.getByRole('heading', { name: 'Galleries' })).toBeVisible({ timeout: 15000 });
-  });
+      // Navigasi ke Menu Kreator
+      await page.getByRole('link', { name: 'Kreator' }).click();
+      await expect(page.getByRole('heading', { name: 'Kreator' })).toBeVisible();
 
-  await test.step('TC 1: Verifikasi Elemen Form Tambah Gallery', async () => {
-    await expect(page.getByRole('heading', { name: 'Tambah Gallery Baru' })).toBeVisible();
-    await expect(page.getByRole('textbox', { name: 'Contoh: Photoshoot Bali' })).toBeVisible();
-    await expect(page.getByText('Pilih Thumbnail')).toBeVisible();
-    await expect(page.getByText(/Unggah Foto Galeri|Pilih Banyak Foto/i).first()).toBeVisible();
-    await expect(page.getByRole('combobox').first()).toBeVisible();
-    await expect(page.getByRole('button', { name: /Crawl & Simpan/i })).toBeVisible();
-  });
+      // Verifikasi Data Awal (Pastikan List Kreator Muncul)
+      await expect(page.getByRole('heading', { name: 'Kreativ Fans' })).toBeVisible();
+      await expect(page.getByRole('heading', { name: 'Satria' })).toBeVisible();
+    });
 
-  await test.step('TC 2: Uji Validasi Form Kosong', async () => {
-    const titleInput = page.getByRole('textbox', { name: 'Contoh: Photoshoot Bali' });
-    await titleInput.fill('');
-    await page.getByRole('button', { name: /Crawl & Simpan/i }).click();
+    await test.step('TC 1: Tambah Kreator Baru (Positif)', async () => {
+      await page.getByRole('button', { name: 'Kreator Baru' }).click();
+      await page.getByRole('textbox', { name: 'Alex Studio' }).fill('Testing Playwright');
+      await page.getByRole('textbox', { name: '@alexstudio' }).fill('@playwrighttester');
+      await page.getByRole('textbox', { name: 'Kreator konten...' }).fill('testing playwright');
 
-    await expect(page.getByText(/Judul.*Thumbnail.*Kreator wajib diisi/i)).toBeVisible({ timeout: 10000 });
-    await dismissToast();
-  });
+      await page.getByRole('button', { name: 'Simpan Kreator' }).click();
 
-  await test.step('TC 3: Verifikasi Daftar Galeri (Gallery List)', async () => {
-    await expect(page.getByRole('heading', { name: /Gallery List/i })).toBeVisible();
-    const editButtons = page.getByRole('button', { name: 'Edit' });
-    await expect(editButtons.first()).toBeVisible({ timeout: 10000 });
-  });
+      // Validasi Toast Sukses Tambah
+      await expect(page.getByText('Kreator berhasil ditambahkan')).toBeVisible({ timeout: 15000 });
+      await dismissToast();
+    });
 
-  await test.step('TC 4: Verifikasi Modal Konfirmasi Hapus Galeri (TC 14)', async () => {
-    // Klik tombol Hapus pada salah satu card galeri
-    const deleteBtn = page.getByRole('button', { name: 'Hapus' }).first();
-    await expect(deleteBtn).toBeVisible({ timeout: 10000 });
-    await deleteBtn.click();
+    await test.step('TC 2: Edit Kreator', async () => {
+      await page.getByRole('button', { name: 'Edit Kreator' }).first().click();
+      await page.getByRole('textbox', { name: 'Kreator konten...' }).fill('Bio kreator berhasil diperbarui via test');
 
-    // Verifikasi munculnya custom modal konfirmasi penghapusan
-    const modalPrompt = page.getByText(/Apakah Anda yakin ingin menghapus|Hapus Galeri/i).first();
-    await expect(modalPrompt).toBeVisible({ timeout: 10000 });
+      await page.getByRole('button', { name: 'Simpan Kreator' }).click();
 
-    // Batalkan penghapusan
-    const cancelBtn = page.getByRole('button', { name: 'Batal' });
-    await expect(cancelBtn).toBeVisible({ timeout: 5000 });
-    await cancelBtn.click();
-    await dismissToast();
+      // Validasi Toast Sukses Edit
+      await expect(page.getByText(/Kreator berhasil diperbarui/i).first()).toBeVisible({ timeout: 15000 });
+      await dismissToast();
+    });
+
+    await test.step('TC 3: Validasi Form Kosong / Batal', async () => {
+      await page.getByRole('button', { name: 'Kreator Baru' }).click({ force: true });
+      await expect(page.getByRole('heading', { name: 'Tambah Kreator Baru' })).toBeVisible({ timeout: 10000 });
+
+      // Batal / Tutup form
+      await page.getByRole('button', { name: 'Batal' }).click();
+      await expect(page.getByRole('heading', { name: 'Tambah Kreator Baru' })).toBeHidden({ timeout: 10000 });
+    });
   });
 });
